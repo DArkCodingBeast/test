@@ -1,17 +1,16 @@
 #include <iostream>
 #include <vector>
 #include <cmath>
-using namespace std;
 
 class Vecteur {
 
 private:
 
-vector<double> vect;
+std::vector<double> vect;
 size_t dim = vect.size();
 
 public:
-Vecteur(vector<double> vect = {0}) : vect(vect) {}
+Vecteur(std::vector<double> vect = {0}) : vect(vect) {}
 
 void augmente(double val) //increase dimension
     { 
@@ -25,7 +24,7 @@ void set_coord(unsigned int coord, double value) //change value
     {
         if (coord > vect.size()) // If the vector has less dimensions than the coordinate 
         {
-            cerr << "Le vecteur n'a pas tant de dimension" << endl;
+            std::cerr << "Le vecteur n'a pas tant de dimension" << std::endl;
         }
         else
         {
@@ -36,9 +35,9 @@ void const affiche() //afficher les elements
     {
         for (auto& element : vect)
         {
-            cout << element << " ";
+            std::cout << element << " ";
         }
-        cout << endl;
+        std::cout << std::endl;
     }
 bool compare(Vecteur& autre){ //regard si on a les memes vecteurs
 
@@ -60,7 +59,7 @@ Vecteur addition(Vecteur autre){ //additionnes les elements d'un vecteur
     return c;}
 
     //si les dimensions ne sont pas les memes:
-    cerr << "les dimensions des vecteurs ne sont pas les memes, returning vecteur à additioner" << endl;
+    std::cerr << "les dimensions des vecteurs ne sont pas les memes, returning vecteur à additioner" << std::endl;
     return autre; //choix random, mais il faut return qqch
 }
 Vecteur soustraction(Vecteur& autre){ //soustrait les elements d'un vecteur
@@ -73,7 +72,7 @@ Vecteur soustraction(Vecteur& autre){ //soustrait les elements d'un vecteur
     return c;}
 
     //si les dimensions ne sont pas les memes:
-    cerr << "les dimensions des vecteurs ne sont pas les memes, returning vecteur à soustraire" << endl;
+    std::cerr << "les dimensions des vecteurs ne sont pas les memes, returning vecteur à soustraire" << std::endl;
     return autre; //choix random, mais il faut return qqch
 }
 Vecteur oppose(){ // change le signe de chaque coord
@@ -99,7 +98,7 @@ double prod_scal(Vecteur& autre){ // produit scalaire
         }}
     
     //si les dimensions ne sont pas les memes:
-    cerr << "les dimensions des vecteurs ne sont pas les memes, returning 0" << endl;
+    std::cerr << "les dimensions des vecteurs ne sont pas les memes, returning 0" << std::endl;
     return 0.0; 
 }
 Vecteur prod_vect(Vecteur& autre){
@@ -113,7 +112,7 @@ Vecteur prod_vect(Vecteur& autre){
         return c;
     }
 
-    cerr << "Les dimensions des vecteurs sont different ou pas égale à 3" << endl;
+    std::cerr << "Les dimensions des vecteurs sont different ou pas égale à 3" << std::endl;
     return autre;
 }
 double norme(){
@@ -140,45 +139,3 @@ Vecteur unitaire(){
     return c;
 }
 };
-
-int main(){
-
-Vecteur vect1;
-Vecteur vect2;
-Vecteur vect3;
-/* Cette partie
-* (1) pourrait être écrite autrement, par exemple avec des
-* manipulateurs (set_coord()) ;
-* (2) sera revue dans 2 semaines (constructeurs, surcharge des opérateurs).
-*/
-// v1 = (1.0, 2.0, -0.1)
-vect1.augmente(1.0); vect1.augmente(0.0); vect1.augmente(-0.1);
-vect1.set_coord(1, 2.0); // pour tester set_coord()
-// v2 = (2.6, 3.5, 4.1)
-vect2.augmente(2.6); vect2.augmente(3.5); vect2.augmente(4.1);
-vect3 = vect1;
-cout << "Vecteur 1 : ";
-vect1.affiche();
-cout << endl;
-cout << "Vecteur 2 : ";
-vect2.affiche();
-cout << endl;
-cout << "Le vecteur 1 est ";
-if (vect1.compare(vect2)) {
-cout << "égal au";
-} else {
-cout << "différent du";
-}
-cout << " vecteur 2," << endl << "et est ";
-if (not vect1.compare(vect3)) {
-cout << "différent du";
-} else {
-cout << "égal au";
-}
-cout << " vecteur 3." << endl;
-
-    return 0;
-}
-
-
-
