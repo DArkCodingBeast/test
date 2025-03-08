@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <cmath>
 using namespace std;
 
 class Vecteur {
@@ -44,8 +45,9 @@ bool compare(Vecteur& autre){
     
     if (autre.dim == dim)
         {for( unsigned int i(0); i <= dim; ++i)
-            {if (abs(vect[i]-autre.vect[i]) <= eps) return true;}
-        return false;}
+            {if (abs(vect[i]-autre.vect[i]) <= eps) return true;}}
+ 
+    return false; 
 }
 
 };
