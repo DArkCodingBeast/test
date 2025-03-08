@@ -8,7 +8,7 @@ class Vecteur {
 private:
 
 vector<double> vect;
-size_t dim;
+size_t dim = vect.size();
 
 public:
 
