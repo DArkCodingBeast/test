@@ -1,8 +1,15 @@
+#include "Vecteur.h"
 #include <iostream>
 #include <vector>
-#include <cmath>
-#include "Vecteur.h"
+class Vecteur {
 
+private:
+
+std::vector<double> vect;
+size_t dim = vect.size();
+
+public:
+Vecteur(std::vector<double> vect = {0}) : vect(vect) {}
 
 void Vecteur::augmente(double val) //increase dimension avec valeur
     { 
@@ -127,3 +134,4 @@ Vecteur Vecteur::unitaire(){
     }
     return c;
 }
+};
