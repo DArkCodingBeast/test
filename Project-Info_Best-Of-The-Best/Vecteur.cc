@@ -11,12 +11,13 @@ vector<double> vect;
 size_t dim = vect.size();
 
 public:
+Vecteur(vector<double> vect = {0}) : vect(vect) {}
 
 void augmente(double val) //increase dimension
     { 
        for(unsigned int i(1); i <= val; ++i) 
        {
-        vect.push_back(val);
+        vect.push_back(0);
        }
     }
 
@@ -48,6 +49,15 @@ bool compare(Vecteur& autre){
             {if (abs(vect[i]-autre.vect[i]) <= eps) return true;}}
  
     return false; 
+}
+Vecteur const addition(Vecteur autre){
+    Vecteur c;
+
+    for (size_t i(0); i <= dim; ++i){
+        c.vect.push_back(autre.vect[i] + vect[i]);
+    }
+    return c;
+
 }
 
 };
