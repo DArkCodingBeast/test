@@ -32,7 +32,7 @@ void set_coord(unsigned int coord, double value) //change value
             vect[coord-1] = value;
         }
     }
-void const affiche()
+void const affiche() //afficher les elements
     {
         for (auto& element : vect)
         {
@@ -40,7 +40,7 @@ void const affiche()
         }
         cout << endl;
     }
-bool compare(Vecteur& autre){
+bool compare(Vecteur& autre){ //regard si on a les memes vecteurs
 
     double eps(1e-10);
     
@@ -50,16 +50,95 @@ bool compare(Vecteur& autre){
  
     return false; 
 }
-Vecteur const addition(Vecteur autre){
+Vecteur addition(Vecteur autre){ //additionnes les elements d'un vecteur
     Vecteur c;
 
+    if (autre.dim == dim){
     for (size_t i(0); i <= dim; ++i){
         c.vect.push_back(autre.vect[i] + vect[i]);
     }
-    return c;
+    return c;}
 
+    //si les dimensions ne sont pas les memes:
+    cerr << "les dimensions des vecteurs ne sont pas les memes, returning vecteur à additioner" << endl;
+    return autre; //choix random, mais il faut return qqch
 }
+Vecteur soustraction(Vecteur& autre){ //soustrait les elements d'un vecteur
+    Vecteur c;
 
+    if (autre.dim == dim){
+    for (size_t i(0); i <= dim; ++i){
+        c.vect.push_back(vect[i] - autre.vect[i]);
+    }
+    return c;}
+
+    //si les dimensions ne sont pas les memes:
+    cerr << "les dimensions des vecteurs ne sont pas les memes, returning vecteur à soustraire" << endl;
+    return autre; //choix random, mais il faut return qqch
+}
+Vecteur oppose(){ // change le signe de chaque coord
+    Vecteur b;
+        for (auto& numb : vect){
+            b.vect.push_back(-numb);
+        }
+    return b;
+}
+Vecteur mult(double lamba){ //multiplie chaque coord par lambda
+    Vecteur b;
+        for (auto& numb : vect){
+            b.vect.push_back(lamba*numb);
+        }
+    return b;
+}
+double prod_scal(Vecteur& autre){ // produit scalaire
+    double scalaire;
+
+    if (autre.dim == dim){
+        for (size_t i(0); i <= dim; ++i){
+            scalaire += vect[i]*autre.vect[i];
+        }}
+    
+    //si les dimensions ne sont pas les memes:
+    cerr << "les dimensions des vecteurs ne sont pas les memes, returning 0" << endl;
+    return 0.0; 
+}
+Vecteur prod_vect(Vecteur& autre){
+    Vecteur c;
+
+    if ((dim = 3) and (dim = autre.dim))
+    {
+        c.vect.push_back(vect[1]*autre.vect[2] - autre.vect[1]*vect[2]); //rappelle que indice commence à 0 donc coordoné 3 a un indice de 2
+        c.vect.push_back(-vect[0]*autre.vect[2] + autre.vect[0]*vect[2]);
+        c.vect.push_back(vect[0]*autre.vect[1] - autre.vect[1]*vect[0]);
+        return c;
+    }
+
+    cerr << "Les dimensions des vecteurs sont different ou pas égale à 3" << endl;
+    return autre;
+}
+double norme(){
+    double norme;
+    for(auto& elem : vect){
+        norme += elem*elem;
+    }
+    return sqrt(norme);
+}
+double norme2(){
+    double norme;
+    for(auto& elem : vect){
+        norme += elem*elem;
+    }
+    return norme; //je choisi de refaire la fonction au lieu de prendre la foction norme au carré en supposant que les doubles sont bizarre 
+}
+Vecteur unitaire(){
+    Vecteur c;
+    double norm = norme();
+
+    for (auto& elem : vect){
+        c.vect.push_back(elem/norm);
+    }
+    return c;
+}
 };
 
 int main(){
