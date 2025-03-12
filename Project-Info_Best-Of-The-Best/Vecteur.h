@@ -1,6 +1,4 @@
-#include <iostream>
 #include <vector>
-#include <cmath>
 #pragma once
 
 class Vecteur {
