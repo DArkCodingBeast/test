@@ -1,11 +1,13 @@
 #include "Vecteur.h"
 #include <iostream>
+#include <cmath>
 
-Vecteur::Vecteur(std::vector<double> vect = {0}) : vect(vect) {}
+Vecteur::Vecteur(std::vector<double> vect) : vect(vect) {}
 
 void Vecteur::augmente(double val) //increase dimension avec valeur
     { 
-        vect.push_back(val);  
+        vect.push_back(val);
+        dim = vect.size();  
     }
 
 void Vecteur::set_coord(unsigned int coord, double value) //change value
@@ -19,7 +21,7 @@ void Vecteur::set_coord(unsigned int coord, double value) //change value
             vect[coord-1] = value;
         }
     }
-void const Vecteur::affiche() //afficher les elements
+void Vecteur::affiche() const //afficher les elements
     {
         for (auto& element : vect)
         {
@@ -32,7 +34,7 @@ bool Vecteur::compare(Vecteur& autre){ //regard si on a les memes vecteurs
     double eps(1e-10);
     
     if (autre.dim == dim)
-        {for( unsigned int i(0); i <= dim; ++i)
+        {for( unsigned int i(0); i < dim; ++i)
             {if (abs(vect[i]-autre.vect[i]) <= eps) return true;}}
  
     return false; 
@@ -54,7 +56,7 @@ Vecteur Vecteur::soustraction(Vecteur& autre){ //soustrait les elements d'un vec
     Vecteur c;
 
     if (autre.dim == dim){
-    for (size_t i(0); i <= dim; ++i){
+    for (size_t i(0); i < dim; ++i){
         c.vect.push_back(vect[i] - autre.vect[i]);
     }
     return c;}
@@ -78,7 +80,7 @@ Vecteur Vecteur::mult(double lamba){ //multiplie chaque coord par lambda
     return b;
 }
 double Vecteur::prod_scal(Vecteur& autre){ // produit scalaire
-    double scalaire;
+    double scalaire(0);
 
     if (autre.dim == dim){
         for (size_t i(0); i <= dim; ++i){
@@ -87,12 +89,12 @@ double Vecteur::prod_scal(Vecteur& autre){ // produit scalaire
     
     //si les dimensions ne sont pas les memes:
     std::cerr << "les dimensions des vecteurs ne sont pas les memes, returning 0" << std::endl;
-    return 0.0; 
+    return scalaire; 
 }
 Vecteur Vecteur::prod_vect(Vecteur& autre){
     Vecteur c;
 
-    if ((dim = 3) and (dim = autre.dim))
+    if ((dim == 3) and (dim = autre.dim))
     {
         c.vect.push_back(vect[1]*autre.vect[2] - autre.vect[1]*vect[2]); //rappelle que indice commence à 0 donc coordoné 3 a un indice de 2
         c.vect.push_back(-vect[0]*autre.vect[2] + autre.vect[0]*vect[2]);
