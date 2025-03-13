@@ -1,13 +1,53 @@
 #include "Vecteur.h"
 
+// constructeurs
 Vecteur::Vecteur(std::vector<double> vect) : vect(vect) {}
+Vecteur::Vecteur(unsigned int dim) : vect(dim, 0) {}
+Vecteur::Vecteur(double x, double y, double z) : vect({x,y,z}) {}
 
+//operateurs
+std::ostream& operator<<(std::ostream& sortie, const Vecteur& vecteur)
+    {
+        vecteur.affiche();
+        return sortie;
+}
+bool operator==(Vecteur VICTOR, const Vecteur& autre)
+    {
+        return VICTOR.compare(autre);
+}
+bool operator!=(Vecteur VICTOR, const Vecteur& autre)
+    {
+        return  !(VICTOR.compare(autre));
+}
+double operator^(Vecteur one, const Vecteur& other)
+    {
+        return one.prod_scal(other);
+}
+void operator+=(Vecteur& one, const Vecteur& other)
+    {
+        one = one.addition(other);
+}
+Vecteur operator+(Vecteur one, const Vecteur& other)
+    {
+        one += other;
+        return one;
+}
+void operator-=(Vecteur& one, const Vecteur& other)
+    {
+        one = one.soustraction(other);
+}
+Vecteur operator-(Vecteur one, const Vecteur& other)
+    {
+        one -= other;
+        return one;
+}
+
+//methodes
 void Vecteur::augmente(double val) //increase dimension avec valeur
     { 
         vect.push_back(val);
         dim = vect.size();  
-    }
-
+}
 void Vecteur::set_coord(unsigned int coord, double value) //change value
     {
         if (coord > vect.size()) // If the vector has less dimensions than the coordinate 
@@ -18,7 +58,7 @@ void Vecteur::set_coord(unsigned int coord, double value) //change value
         {
             vect[coord-1] = value;
         }
-    }
+}
 void Vecteur::affiche() const //afficher les elements
     {
         for (auto& element : vect)
@@ -26,8 +66,8 @@ void Vecteur::affiche() const //afficher les elements
             std::cout << element << " ";
         }
         std::cout << std::endl;
-    }
-bool Vecteur::compare(Vecteur& autre){ //regard si on a les memes vecteurs
+}
+bool Vecteur::compare(const Vecteur& autre){ //regard si on a les memes vecteurs
 
     double eps(1e-10);
     
@@ -37,7 +77,7 @@ bool Vecteur::compare(Vecteur& autre){ //regard si on a les memes vecteurs
  
     return false; 
 }
-Vecteur Vecteur::addition(Vecteur autre){ //additionnes les elements d'un vecteur
+Vecteur Vecteur::addition(const Vecteur& autre){ //additionnes les elements d'un vecteur
     Vecteur c;
 
     if (autre.dim == dim){
@@ -50,7 +90,7 @@ Vecteur Vecteur::addition(Vecteur autre){ //additionnes les elements d'un vecteu
     std::cerr << "les dimensions des vecteurs ne sont pas les memes, returning vecteur à additioner" << std::endl;
     return autre; //choix random, mais il faut return qqch
 }
-Vecteur Vecteur::soustraction(Vecteur& autre){ //soustrait les elements d'un vecteur
+Vecteur Vecteur::soustraction(const Vecteur& autre){ //soustrait les elements d'un vecteur
     Vecteur c;
 
     if (autre.dim == dim){
@@ -77,7 +117,7 @@ Vecteur Vecteur::mult(double lamba){ //multiplie chaque coord par lambda
         }
     return b;
 }
-double Vecteur::prod_scal(Vecteur& autre){ // produit scalaire
+double Vecteur::prod_scal(const Vecteur& autre){ // produit scalaire
     double scalaire(0);
 
     if (autre.dim == dim){
@@ -89,7 +129,7 @@ double Vecteur::prod_scal(Vecteur& autre){ // produit scalaire
     std::cerr << "les dimensions des vecteurs ne sont pas les memes, returning 0" << std::endl;
     return scalaire; 
 }
-Vecteur Vecteur::prod_vect(Vecteur& autre){
+Vecteur Vecteur::prod_vect(const Vecteur& autre){
     Vecteur c;
 
     if ((dim == 3) and (dim = autre.dim))
@@ -104,14 +144,14 @@ Vecteur Vecteur::prod_vect(Vecteur& autre){
     return autre;
 }
 double Vecteur::norme(){
-    double norme;
+    double norme(0);
     for(auto& elem : vect){
         norme += elem*elem;
     }
     return sqrt(norme);
 }
 double Vecteur::norme2(){
-    double norme;
+    double norme(0);
     for(auto& elem : vect){
         norme += elem*elem;
     }

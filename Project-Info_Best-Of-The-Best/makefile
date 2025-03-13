@@ -11,3 +11,5 @@ all: testVecteur
 Vecteur.o: Vecteur.cc Vecteur.h
 testVecteur.o: testVecteur.cc Vecteur.h
 testVecteur: testVecteur.o Vecteur.o
+
+# to make, mingw32-make then .\testVecteur
