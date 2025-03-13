@@ -1,8 +1,7 @@
 #include "Vecteur.h"
 #include <iostream>
-#include <vector>
 
-Vecteur(std::vector<double> vect = {0}) : vect(vect) {}
+Vecteur::Vecteur(std::vector<double> vect = {0}) : vect(vect) {}
 
 void Vecteur::augmente(double val) //increase dimension avec valeur
     { 
