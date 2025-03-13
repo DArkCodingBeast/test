@@ -1,6 +1,4 @@
 #include "Vecteur.h"
-#include <iostream>
-#include <cmath>
 
 Vecteur::Vecteur(std::vector<double> vect) : vect(vect) {}
 

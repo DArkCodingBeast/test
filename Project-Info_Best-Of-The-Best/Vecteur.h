@@ -1,6 +1,8 @@
 #include <vector>
+#include <iostream>
+#include <cmath>
 #pragma once
-
+    
 class Vecteur {
 
     private:
