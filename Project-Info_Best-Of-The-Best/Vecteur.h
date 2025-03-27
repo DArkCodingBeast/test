@@ -13,15 +13,6 @@ class Vecteur {
         Vecteur(std::vector<double> vect = {0});
         Vecteur(unsigned int dim);
         Vecteur(double x, double y, double z);
-    
-        friend std::ostream& operator<<(std::ostream&, const Vecteur&);
-        friend bool operator==(Vecteur, const Vecteur&);
-        friend bool operator!=(Vecteur, const Vecteur&);
-        friend double operator^(Vecteur, const Vecteur&);
-        friend void operator+=(Vecteur&, const Vecteur&);
-        friend Vecteur operator+(Vecteur, const Vecteur&);
-        friend void operator-=(Vecteur&, const Vecteur&);
-        friend Vecteur operator-(Vecteur, const Vecteur&);
 
         void augmente(double); //increase dimension
         void set_coord(unsigned int, double); //change value
@@ -37,3 +28,12 @@ class Vecteur {
         double norme2();
         Vecteur unitaire();
     };
+
+std::ostream& operator<<(std::ostream&, const Vecteur&);
+bool operator==(Vecteur, const Vecteur&);
+bool operator!=(Vecteur, const Vecteur&);
+double operator^(Vecteur, const Vecteur&);
+void operator+=(Vecteur&, const Vecteur&);
+Vecteur operator+(Vecteur, const Vecteur&);
+void operator-=(Vecteur&, const Vecteur&);
+Vecteur operator-(Vecteur, const Vecteur&);
