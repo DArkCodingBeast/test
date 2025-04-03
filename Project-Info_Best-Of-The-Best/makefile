@@ -9,7 +9,9 @@ CXXFLAGS += -pedantic -Wall # pour les pur(e)s et dur(e)s
 CXXFLAGS += -O2 # pour optimiser la vitesse
 all: testVecteur
 Vecteur.o: Vecteur.cc Vecteur.h
-testVecteur.o: testVecteur.cc Vecteur.h
-testVecteur: testVecteur.o Vecteur.o
+PointMateriel.o: PointMateriel.cc PointMateriel.h
+ObjetMobile.o: ObjetMobile.cc ObjectMobile.h
+testVecteur.o: testVecteur.cc Vecteur.h ObjetMobile.cc ObjectMobile.h PointMateriel.cc PointMateriel.h
+testVecteur: testVecteur.o
 
 # to make, mingw32-make then .\testVecteur
