@@ -3,6 +3,7 @@
 #include <vector>
 #pragma once
 
+class PointMateriel;
 
 class GravitationConstante{
 private :
