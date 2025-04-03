@@ -43,6 +43,15 @@ Vecteur operator-(Vecteur one, const Vecteur& other)
 }
 
 //methodes
+std::vector<double> Vecteur::get_vect() const
+    {
+        return vect;
+}
+size_t Vecteur::get_dim() const
+    {
+        return dim;
+}
+
 void Vecteur::augmente(double val) //increase dimension avec valeur
     { 
         vect.push_back(val);
