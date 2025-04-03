@@ -2,7 +2,7 @@
 
 // constructeurs
 Vecteur::Vecteur(std::vector<double> vect) : vect(vect) {}
-Vecteur::Vecteur(unsigned int dim) : vect(dim, 0) {}
+Vecteur::Vecteur(size_t dim) : vect(dim, 0) {}
 Vecteur::Vecteur(double x, double y, double z) : vect({x,y,z}) {}
 
 //operateurs
