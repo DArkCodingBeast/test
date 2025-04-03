@@ -20,7 +20,7 @@ class Libre : public Contrainte{
         {if (obj.get_masse() == 0) {return {force};}
         return {force.mult(1 / obj.get_masse())}}
     
-        Vecteur position(ObjetPhysique const& obj) {return obj.position;}
+        Vecteur position(ObjetPhysique const& obj) {return obj.vect_etat;}
         Vecteur vitesse(ObjetPhysique const& obj) {return fct_derivee(obj.vect_etat);}
     };
     
