@@ -1,18 +1,13 @@
-#include<ObjetMobile.h>
+#include <ObjetMobile.h>
 
 
 
 class Contrainte{
 public:
 
-    std::array<double,3> applique_force(ObjetPhysique const& obj,std::array<double,3> force, double temps)
-    {return }
-
-    virtual <double,3> position(ObjetPhysique const& obj)
-    {return }
-
-    virtual array<double,3> vitesse(ObjetPhysique const& obj)
-    {}
+    virtual Vecteur applique_force(ObjetPhysique const& obj,Vecteur force, double temps) = 0;
+    virtual Vecteur position(ObjetPhysique const& obj) = 0;
+    virtual Vecteur vitesse(ObjetPhysique const& obj) = 0;
 
 };
 
@@ -21,30 +16,19 @@ public:
 class Libre : public Contrainte{
     public:
     
-        std::array<double,3> applique_force(ObjetPhysique const& obj,std::array<double,3> force, double temps)
-        {if (obj.Get_masse() == 0) {return {force[0],force[1],force[2]};}
-        return {force[0] / obj.Get_masse(),force[1] / obj.Get_masse(),force[2] / obj.Get_masse()}}
+        Vecteur applique_force(ObjetPhysique const& obj,Vecteur force, double temps)
+        {if (obj.Get_masse() == 0) {return {force};}
+        return {force.mult(1 / obj.get_masse())}}
     
-        std::array<double,3> position(ObjetPhysique const& obj)
-        {return obj.vect_etat;}
-    
-        std::array<double,3> vitesse(ObjetPhysique const& obj)
-        {return fct_derivee(obj.vect_etat);}
-    
+        Vecteur position(ObjetPhysique const& obj) {return obj.vect_etat;}
+        Vecteur vitesse(ObjetPhysique const& obj) {return fct_derivee(obj.vect_etat);}
     };
     
-
-
 
 class ChampForces{
 
 public :
-
-    std::array<double, 3> force(ObjetPhysique const&, double t)
-    {}
-
-
-
+    virtual Vecteur force(ObjetPhysique const&, double t) = 0;
 };
 
 
@@ -54,7 +38,7 @@ class ObjetPhysique : public ObjetMobile{
 
 private :
     Contrainte& cont;
-    ChampForce& champ;
+    ChampForces& champ;
     unsigned int dim;
     double masse;
     double charge;
@@ -76,13 +60,13 @@ public:
 
     double get_charge() {return charge;}
 
-    std::array<double,3> vecteur_force(double t = 0) const
-    {return  champ.Get_Champ().force();}
+    Vecteur force(double t = 0) const
+    {return  force(   ,double t);}              // A finir ces trois fonction puis adapter les classes de semaine avant comme sous classes de celle ci
     
-    std::array<double,3> vecteur_position() const
+    Vecteur position() const
     {return  champ.Get_Champ().force();}
 
-    std::array<double,3> vecteur_vitesse() const
+    Vecteur vitesse() const
     {return  champ.Get_Champ().force();}
 }:
 
