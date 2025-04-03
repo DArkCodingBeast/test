@@ -11,7 +11,7 @@ all: testVecteur
 Vecteur.o: Vecteur.cc Vecteur.h
 PointMateriel.o: PointMateriel.cc PointMateriel.h
 ObjetMobile.o: ObjetMobile.cc ObjetMobile.h
-testVecteur.o: testVecteur.cc Vecteur.h ObjetMobile.cc ObjectMobile.h PointMateriel.cc PointMateriel.h
+testVecteur.o: testVecteur.cc Vecteur.h ObjetMobile.cc ObjetMobile.h PointMateriel.cc PointMateriel.h
 testVecteur: testVecteur.o
-
+	
 # to make, mingw32-make then .\testVecteur
