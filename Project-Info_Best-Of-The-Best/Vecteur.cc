@@ -19,7 +19,7 @@ bool operator!=(Vecteur VICTOR, const Vecteur& autre)
     {
         return  !(VICTOR.compare(autre));
 }
-double operator^(Vecteur one, const Vecteur& other)
+double operator*(Vecteur one, const Vecteur& other)
     {
         return one.prod_scal(other);
 }

@@ -34,7 +34,7 @@ class Vecteur {
 std::ostream& operator<<(std::ostream&, const Vecteur&);
 bool operator==(Vecteur, const Vecteur&);
 bool operator!=(Vecteur, const Vecteur&);
-double operator^(Vecteur, const Vecteur&);
+double operator*(Vecteur, const Vecteur&);
 void operator+=(Vecteur&, const Vecteur&);
 Vecteur operator+(Vecteur, const Vecteur&);
 void operator-=(Vecteur&, const Vecteur&);
