@@ -1,7 +1,7 @@
 #include "Vecteur.h"
 #pragma once
 
-
+class PointMateriel;
 
 class GravitationConstante{
 private :
@@ -12,8 +12,6 @@ public :
     GravitationConstante(Vecteur const&);
     Vecteur force(PointMateriel const&, double );
 };
-
-
 
 
 class PointMateriel{	
