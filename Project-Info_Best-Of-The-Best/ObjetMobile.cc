@@ -1,7 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <array>
-#include "PointMateriel.h"
+
 
 class ObjetMobile {
 
