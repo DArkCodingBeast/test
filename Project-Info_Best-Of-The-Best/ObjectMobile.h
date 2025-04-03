@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include "Vecteur.h"
+#pragma once
 
 
 class ObjetMobile {
