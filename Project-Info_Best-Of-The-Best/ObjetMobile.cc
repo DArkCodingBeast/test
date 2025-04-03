@@ -14,10 +14,10 @@ class ObjetMobile {
     //Methode
     virtual void evolution(double t) = 0;
 
-    std::ostream& affiche() const {
-        std::ostream& sortie;
-        sortie << "nique ta race";
-        return sortie;
+    void affiche(std::ostream& sortie) const {
+        for (auto const& para : parameters)
+        {
+            sortie << para << " ";}
       }
 
 
@@ -29,6 +29,6 @@ class ObjetMobile {
 };
 
 std::ostream& operator<<(std::ostream& sortie, const ObjetMobile& obj){
-    sortie << affiche();
-
+    obj.affiche(sortie);
+    sortie << std::endl;
     return sortie;}
