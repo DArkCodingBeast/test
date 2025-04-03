@@ -1,5 +1,5 @@
 #include "PointMateriel.h"
-#include "Vecteur.h"
+
 
 GravitationConstante::GravitationConstante(Vecteur const& grav) : gravitation(grav) {}
 Vecteur GravitationConstante::force(PointMateriel const& p1, double temps) {
