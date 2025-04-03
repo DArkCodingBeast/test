@@ -1,4 +1,4 @@
-#include <PointMateriel.h>
+#include "PointMateriel.h"
 
 
 GravitationConstante::GravitationConstante(std::array<double, 3> const& grav) : gravitation(grav) {}
