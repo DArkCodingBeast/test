@@ -16,11 +16,11 @@ public:
 class Libre : public Contrainte{
     public:
     
-        Vecteur applique_force(ObjetPhysique const& obj,Vecteur force, double temps)
-        {if (obj.Get_masse() == 0) {return {force};}
+        Vecteur applique_force(const ObjetPhysique & obj,Vecteur force, double temps)
+        {if (obj.get_masse() == 0) {return {force};}
         return {force.mult(1 / obj.get_masse())}}
     
-        Vecteur position(ObjetPhysique const& obj) {return obj.vect_etat;}
+        Vecteur position(ObjetPhysique const& obj) {return obj.position;}
         Vecteur vitesse(ObjetPhysique const& obj) {return fct_derivee(obj.vect_etat);}
     };
     
@@ -48,11 +48,11 @@ public:
 
     ObjetPhysique (ObjetPhysique const& autre): cont(autre.get_cont()), champ(autre.get_champ()), dim(autre.get_dim()){}
 
-    ObjetPhysique (Contrainte& cont, ChampForce& champ, unsigned int dim): cont(cont), champ(champ), dim(dim){}
+    ObjetPhysique (Contrainte& cont, ChampForces& champ, unsigned int dim): cont(cont), champ(champ), dim(dim){}
 
     Contrainte& get_cont() {return cont;}
 
-    ChampForce& get_champ() {return champ;}
+    ChampForces& get_champ() {return champ;}
 
     unsigned int get_dim() {return dim;}
 
