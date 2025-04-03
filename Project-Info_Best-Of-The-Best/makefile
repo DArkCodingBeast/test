@@ -10,7 +10,7 @@ CXXFLAGS += -O2 # pour optimiser la vitesse
 all: testVecteur
 Vecteur.o: Vecteur.cc Vecteur.h
 PointMateriel.o: PointMateriel.cc PointMateriel.h
-ObjetMobile.o: ObjetMobile.cc ObjectMobile.h
+ObjetMobile.o: ObjetMobile.cc ObjetMobile.h
 testVecteur.o: testVecteur.cc Vecteur.h ObjetMobile.cc ObjectMobile.h PointMateriel.cc PointMateriel.h
 testVecteur: testVecteur.o
 
