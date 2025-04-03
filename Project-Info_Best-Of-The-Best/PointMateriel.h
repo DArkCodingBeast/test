@@ -1,18 +1,17 @@
 #include <iostream>
 #include <fstream>
 #include <vector>
-#include <array>
 #pragma once
 
 
 class GravitationConstante{
 private :
 
-    std::array<double,3> gravitation;
+    Vecteur gravitation;
 
 public :
-    GravitationConstante(std::array<double, 3> const&);
-    std::array<double,3> force(PointMateriel const&, double );
+    GravitationConstante(Vecteur const&);
+    Vecteur force(PointMateriel const&, double );
 };
 
 
@@ -21,24 +20,22 @@ public :
 class PointMateriel{	
 private:
 
-    std::array<double,3> vect_etat;
-    std::array<double,3> vect_derivee;
+    Vecteur vect_etat;
+    Vecteur vect_derivee;
     double masse;
-    std::array<double,3> ChampForce;
+    Vecteur ChampForce;
 
 public:
 
 PointMateriel(PointMateriel const&);
-    const std::array<double,3> Get_Position() const;
-    const std::array<double,3> Get_Derivative_Pos() const;
+    const Vecteur Get_Position() const;
+    const Vecteur Get_Derivative_Pos() const;
     const double Get_masse() const;
-    const std::array<double,3> Get_Champ() const;
-    void set_vect_etat(std::array<double,3>);
-    std::array<double,3> evolution(double);
+    const Vecteur Get_Champ() const;
+    void set_vect_etat(Vecteur);
+    Vecteur evolution(double);
 };
 
-
-std::ostream& operator<<(std::ostream& ,std::array<double,3> const&);
 std::ostream& operator<<(std::ostream& ,PointMateriel const&);
 
 
