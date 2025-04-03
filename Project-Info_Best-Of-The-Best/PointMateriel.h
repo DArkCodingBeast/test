@@ -1,9 +1,7 @@
-#include <iostream>
-#include <fstream>
-#include <vector>
+#include "Vecteur.h"
 #pragma once
 
-class PointMateriel;
+
 
 class GravitationConstante{
 private :
