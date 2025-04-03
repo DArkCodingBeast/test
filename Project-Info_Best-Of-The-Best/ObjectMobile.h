@@ -18,8 +18,8 @@ public:
     Vecteur& getParam();
     Vecteur& getDerive();
     //pour des copies(?)
-    Vecteur getParam() const;
-    Vecteur getDerive() const;
+    const Vecteur& getParam() const;
+    const Vecteur& getDerive() const;
 
 protected:
 
@@ -37,5 +37,5 @@ public:
 
 class IntegrateurEulerCromer : public Integrateur {
 public:
-    virtual void integre(ObjetMobile& obj, double t, double dt) override;
+    virtual void integre(ObjetMobile&, double, double) override;
 };
