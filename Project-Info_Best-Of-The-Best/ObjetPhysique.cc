@@ -1,5 +1,5 @@
 #include "ObjetMobile.h"
-
+#include <string>
 
 
 class Contrainte{
@@ -8,7 +8,6 @@ public:
     virtual Vecteur applique_force(ObjetPhysique const& obj,Vecteur force, double temps) = 0;
     virtual Vecteur position(ObjetPhysique const& obj) = 0;
     virtual Vecteur vitesse(ObjetPhysique const& obj) = 0;
-
 };
 
 
@@ -16,12 +15,12 @@ public:
 class Libre : public Contrainte{
     public:
     
-        Vecteur applique_force(const ObjetPhysique & obj,Vecteur force, double temps)
+        Vecteur applique_force(ObjetPhysique const& obj,Vecteur force, double temps)
         {if (obj.get_masse() == 0) {return {force};}
-        return {force.mult(1 / obj.get_masse())}}
+        return {force.mult(1 / obj.get_masse())};}
     
-        Vecteur position(ObjetPhysique const& obj) {return obj.vect_etat;}
-        Vecteur vitesse(ObjetPhysique const& obj) {return fct_derivee(obj.vect_etat);}
+        Vecteur position(ObjetPhysique const& obj) {return obj.getParam();}
+        Vecteur vitesse(ObjetPhysique const& obj) {return obj.getDerive();}
     };
     
 
@@ -46,32 +45,40 @@ private :
 
 public:
 
-    ObjetPhysique (ObjetPhysique const& autre): cont(autre.get_cont()), champ(autre.get_champ()), dim(autre.get_dim()){}
+    ObjetPhysique (ObjetPhysique const& autre): cont(autre.get_cont()), champ(autre.get_champ()), dim(autre.get_dim()), masse(autre.get_masse()), charge(autre.get_charge()){}
 
     ObjetPhysique (Contrainte& cont, ChampForces& champ, unsigned int dim): cont(cont), champ(champ), dim(dim){}
 
-    Contrainte& get_cont() {return cont;}
+    Contrainte const& get_cont() {return cont;}
 
-    ChampForces& get_champ() {return champ;}
+    ChampForces const& get_champ() {return champ;}
 
-    unsigned int get_dim() {return dim;}
+    const unsigned int get_dim() {return dim;}
 
-    double get_masse() {return masse;}
+    const double get_masse() {return masse;}
 
-    double get_charge() {return charge;}
+    const double get_charge() {return charge;}
 
     Vecteur force(double t = 0) const
-    {return  force(   ,double t);}              // A finir ces trois fonction puis adapter les classes de semaine avant comme sous classes de celle ci
+    {return champ.force(*this,t);}              // A finir ces trois fonction puis adapter les classes de semaine avant comme sous classes de celle ci
     
     Vecteur position() const
-    {return  champ.Get_Champ().force();}
+    {return cont.position(*this);}
 
     Vecteur vitesse() const
-    {return  champ.Get_Champ().force();}
-}:
+    {return cont.vitesse(*this);}
+};
 
 
-std::ostream& operator<<(std::ostream& sortie, ObjetPhysique const& autre)
+std::ostream& operator<<(std::ostream& sortie, ChampForces const& autre)
+{ return sortie;}
+
+
+std::ostream& operator<<(std::ostream& sortie, Contrainte const& autre)
+{ return sortie;}
+
+
+std::ostream& operator<<(std::ostream& sortie, ObjetPhysique & autre)
 {sortie << autre.get_cont() << autre.get_champ() << autre.get_dim() << autre.get_charge() << autre.get_masse() << std::endl;
  return sortie;}
 

@@ -1,9 +1,10 @@
 #include "Vecteur.h"
+#include "ObjetPhysique.h"
 #pragma once
 
 class PointMateriel;
 
-class GravitationConstante{
+class GravitationConstante : public ChampForces{
 private :
 
     Vecteur gravitation;
