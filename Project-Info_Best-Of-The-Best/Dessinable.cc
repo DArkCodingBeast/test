@@ -6,7 +6,7 @@ class Systeme {};
 
 class Dessinable {
 public:
-    virtual ~Dessin() = default;
+    virtual ~Dessinable() = default;
     virtual dessine_sur(SupportADessin& support) = 0;
 };
 
