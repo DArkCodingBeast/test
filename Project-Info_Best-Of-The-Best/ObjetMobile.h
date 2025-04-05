@@ -31,10 +31,11 @@ std::ostream& operator<<(std::ostream&, const ObjetMobile&);
 
 class Integrateur {
 public:
+    Integrateur(double);
     virtual void integre(ObjetMobile&, double, double) = 0;
 
 protected:
-double dt;
+    double dt;
 };
 
 class IntegrateurEulerCromer : public Integrateur {
