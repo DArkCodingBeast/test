@@ -3,8 +3,7 @@
 
 GravitationConstante::GravitationConstante(Vecteur const& grav) : gravitation(grav) {}
 Vecteur GravitationConstante::force(PointMateriel const& p1, double temps) {
-    return {gravitation.mult(p1.Get_masse())};
-}
+    return {gravitation.mult(p1.Get_masse())};}
 
 PointMateriel:: PointMateriel(Vecteur vect_etat,Vecteur vect_derivee,double masse,Vecteur ChampForce): ObjetPhysique (),vect_etat(vect_etat), vect_derivee(vect_derivee), masse(masse), ChampForce(ChampForce) {}
 PointMateriel:: PointMateriel(PointMateriel const& autre): ObjetPhysique (),vect_etat(autre.vect_etat), vect_derivee(autre.vect_derivee), masse(autre.masse), ChampForce(autre.ChampForce) {}
