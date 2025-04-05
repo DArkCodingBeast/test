@@ -2,7 +2,7 @@
 
 
 Vecteur Libre:: applique_force(ObjetPhysique const& obj,Vecteur force, double temps)
-        {if (obj.get_masse() == 0) {return force;}
+        {if (obj.get_masse() == 0) {return {force};}
         return {force.mult(1 / obj.get_masse())};}
     
 Vecteur Contrainte::position(ObjetPhysique const& obj) {return obj.getParam();}
@@ -10,13 +10,14 @@ Vecteur Contrainte::vitesse(ObjetPhysique const& obj) {return obj.getDerive();}
   
     
 
-    ObjetPhysique::ObjetPhysique (ObjetPhysique const& autre): cont(autre.get_cont()), champ(autre.get_champ()), dim(autre.get_dim()), masse(autre.get_masse()), charge(autre.get_charge()) {}
+    ObjetPhysique::ObjetPhysique (ObjetPhysique const& autre): ObjetMobile(autre),cont(autre.get_cont()), champ(autre.get_champ()), dim(autre.get_dim()), masse(autre.get_masse()), charge(autre.get_charge()){}
 
-    ObjetPhysique::ObjetPhysique (Contrainte& cont, ChampForces& champ, unsigned int dim): cont(cont), champ(champ), dim(dim){}
+    ObjetPhysique::ObjetPhysique (Contrainte& cont, ChampForces& champ, unsigned int dim = 0,double masse = 0, double charge = 0): ObjetMobile(),cont(cont), champ(champ), dim(dim),masse(masse), charge(charge) {}
 
-    Contrainte const& ObjetPhysique::get_cont() const  {return cont;}
 
-    ChampForces const& ObjetPhysique::get_champ() const {return champ;}
+    Contrainte & ObjetPhysique::get_cont() const {return cont;}
+
+    ChampForces & ObjetPhysique::get_champ() const {return champ;}
 
     unsigned int ObjetPhysique::get_dim() const {return dim;}
 
@@ -46,7 +47,7 @@ std::ostream& operator<<(std::ostream& sortie, ObjetPhysique & autre)
 {sortie << autre.get_cont() << autre.get_champ() << autre.get_dim() << autre.get_charge() << autre.get_masse() << std::endl;
  return sortie;}
 
-
+ 
 
 
 
