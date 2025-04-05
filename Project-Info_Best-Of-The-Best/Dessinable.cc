@@ -1,10 +1,11 @@
 #include "PointMateriel.h"
+#include <memory>
 
 class SupportADessin;
 
 class Systeme {
 protected:
-
+std::vector<std::unique_ptr<Dessinable> objets;
 };
 
 class Dessinable {

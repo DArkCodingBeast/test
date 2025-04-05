@@ -7,7 +7,7 @@ class ObjetMobile {
 public:
 
     //contstruct
-    ObjetMobile(std::vector <double>);
+    ObjetMobile(Vecteur);
     //Methode
     virtual Vecteur evolution(double) = 0;
     void affiche(std::ostream&) const;
