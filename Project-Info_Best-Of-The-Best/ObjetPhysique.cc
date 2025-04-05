@@ -1,49 +1,14 @@
-#include "ObjetMobile.h"
-#include <string>
+#include "ObjetPhysique.h"
 
 
-class Contrainte{
-public:
-
-    virtual Vecteur applique_force(ObjetPhysique const& obj,Vecteur force, double temps) = 0;
-    virtual Vecteur position(ObjetPhysique const& obj) = 0;
-    virtual Vecteur vitesse(ObjetPhysique const& obj) = 0;
-};
-
-
-
-class Libre : public Contrainte{
-    public:
-    
-        Vecteur applique_force(ObjetPhysique const& obj,Vecteur force, double temps)
+Vecteur Libre:: applique_force(ObjetPhysique const& obj,Vecteur force, double temps)
         {if (obj.get_masse() == 0) {return {force};}
         return {force.mult(1 / obj.get_masse())};}
     
-        Vecteur position(ObjetPhysique const& obj) {return obj.getParam();}
-        Vecteur vitesse(ObjetPhysique const& obj) {return obj.getDerive();}
-    };
+Vecteur position(ObjetPhysique const& obj) {return obj.getParam();}
+Vecteur vitesse(ObjetPhysique const& obj) {return obj.getDerive();}
+  
     
-
-class ChampForces{
-
-public :
-    virtual Vecteur force(ObjetPhysique const&, double t) = 0;
-};
-
-
-
-
-class ObjetPhysique : public ObjetMobile{
-
-private :
-    Contrainte& cont;
-    ChampForces& champ;
-    unsigned int dim;
-    double masse;
-    double charge;
-
-
-public:
 
     ObjetPhysique (ObjetPhysique const& autre): cont(autre.get_cont()), champ(autre.get_champ()), dim(autre.get_dim()), masse(autre.get_masse()), charge(autre.get_charge()){}
 

@@ -11,7 +11,7 @@ private :
 
 public :
     GravitationConstante(Vecteur const&);
-    Vecteur force(PointMateriel const&, double t);
+    Vecteur force(PointMateriel const&, double);
 };
 
 
