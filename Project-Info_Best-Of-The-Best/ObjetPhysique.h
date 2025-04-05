@@ -37,10 +37,10 @@ private :
 public:
 
     ObjetPhysique (ObjetPhysique const&);
-    ObjetPhysique (Contrainte& , ChampForces& , unsigned int );
-    Contrainte const& get_cont() const;
-    ChampForces const& get_champ() const;
-    unsigned int get_dim() const;
+    ObjetPhysique (Contrainte& , ChampForces& , unsigned int, double, double);
+    Contrainte & get_cont() const;
+    ChampForces & get_champ() const;
+    unsigned int get_dim() const ;
     double get_masse() const ;
     double get_charge() const;
     Vecteur force(double t = 0) const ;            // A finir ces trois fonction puis adapter les classes de semaine avant comme sous classes de celle ci

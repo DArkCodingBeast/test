@@ -14,13 +14,7 @@ public :
 };
 
 
-class PointMateriel:{	
-private:
-
-    Vecteur vect_etat;
-    Vecteur vect_derivee;
-    double masse;
-    Vecteur ChampForce;
+class PointMateriel : ObjetPhysique{	
 
 public:
 
