@@ -23,8 +23,8 @@ void ObjetMobile::affiche(std::ostream& sortie) const {
 Vecteur& ObjetMobile::getParam() {return parameters;} 
 Vecteur& ObjetMobile::getDerive() {return derivee_temporelle;}
 //pour des copies(?)
-Vecteur ObjetMobile::getParam(){return parameters;}
-Vecteur ObjetMobile::getDerive() {return derivee_temporelle;}
+Vecteur ObjetMobile::getParam() const {return parameters;}
+Vecteur ObjetMobile::getDerive() const {return derivee_temporelle;}
 
 std::ostream& operator<<(std::ostream& sortie, const ObjetMobile& obj){
     obj.affiche(sortie);

@@ -17,8 +17,8 @@ public:
     Vecteur& getParam();
     Vecteur& getDerive();
     //pour des copies(?)
-    Vecteur getParam();
-    Vecteur getDerive();
+    Vecteur getParam() const;
+    Vecteur getDerive() const;
 
 protected:
 
