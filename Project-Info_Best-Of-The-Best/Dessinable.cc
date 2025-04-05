@@ -23,18 +23,24 @@ virtual void dessine(Solide const&) = 0;
 
 class TextViewer : public SupportADessin {
     public:
-    TextViewer(std::ostream& flot)
-        : flot(flot)
+    TextViewer(std::ostream& sortie)
+        : sortie(sortie)
       {}
     virtual ~TextViewer() = default;
     
     TextViewer(TextViewer const&)            = delete;
     TextViewer& operator=(TextViewer const&) = delete;
      
-    virtual void dessine(Contenu const& a_dessiner) override;
+    virtual void dessine(PointMateriel const& point) override {
+        sortie << point << std::endl;
+    }
+    
+    virtual void dessine(Systeme const& systeme) override {
+        sortie << systeme << std::endl;
+    }
      
     private:
-    std::ostream& flot;
+    std::ostream& sortie;
     };
 
 /*
