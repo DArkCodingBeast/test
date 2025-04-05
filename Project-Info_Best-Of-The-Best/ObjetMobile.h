@@ -9,7 +9,7 @@ public:
     //contstruct
     ObjetMobile(std::vector <double>);
     //Methode
-    virtual void evolution(double) = 0;
+    virtual Vecteur evolution(double) = 0;
     void affiche(std::ostream&) const;
 
     //acceder les trucs qui truc
@@ -17,8 +17,8 @@ public:
     Vecteur& getParam();
     Vecteur& getDerive();
     //pour des copies(?)
-    const Vecteur& getParam() const;
-    const Vecteur& getDerive() const;
+    Vecteur getParam();
+    Vecteur getDerive();
 
 protected:
 
