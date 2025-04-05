@@ -34,11 +34,12 @@ std::ostream& operator<<(std::ostream& sortie, const ObjetMobile& obj){
 
 //Integrateur
 void IntegrateurEulerCromer::integre(ObjetMobile& obj, double t, double dt){
-        obj.evolution(t);
+        Vecteur acceleration =obj.evolution(t);
 
         Vecteur& param_integr = obj.getParam();
         Vecteur& deriv_integr = obj.getDerive();
-
+        
+        deriv_integr = deriv_integr + acceleration.mult(dt);
         param_integr = param_integr + deriv_integr.mult(dt);
 
     }
