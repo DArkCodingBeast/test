@@ -1,7 +1,7 @@
 #include "ObjetMobile.h"
 
 //contstruct
-ObjetMobile::ObjetMobile(std::vector <double> para) 
+ObjetMobile::ObjetMobile(std::vector <double> para = {0, 0, 0}) 
         : parameters(para), derivee_temporelle(para.size()) {}
 
 
@@ -22,7 +22,7 @@ void ObjetMobile::affiche(std::ostream& sortie) const {
 //pour les ref
 Vecteur& ObjetMobile::getParam() {return parameters;} 
 Vecteur& ObjetMobile::getDerive() {return derivee_temporelle;}
-//pour des copies(?)
+//pour des copies
 Vecteur ObjetMobile::getParam() const {return parameters;}
 Vecteur ObjetMobile::getDerive() const {return derivee_temporelle;}
 
