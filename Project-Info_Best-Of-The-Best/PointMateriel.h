@@ -11,11 +11,11 @@ private :
 
 public :
     GravitationConstante(Vecteur const&);
-    Vecteur force(PointMateriel const&, double );
+    Vecteur force(PointMateriel const&, double t);
 };
 
 
-class PointMateriel{	
+class PointMateriel:{	
 private:
 
     Vecteur vect_etat;
@@ -26,6 +26,7 @@ private:
 public:
 
 PointMateriel(PointMateriel const&);
+PointMateriel(Vecteur vect_etat,Vecteur vect_derivee,double masse,Vecteur ChampForce);
     const Vecteur Get_Position() const;
     const Vecteur Get_Derivative_Pos() const;
     const double Get_masse() const;
