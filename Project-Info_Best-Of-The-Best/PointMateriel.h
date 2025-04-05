@@ -1,4 +1,3 @@
-#include "Vecteur.h"
 #include "ObjetPhysique.h"
 #pragma once
 
