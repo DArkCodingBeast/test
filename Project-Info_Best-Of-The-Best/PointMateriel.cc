@@ -17,6 +17,6 @@ Vecteur PointMateriel:: evolution(double temps) {return {ChampForce.mult(1/masse
 
 
 std::ostream& operator<<(std::ostream& sortie,PointMateriel const& autre)
-{sortie << "le position du point matériel est : " << autre.Get_Position() << std::endl << " ,sa vitesse est : " << autre.Get_Derivative_Pos() <<
- std::endl << " ,sa masse est : " << autre.Get_masse() << std::endl << " Et le champ de force associé est : " << autre.Get_Champ() << std::endl;
+{sortie << "la position du point matériel est : " << autre.Get_Position() << std::endl << " Sa vitesse est : " << autre.Get_Derivative_Pos() <<
+ std::endl << " Sa masse est : " << autre.Get_masse() << std::endl << " Et le champ de force associé est : " << autre.Get_Champ() << std::endl;
  return sortie;}
