@@ -32,9 +32,13 @@ std::ostream& operator<<(std::ostream&, const ObjetMobile&);
 class Integrateur {
 public:
     virtual void integre(ObjetMobile&, double, double) = 0;
+
+protected:
+double dt;
 };
 
 class IntegrateurEulerCromer : public Integrateur {
 public:
+    IntegrateurEulerCromer(double);
     virtual void integre(ObjetMobile&, double, double) override;
 };

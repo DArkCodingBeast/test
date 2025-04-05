@@ -31,7 +31,8 @@ std::ostream& operator<<(std::ostream& sortie, const ObjetMobile& obj){
     sortie << std::endl;
     return sortie;}
 
-
+//contrusctor
+IntegrateurEulerCromer::IntegrateurEulerCromer(double dt) : dt(dt) {}
 //Integrateur
 void IntegrateurEulerCromer::integre(ObjetMobile& obj, double t, double dt){
         Vecteur acceleration =obj.evolution(t);
