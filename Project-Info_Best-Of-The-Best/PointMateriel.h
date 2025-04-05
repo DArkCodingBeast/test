@@ -10,7 +10,7 @@ private :
 
 public :
     GravitationConstante(Vecteur const&);
-    Vecteur force(PointMateriel const&, double);
+    Vecteur force(PointMateriel const&, double) override;
 };
 
 
