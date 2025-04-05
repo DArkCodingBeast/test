@@ -36,7 +36,7 @@ Integrateur::Integrateur(double dt) : dt(dt) {}
 IntegrateurEulerCromer::IntegrateurEulerCromer(double dt) : Integrateur(dt) {}
 //Integrateur
 void IntegrateurEulerCromer::integre(ObjetMobile& obj, double t, double dt){
-        Vecteur acceleration =obj.evolution(t);
+        Vecteur acceleration = obj.evolution(t);
 
         Vecteur& param_integr = obj.getParam();
         Vecteur& deriv_integr = obj.getDerive();

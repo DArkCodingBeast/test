@@ -41,10 +41,10 @@ void dessine_sur(SupportADessin& support) const {
 
 
 std::ostream& operator<<(std::ostream& sortie, Systeme const& systeme) {
-    sortie << "Systeme : à t = " << systeme.temps << std::endl;
-    for (size_t i = 0; i < systeme.getObjets.size(); ++i){
+    sortie << "Systeme : à t = " << systeme.getTemps() << std::endl;
+    for (size_t i = 0; i < systeme.getObjets().size(); ++i){
         sortie << "Objet no " << i + 1 << " :" << std::endl;
-        sortie << systeme.getObjets()[i] << std::endl << std::endl;
+        sortie << *(systeme.getObjets()[i]) << std::endl << std::endl;
     }
     return sortie;
 }
