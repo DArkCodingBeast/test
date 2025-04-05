@@ -2,7 +2,10 @@
 
 class SupportADessin;
 
-class Systeme {};
+class Systeme {
+protected:
+
+};
 
 class Dessinable {
 public:
@@ -39,7 +42,7 @@ class TextViewer : public SupportADessin {
         sortie << systeme << std::endl;
     }
      
-    private:
+    protected:
     std::ostream& sortie;
     };
 
