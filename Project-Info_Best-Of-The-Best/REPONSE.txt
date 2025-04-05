@@ -12,7 +12,7 @@ Ex. 6
 
 P.6.1:
 Bah comment dire, il n'y a pas grand chose a rajouter a la classe d'integrateur. La seul chose qu'il faudrait mettre c'est la methode "integre" qui reste abstrait pour qu'on
-puisse specifiquement definir ce que cela signifie selon les classes. 
+puisse specifiquement definir ce que cela signifie selon les classes et puis la variable dt que l'on utilise pour integrer.
 
 P.6.2:
 L'Integrateur EulerCromer est une sous classe de la classe Integrateur, où je override la fonction integre.
