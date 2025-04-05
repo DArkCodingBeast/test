@@ -11,8 +11,8 @@ class Vecteur {
     
     public:
         Vecteur(std::vector<double> vect = {0});
-        Vecteur(size_t dim);
-        Vecteur(double x, double y, double z);
+        Vecteur(size_t);
+        Vecteur(double, double, double);
 
         std::vector<double> get_vect() const;
         size_t get_dim() const;

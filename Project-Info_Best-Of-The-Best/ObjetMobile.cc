@@ -1,8 +1,8 @@
 #include "ObjetMobile.h"
 
 //contstruct
-ObjetMobile::ObjetMobile(std::vector <double> para = {0, 0, 0}) 
-        : parameters(para), derivee_temporelle(para.size()) {}
+ObjetMobile::ObjetMobile(Vecteur para = {0, 0, 0}) 
+        : parameters(para), derivee_temporelle(para.get_dim()) {}
 
 
 void ObjetMobile::affiche(std::ostream& sortie) const {
