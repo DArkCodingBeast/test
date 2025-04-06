@@ -1,7 +1,8 @@
 Ex. 1
-1.1: On a decidé d'utiliser des vector de double pour representer la classe, avec en plus sa dimension en attribut. Les attributs ne sont pas accessibles directement mais par les methodes oui,
- il y a également des constructeurs, des setters, des operateurs pour tout type de calcul de vecteur (*,+,-,+=,-=...) et des methode pour avoir la norme et vecteur unitaire.
 
+1.1: On a decidé d'utiliser des vector de double pour representer la classe, avec en plus sa dimension en attribut. 
+     Les attributs ne sont pas accessibles directement mais par les methodes oui, il y a également des constructeurs, des setters, 
+     des operateurs pour tout type de calcul de vecteur (*,+,-,+=,-=...) et des methode pour avoir la norme et vecteur unitaire.
 
 1.2:  Faut que tu repondes toi ELIAS jsp si tu l'a fait
 
@@ -16,6 +17,16 @@ Ex. 3
 
 Ex. 4
 
+4.1: Non, on n'a pas ajouté de constructeur de copie car on peut facilement dubliquer un vecteur 
+      en utilisant les operateurs crées ou le constructeur qui prend chaque coordonnées comme paramètres.
+
+
+4.2: 
+a.  Il faudrait faire attention a garder les attributs en coordonnées cartesiennes et il faudrait faire la conversion 
+    dans le bloc du constructeur, ou alors on pourrait avoir des attributs en coordonnées spheriques mais dans ce cas,
+    il faudrait modifier les constructeurs en cartesiens pour qu'il fasse les conversions necesssaires afin d'avoir les bons attributs (en spheriques) .
+b.  La difficulté serait de convertir les coordonnées spheriques en cartesiennes, c'est a dire de calculer
+    le vecteur unitaire directionnel a l'aide de la trigonometrie puis de multiplier par la longueur.
 
 
 Ex. 5
@@ -24,17 +35,30 @@ Ex. 5
 
 Ex. 6
 
+6.1: Bah comment dire, il n'y a pas grand chose a rajouter a la classe d'integrateur. La seul chose qu'il faudrait mettre c'est la methode "integre" qui reste abstrait pour qu'on
+     puisse specifiquement definir ce que cela signifie selon les classes et puis la variable dt que l'on utilise pour integrer.
 
-
-P.6.1:
-Bah comment dire, il n'y a pas grand chose a rajouter a la classe d'integrateur. La seul chose qu'il faudrait mettre c'est la methode "integre" qui reste abstrait pour qu'on
-puisse specifiquement definir ce que cela signifie selon les classes et puis la variable dt que l'on utilise pour integrer.
-
-
-
-P.6.2:
-L'Integrateur EulerCromer est une sous classe de la classe Integrateur, où je override la fonction integre.
+6.2: L'Integrateur EulerCromer est une sous classe de la classe Integrateur, où je override la fonction integre.
 
 
 
 Ex. 7
+
+7.1: Cela signifie que GravitationConstante est une sous classe de ChampForces, ou il faut ajouté un vecteur en attribut,
+un constructeur et ou il faut réecrire/override la méthode 'force' afin de pouvoir créer des instances de GravitationConstante.
+
+7.2: De meme, cela signifie que PointMatériel est une sous classe de ObjetPhysique (qui est une sous classe de ObjetMobile) et donc tout les attributs de PointMatériel doivent 
+etre supprimer car il existent deja a travers ObjetPhysique et ObjetMobile. Pareil pour les methodes, il faut supprimer toutes celles qui sont deja heritées par les supers classes. 
+Les seules méthodes restantes sont les constructeurs qui doit donc entre autre appeler les constructeurs des supers classes et la méthode evolution (PAS SUR, DEMANDER A ELIAS) 
+
+
+
+
+
+
+
+
+
+
+
+
