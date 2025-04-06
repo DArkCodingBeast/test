@@ -1,20 +1,40 @@
 Ex. 1
+1.1: On a decidé d'utiliser des vector de double pour representer la classe, avec en plus sa dimension en attribut. Les attributs ne sont pas accessibles directement mais par les methodes oui,
+ il y a également des constructeurs, des setters, des operateurs pour tout type de calcul de vecteur (*,+,-,+=,-=...) et des methode pour avoir la norme et vecteur unitaire.
+
+
+1.2:  Faut que tu repondes toi ELIAS jsp si tu l'a fait
+
 
 Ex. 2
 
+
+
 Ex. 3
+
+
 
 Ex. 4
 
+
+
 Ex. 5
 
+
+
 Ex. 6
+
+
 
 P.6.1:
 Bah comment dire, il n'y a pas grand chose a rajouter a la classe d'integrateur. La seul chose qu'il faudrait mettre c'est la methode "integre" qui reste abstrait pour qu'on
 puisse specifiquement definir ce que cela signifie selon les classes et puis la variable dt que l'on utilise pour integrer.
 
+
+
 P.6.2:
 L'Integrateur EulerCromer est une sous classe de la classe Integrateur, où je override la fonction integre.
+
+
 
 Ex. 7
