@@ -17,7 +17,6 @@ public:
     PointMateriel(Vecteur , double , double , double ,GravitationConstante & , Contrainte & );
     Vecteur evolution(double);};
 
-std::ostream& operator<<(std::ostream& ,PointMateriel const&);
 
 
 

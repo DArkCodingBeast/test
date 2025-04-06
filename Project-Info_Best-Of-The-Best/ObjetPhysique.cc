@@ -3,8 +3,8 @@
 
 Vecteur Libre:: applique_force(ObjetPhysique const& obj,Vecteur force, double temps)    {if (obj.get_masse() == 0) {return {force};}      return {force.mult(1 / obj.get_masse())};}
 
-Vecteur Contrainte:: position(ObjetPhysique const& obj)     {return obj.getParam();}
-Vecteur Contrainte:: vitesse(ObjetPhysique const& obj)  {return obj.getDerive();}
+Vecteur Libre:: position(ObjetPhysique const& obj)     {return obj.getParam();}
+Vecteur Libre:: vitesse(ObjetPhysique const& obj)  {return obj.getDerive();}
   
 ObjetPhysique::ObjetPhysique (ObjetPhysique const& autre):  ObjetMobile(autre.getParam()),cont(autre.get_cont()), champ(autre.get_champ()), dim(autre.get_dim()), masse(autre.get_masse()), charge(autre.get_charge()){}
 ObjetPhysique::ObjetPhysique (Vecteur paramaters, Contrainte& cont, ChampForces& champ, unsigned int dim, double masse, double charge):     ObjetMobile(paramaters),cont(cont), champ(champ), dim(dim),masse(masse), charge(charge) {}

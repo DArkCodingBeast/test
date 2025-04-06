@@ -15,9 +15,9 @@ class Contrainte
 class Libre : public Contrainte{
     public:
     
-        Vecteur applique_force(ObjetPhysique const& ,Vecteur , double );
-        Vecteur position(ObjetPhysique const& );
-        Vecteur vitesse(ObjetPhysique const& ) ;
+        Vecteur applique_force(ObjetPhysique const& ,Vecteur , double ) override;
+        Vecteur position(ObjetPhysique const& ) override;
+        Vecteur vitesse(ObjetPhysique const& ) override;
     };
 
 class ChampForces{
