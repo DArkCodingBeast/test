@@ -1,8 +1,22 @@
 #include "PointMateriel.h"
 #include <memory>
 
-class SupportADessin;
-class Dessinable;
+class SupportADessin {
+    public:
+    virtual ~SupportADessin() = default;
+    SupportADessin(SupportADessin const&)            = delete;
+    SupportADessin& operator=(SupportADessin const&) = delete;
+    
+    virtual void dessine(PointMateriel const&) = 0;
+    virtual void dessine(Systeme const&) = 0;
+    virtual void dessine(Solide const&) = 0; 
+    };
+
+class Dessinable {
+    public:
+        virtual ~Dessinable() = default;
+        virtual dessine_sur(SupportADessin& support) = 0;
+};
 
 class Systeme {
 protected:
@@ -49,22 +63,7 @@ std::ostream& operator<<(std::ostream& sortie, Systeme const& systeme) {
     return sortie;
 }
 
-class Dessinable {
-public:
-    virtual ~Dessinable() = default;
-    virtual dessine_sur(SupportADessin& support) = 0;
-};
 
-class SupportADessin {
-public:
-virtual ~SupportADessin() = default;
-SupportADessin(SupportADessin const&)            = delete;
-SupportADessin& operator=(SupportADessin const&) = delete;
-
-virtual void dessine(PointMateriel const&) = 0;
-virtual void dessine(Systeme const&) = 0;
-virtual void dessine(Solide const&) = 0; 
-};
 
 class TextViewer : public SupportADessin {
     public:
