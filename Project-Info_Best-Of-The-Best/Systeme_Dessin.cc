@@ -33,8 +33,14 @@ void Systeme::dessine_sur(SupportADessin& support) const {
     for (const auto& objet : objets) {
         objet->dessine_sur(support);
     }
-}
+} 
 
+void Systeme::evolue(double dt) const {
+    for (const auto& objet : objets) {
+    integrateur.integre(*objet, temps, dt); // probleme here
+    }
+    temps += dt; // problem here
+}
 std::ostream& operator<<(std::ostream& sortie, Systeme const& systeme) {
     sortie << "Systeme : à t = " << systeme.getTemps() << std::endl;
     for (size_t i = 0; i < systeme.getObjets().size(); ++i){

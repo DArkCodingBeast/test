@@ -34,6 +34,7 @@ void ajouter_objet(std::unique_ptr<Dessinable>);
 void ajouter_contrainte(std::unique_ptr<Contrainte>);
 void ajouter_champ(std::unique_ptr<ChampForces>);
 void dessine_sur(SupportADessin&) const;
+void evolue(double) const;
 };
 
 std::ostream& operator<<(std::ostream&, Systeme const&);
