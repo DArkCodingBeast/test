@@ -9,6 +9,8 @@ class Dessinable {
         virtual dessine_sur(SupportADessin& support) = 0;
 };
 
+std::ostream& operator<<(std::ostream&, Dessinable const&);
+
 class Systeme {
 protected:
 std::vector<std::unique_ptr<Dessinable>> objets;
