@@ -20,7 +20,7 @@ IntegrateurEulerCromer integrateur;
 double temps;
 
 public:
-Systeme() : temps(0.0), integrateur() {}
+Systeme() : temps(0.0) {}
 
 std::vector<std::unique_ptr<Dessinable>> getObjets() const {return objets;}
 std::vector<std::unique_ptr<Contrainte>> getContraintes() const {return contraintes;}
