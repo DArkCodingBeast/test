@@ -18,12 +18,12 @@ IntegrateurEulerCromer integrateur;
 double temps;
 
 public:
-Systeme() : temps(0.0) {}
+Systeme() : temps(0.0), integrateur() {}
 
 std::vector<std::unique_ptr<Dessinable>> getObjets() const {return objets;}
 std::vector<std::unique_ptr<Contrainte>> getContraintes() const {return contraintes;}
 std::vector<std::unique_ptr<ChampForces>> getChamp() const {return champs;}
-double getTemps() {return temps;}
+double getTemps() const {return temps;}
 
 void ajouter_objet(std::unique_ptr<Dessinable> objet) {
     objets.push_back(objet);
