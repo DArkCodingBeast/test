@@ -6,7 +6,7 @@ class SupportADessin;
 class Dessinable {
     public:
         virtual ~Dessinable() = default;
-        virtual dessine_sur(SupportADessin& support) = 0;
+        virtual void dessine_sur(SupportADessin& support) = 0;
 };
 
 std::ostream& operator<<(std::ostream&, Dessinable const&);
@@ -20,7 +20,9 @@ IntegrateurEulerCromer integrateur;
 double temps;
 
 public:
-Systeme() : temps(0.0) {}
+Systeme() : objets({}), contraintes({}), champs({}), integrateur(), temps(0.0) {}
+Systeme(std::vector<std::unique_ptr<Dessinable>> objets, std::vector<std::unique_ptr<Contrainte>> contraintes, std::vector<std::unique_ptr<ChampForces>> champs, 
+    IntegrateurEulerCromer integrateur, double temps = 0.0) : objets(objets), contraintes(contraintes), champs(champs), integrateur(integrateur), temps(temps) {}
 
 std::vector<std::unique_ptr<Dessinable>> getObjets() const {return objets;}
 std::vector<std::unique_ptr<Contrainte>> getContraintes() const {return contraintes;}
@@ -57,6 +59,7 @@ std::ostream& operator<<(std::ostream& sortie, Systeme const& systeme) {
 
 class SupportADessin {
     public:
+    SupportADessin() = default;
     virtual ~SupportADessin() = default;
     SupportADessin(SupportADessin const&)            = delete;
     SupportADessin& operator=(SupportADessin const&) = delete;

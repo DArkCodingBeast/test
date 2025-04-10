@@ -40,6 +40,7 @@ protected:
 
 class IntegrateurEulerCromer : public Integrateur {
 public:
+    IntegrateurEulerCromer();
     IntegrateurEulerCromer(double);
     virtual void integre(ObjetMobile&, double, double) override;
 };
