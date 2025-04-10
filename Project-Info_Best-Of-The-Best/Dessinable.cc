@@ -46,7 +46,7 @@ void dessine_sur(SupportADessin& support) const {
         objet->dessine_sur(support);
     }
 }
-};
+}; // skibidi
 
 std::ostream& operator<<(std::ostream& sortie, Systeme const& systeme) {
     sortie << "Systeme : à t = " << systeme.getTemps() << std::endl;
