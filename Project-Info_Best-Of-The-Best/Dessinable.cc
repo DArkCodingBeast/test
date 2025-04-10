@@ -9,7 +9,10 @@ class Dessinable {
         virtual void dessine_sur(SupportADessin& support) = 0;
 };
 
-std::ostream& operator<<(std::ostream&, Dessinable const&);
+std::ostream& operator<<(std::ostream& sortie, Dessinable const& dess){
+    sortie << "Dessinable object";
+    return sortie;
+}
 
 class Systeme {
 protected:
@@ -20,25 +23,25 @@ IntegrateurEulerCromer integrateur;
 double temps;
 
 public:
-Systeme() : objets({}), contraintes({}), champs({}), integrateur(), temps(0.0) {}
-Systeme(std::vector<std::unique_ptr<Dessinable>> objets, std::vector<std::unique_ptr<Contrainte>> contraintes, std::vector<std::unique_ptr<ChampForces>> champs, 
-    IntegrateurEulerCromer integrateur, double temps = 0.0) : objets(objets), contraintes(contraintes), champs(champs), integrateur(integrateur), temps(temps) {}
+Systeme() : objets({}), contraintes({}), champs({}), integrateur(0.01), temps(0.0) {}
+Systeme(std::vector<std::unique_ptr<Dessinable>>&& objets, std::vector<std::unique_ptr<Contrainte>>&& contraintes, std::vector<std::unique_ptr<ChampForces>>&& champs, 
+    IntegrateurEulerCromer integrateur, double temps = 0.0) : objets(std::move(objets)), contraintes(std::move(contraintes)), champs(std::move(champs)), integrateur(integrateur), temps(temps) {}
 
-std::vector<std::unique_ptr<Dessinable>> getObjets() const {return objets;}
-std::vector<std::unique_ptr<Contrainte>> getContraintes() const {return contraintes;}
-std::vector<std::unique_ptr<ChampForces>> getChamp() const {return champs;}
+const std::vector<std::unique_ptr<Dessinable>>& getObjets() const {return objets;}
+const std::vector<std::unique_ptr<Contrainte>>& getContraintes() const {return contraintes;}
+const std::vector<std::unique_ptr<ChampForces>>& getChamp() const {return champs;}
 double getTemps() const {return temps;}
 
 void ajouter_objet(std::unique_ptr<Dessinable> objet) {
-    objets.push_back(objet);
+    objets.push_back(std::move(objet));
 }
 
 void ajouter_contrainte(std::unique_ptr<Contrainte> contrainte) {
-    contraintes.push_back(contrainte);
+    contraintes.push_back(std::move(contrainte));
 }
 
 void ajouter_champ(std::unique_ptr<ChampForces> champ) {
-    champs.push_back(champ);
+    champs.push_back(std::move(champ));
 }
 
 void dessine_sur(SupportADessin& support) const {
@@ -52,7 +55,11 @@ std::ostream& operator<<(std::ostream& sortie, Systeme const& systeme) {
     sortie << "Systeme : à t = " << systeme.getTemps() << std::endl;
     for (size_t i = 0; i < systeme.getObjets().size(); ++i){
         sortie << "Objet no " << i + 1 << " :" << std::endl;
+        if (systeme.getObjets()[i]) {
         sortie << *(systeme.getObjets()[i]) << std::endl << std::endl;
+        } else {
+            sortie << "Objet null." << std::endl;
+        }
     }
     return sortie;
 }
@@ -89,8 +96,3 @@ class TextViewer : public SupportADessin {
     protected:
     std::ostream& sortie;
     };
-
-/*
-virtual void dessine_sur(SupportADessin& support) override
-{ support.dessine(*this); }
- */
