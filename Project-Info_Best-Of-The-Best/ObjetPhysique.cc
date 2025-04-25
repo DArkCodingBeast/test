@@ -25,8 +25,8 @@ Vecteur ObjetPhysique:: position() const     {return cont.position(*this);}
 Vecteur ObjetPhysique:: vitesse() const   {return cont.vitesse(*this);}
 
 
-std::ostream& operator<<(std::ostream& sortie, ChampForces const& autre)     { return sortie;}
-std::ostream& operator<<(std::ostream& sortie, Contrainte const& autre)     { return sortie;}
+std::ostream& operator<<(std::ostream& sortie, ChampForces const& autre)  { return sortie;}
+std::ostream& operator<<(std::ostream& sortie, Contrainte const& autre)   { return sortie;}
 std::ostream& operator<<(std::ostream& sortie, ObjetPhysique & autre){
     sortie << "Le vecteur d'etat est : " << autre.getParam() << std::endl 
            << "Le vecteur vitesse est : " << autre.get_cont() << autre.get_champ() << std::endl 
