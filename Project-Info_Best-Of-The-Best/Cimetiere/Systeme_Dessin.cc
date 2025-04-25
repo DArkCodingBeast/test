@@ -55,7 +55,6 @@ std::ostream& operator<<(std::ostream& sortie, Systeme const& systeme) {
 }
 
 
-
 TextViewer::TextViewer(std::ostream& sortie)
     : sortie(sortie)
     {}
