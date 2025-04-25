@@ -17,12 +17,12 @@ class Vecteur {
         std::size_t get_dim() const;
         void augmente(double); //increase dimension
         void set_coord(unsigned int, double); //change value
-        void affiche() const; //afficher les elements
+        void affiche(std::ostream&) const; //afficher les elements
         bool compare(const Vecteur&) const; //regard si on a les memes vecteurs
         Vecteur addition(Vecteur) const; //additionnes les elements d'un vecteur
         Vecteur soustraction(Vecteur) const; //soustrait les elements d'un vecteur
         Vecteur oppose(); // change le signe de chaque coord
-        Vecteur mult(double); //multiplie chaque coord par lambda
+        Vecteur mult(double) const; //multiplie chaque coord par lambda
         double prod_scal(const Vecteur&) const; // produit scalaire
         Vecteur prod_vect(const Vecteur&) const;
         double norme() const; //norme :3

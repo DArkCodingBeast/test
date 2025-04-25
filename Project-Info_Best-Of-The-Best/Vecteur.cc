@@ -8,7 +8,7 @@ Vecteur::Vecteur(double x, double y, double z) : vect({x,y,z}) {}
 //operateurs
 std::ostream& operator<<(std::ostream& sortie, const Vecteur& vecteur)
     {
-        vecteur.affiche();
+        vecteur.affiche(sortie);
         return sortie;
 }
 bool operator==(Vecteur VICTOR, const Vecteur& autre)
@@ -68,13 +68,13 @@ void Vecteur::set_coord(unsigned int coord, double value) //change value
             vect[coord-1] = value;
         }
 }
-void Vecteur::affiche() const //afficher les elements
+void Vecteur::affiche(std::ostream& sortie) const //afficher les elements
     {
         for (auto& element : vect)
         {
-            std::cout << element << " ";
+            sortie << element << " ";
         }
-        std::cout << std::endl;
+        sortie << std::endl;
 }
 bool Vecteur::compare(const Vecteur& autre) const { //regard si on a les memes vecteurs
 
@@ -139,14 +139,14 @@ Vecteur Vecteur::soustraction(Vecteur autre) const{ //soustrait les elements d'u
 Vecteur Vecteur::oppose(){ // change le signe de chaque coord
     Vecteur b;
         for (auto& numb : vect){
-            b.vect.push_back(-numb);
+            b.augmente(-numb);
         }
     return b;
 }
-Vecteur Vecteur::mult(double lamba){ //multiplie chaque coord par lambda
+Vecteur Vecteur::mult(double lamba) const{ //multiplie chaque coord par lambda
     Vecteur b;
         for (auto& numb : vect){
-            b.vect.push_back(lamba*numb);
+            b.augmente(lamba*numb);
         }
     return b;
 }

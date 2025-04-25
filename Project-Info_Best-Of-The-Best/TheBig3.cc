@@ -25,7 +25,7 @@ Vecteur ObjetPhysique:: position() const     {return cont.position(*this);}
 Vecteur ObjetPhysique:: vitesse() const   {return cont.vitesse(*this);}
 void ObjetPhysique::affiche(std::ostream& sortie) const
 {sortie << "Le vecteur d'etat est : " << getParam() << std::endl
-<< "Le vecteur vitesse est : " << get_Derive() << std::endl 
+<< "Le vecteur vitesse est : " << getDerive() << std::endl 
 << "La masse est : "<< get_masse() << std::endl 
 << "La dimension est : " << get_dim() << std::endl 
 << "La charge electrique est : "<< get_charge() << std::endl; }
@@ -38,7 +38,7 @@ std::ostream& operator<<(std::ostream& sortie, ChampForces const& autre) {
 std::ostream& operator<<(std::ostream& sortie, Contrainte const& autre) {
     autre.affiche(sortie);
     return sortie;}
-std::ostream& operator<<(std::ostream& sortie, ObjetPhysique & autre){
+std::ostream& operator<<(std::ostream& sortie, ObjetPhysique const& autre){
 autre.affiche(sortie);   
 return sortie;}
 
@@ -54,10 +54,10 @@ Vecteur GravitationConstante::force(ObjetPhysique const& p1, double temps) {
     return gravitation.mult(p1.get_masse());
 }
 
-PointMateriel:: PointMateriel(Vecteur parameters, double masse, double charge, unsigned int dim, GravitationConstante & champ, Contrainte & cont): ObjetPhysique(parameters, cont , champ, dim, masse, charge) {}
-PointMateriel:: PointMateriel(PointMateriel const& autre): ObjetPhysique (autre){}	
-Vecteur PointMateriel:: evolution(double temps) {return cont.applique_force(*this,champ.force(*this,temps),temps);}
-void PointMateriel::affiche(std::ostream& sortie) const override {ObjetPhysique::affiche(sortie);}
+PointMateriel::PointMateriel(Vecteur parameters, double masse, double charge, unsigned int dim, GravitationConstante & champ, Contrainte & cont): ObjetPhysique(parameters, cont , champ, dim, masse, charge) {}
+PointMateriel::PointMateriel(PointMateriel const& autre): ObjetPhysique (autre){}	
+Vecteur PointMateriel::evolution(double temps) {return cont.applique_force(*this,champ.force(*this,temps),temps);}
+void PointMateriel::affiche(std::ostream& sortie) const {ObjetPhysique::affiche(sortie);}
 
 
 
@@ -124,7 +124,7 @@ TextViewer::TextViewer(std::ostream& sortie)
     : sortie(sortie)
     {}
      
-void TextViewer::dessine(PointMateriel const& point){
+void TextViewer::dessine(ObjetPhysique const& point){
     sortie << point << std::endl;
 }
     

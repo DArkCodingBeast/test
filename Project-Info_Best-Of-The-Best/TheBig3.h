@@ -37,7 +37,7 @@ public :
 
 
 class ObjetPhysique : public ObjetMobile, public Dessinable {
-private :
+protected :
     Contrainte& cont;
     ChampForces& champ;
     unsigned int dim;
@@ -61,9 +61,9 @@ public:
 };
 
 
-std::ostream& operator<<(std::ostream& , ChampForces const& );
-std::ostream& operator<<(std::ostream& , Contrainte const& );
-std::ostream& operator<<(std::ostream& , ObjetPhysique& );
+std::ostream& operator<<(std::ostream&, ChampForces const& );
+std::ostream& operator<<(std::ostream&, Contrainte const& );
+std::ostream& operator<<(std::ostream&, ObjetPhysique const& );
 
 class PointMateriel;
 class GravitationConstante : public ChampForces{
@@ -81,7 +81,7 @@ public:
     PointMateriel(PointMateriel const&);
     PointMateriel(Vecteur, double, double, unsigned int ,GravitationConstante&, Contrainte&);
     Vecteur evolution(double);
-    void affiche(std::ostream&) const override;
+    void affiche(std::ostream&) const;
 };
 
 std::ostream& operator<<(std::ostream&, Dessinable const&);
@@ -120,7 +120,7 @@ class SupportADessin {
         SupportADessin(SupportADessin const&)            = delete;
         SupportADessin& operator=(SupportADessin const&) = delete;
         
-        virtual void dessine(PointMateriel const&) = 0;
+        virtual void dessine(ObjetPhysique const&) = 0;
         virtual void dessine(Systeme const&) = 0;
         };
     
@@ -132,7 +132,7 @@ class TextViewer : public SupportADessin {
         TextViewer(TextViewer const&)            = delete;
         TextViewer& operator=(TextViewer const&) = delete;
          
-        virtual void dessine(PointMateriel const&) override;
+        virtual void dessine(ObjetPhysique const&) override;
         
         virtual void dessine(Systeme const&) override;
          
