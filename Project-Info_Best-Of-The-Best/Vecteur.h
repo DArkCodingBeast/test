@@ -7,15 +7,15 @@ class Vecteur {
 
     protected:
         std::vector<double> vect;
-        size_t dim = vect.size();
+        std::size_t dim = vect.size();
     
     public:
         Vecteur(std::vector<double> vect = {0});
-        Vecteur(size_t);
+        Vecteur(std::size_t);
         Vecteur(double, double, double);
 
         std::vector<double> get_vect() const;
-        size_t get_dim() const;
+        std::size_t get_dim() const;
         void augmente(double); //increase dimension
         void set_coord(unsigned int, double); //change value
         void affiche() const; //afficher les elements
