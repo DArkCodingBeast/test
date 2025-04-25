@@ -167,9 +167,9 @@ Vecteur Vecteur::prod_vect(const Vecteur& autre) const{
 
     if ((get_dim() == 3) and (get_dim() == autre.get_dim()))
     {
-        c.vect.push_back(vect[1]*autre.vect[2] - autre.vect[1]*vect[2]); //rappelle que indice commence à 0 donc coordoné 3 a un indice de 2
-        c.vect.push_back(-vect[0]*autre.vect[2] + autre.vect[0]*vect[2]);
-        c.vect.push_back(vect[0]*autre.vect[1] - autre.vect[0]*vect[1]);
+        c.augmente(vect[1]*autre.vect[2] - autre.vect[1]*vect[2]); //rappelle que indice commence à 0 donc coordoné 3 a un indice de 2
+        c.augmente(-vect[0]*autre.vect[2] + autre.vect[0]*vect[2]);
+        c.augmente(vect[0]*autre.vect[1] - autre.vect[0]*vect[1]);
         return c;
     }
 
