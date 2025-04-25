@@ -78,7 +78,10 @@ On avait aussi essayer de mettre des folders pour mettre des fichier similaire (
 et moche et cela était un peu confusing. Les "paths".
 Le probleme principale:
 Les trois fichiers ObjetPhysique.h, PointMateriel.h et Systeme_Dessin.h s'incluait en boucle, puisque ObjetPhysique est un Dessinable, mais Point PointMateriel est un ObjetPhysique,
-et que la classe Systeme et SupportADessin (public Dessinable) utilisent des PointMateriel. Ayant fait un peu de recherche on trouvais des solutions POTENTIELLE qui utilisait
+et que la classe Systeme et SupportADessin (public Dessinable) utilisent des PointMateriel.
+On avait donc essayer de separer chaque classe dans leur propre .h pour que ça soit claire et qu'on puisse inclure le minimum dans chaque classe,
+sauf que cela avait empirer le problème et on avait beaucoup plus de boucle d'include (malgré le #pragma once??) 
+Ayant fait un peu de recherche on trouvais des solutions POTENTIELLE qui utilisait
 des #ifndef mais on arrivait pas a réelment comprendre comment ça fonctionnait, dans le sense comment correctement implementer ça dans notre code, et donc on a choisi de faire la 
 meilleure deuxieme option (surement pas pour vous) de mettre tout ça dans le même fichier. SERTE, c'est pas très attirant niveau code, MAIS ça fonctionne. Si tout est au même endroit,
 pas de boucle de inclusion. En plus, c'est plus simple de faire un makefile puisqu'il y a moins de fichier.
