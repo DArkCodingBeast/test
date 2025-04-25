@@ -9,7 +9,7 @@ Vecteur Libre:: applique_force(ObjetPhysique const& obj,Vecteur force, double te
 
 Vecteur Libre:: position(ObjetPhysique const& obj)     {return obj.getParam();}
 Vecteur Libre:: vitesse(ObjetPhysique const& obj)  {return obj.getDerive();}
-Vecteur Libre:: affiche(ostream& sortie) const {sortie << "Aucune contrainte n'est appliqué sur l'objet." << endl;}
+void Libre:: affiche(ostream& sortie) const {sortie << "Aucune contrainte n'est appliqué sur l'objet." << endl;}
 
 ObjetPhysique::ObjetPhysique (ObjetPhysique const& autre):  ObjetMobile(autre.getParam()),cont(autre.get_cont()), champ(autre.get_champ()), 
     dim(autre.get_dim()), masse(autre.get_masse()), charge(autre.get_charge()){}
@@ -24,12 +24,12 @@ double ObjetPhysique::get_charge() const     {return charge;}
 Vecteur ObjetPhysique:: force(double t) const   {return champ.force(*this,t);}             
 Vecteur ObjetPhysique:: position() const     {return cont.position(*this);}
 Vecteur ObjetPhysique:: vitesse() const   {return cont.vitesse(*this);}
-void ObjetPhysique::affiche(ostream& sortie) const;
-{sortie << "Le vecteur d'etat est : " << autre.getParam() << std::endl
-<< "Le vecteur vitesse est : " << autre.get_cont() << autre.get_champ() << std::endl 
-<< "La masse est : "<< autre.get_masse() << std::endl; 
-<< "La dimension est : " << autre.get_dim() << std::endl 
-<< "La charge electrique est : "<< autre.get_charge() << std::endl; }
+void ObjetPhysique::affiche(ostream& sortie) const
+{sortie << "Le vecteur d'etat est : " << getParam() << std::endl
+<< "Le vecteur vitesse est : " << getDerive() << std::endl 
+<< "La masse est : "<< get_masse() << std::endl
+<< "La dimension est : " << get_dim() << std::endl 
+<< "La charge electrique est : "<< get_charge() << std::endl; }
 
 
 

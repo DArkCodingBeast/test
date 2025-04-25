@@ -16,7 +16,7 @@ public :
 class PointMateriel : public ObjetPhysique{	
 public:
     PointMateriel(PointMateriel const&);
-    PointMateriel(Vecteur , double , double , unsigned int ,GravitationConstante & , Contrainte & );
+    PointMateriel(Vecteur , double , double charge = 0, unsigned int dim = 3 ,GravitationConstante & , Contrainte & );
     Vecteur evolution(double);};
     void affiche(ostream&);
 

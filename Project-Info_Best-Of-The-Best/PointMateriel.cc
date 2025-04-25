@@ -2,7 +2,7 @@
 
 
 GravitationConstante::GravitationConstante(Vecteur const& grav) : gravitation(grav) {}
-virtual void GravitationConstante::affiche(ostream& sortie) const override {sortie << "un champ de force : " << gravitation <<< endl; }
+virtual void GravitationConstante::affiche(ostream& sortie) const override {sortie << "un champ de force : " << gravitation << endl; }
 Vecteur GravitationConstante::force(ObjetPhysique const& p1, double temps) {
     return gravitation.mult(p1.get_masse());
 }
