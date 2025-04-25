@@ -3,8 +3,8 @@
 
 Vecteur Libre:: applique_force(ObjetPhysique const& obj,Vecteur force, double temps){
     if (obj.get_masse() == 0) 
-        {return {force};}      
-    return {force.mult(1 / obj.get_masse())};}
+        {return force;}      
+    return force.mult(1 / obj.get_masse());}
 
 Vecteur Libre:: position(ObjetPhysique const& obj)     {return obj.getParam();}
 Vecteur Libre:: vitesse(ObjetPhysique const& obj)  {return obj.getDerive();}
@@ -19,7 +19,7 @@ double ObjetPhysique::get_masse() const     {return masse;}
 double ObjetPhysique::get_charge() const     {return charge;}
 Vecteur ObjetPhysique:: force(double t) const   {return champ.force(*this,t);}             
 Vecteur ObjetPhysique:: position() const     {return cont.position(*this);}
-Vecteur ObjetPhysique:: vitesse()    {return cont.vitesse(*this);}
+Vecteur ObjetPhysique:: vitesse() const   {return cont.vitesse(*this);}
 
 
 std::ostream& operator<<(std::ostream& sortie, ChampForces const& autre)     { return sortie;}

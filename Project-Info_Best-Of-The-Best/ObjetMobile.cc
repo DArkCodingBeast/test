@@ -1,7 +1,7 @@
 #include "ObjetMobile.h"
 
 //contstruct
-ObjetMobile::ObjetMobile(Vecteur para = {0, 0, 0}) 
+ObjetMobile::ObjetMobile(Vecteur para = Vecteur({0, 0, 0})) 
         : parameters(para), derivee_temporelle(para.get_dim()) {}
 
 

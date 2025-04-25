@@ -34,7 +34,7 @@ void ajouter_objet(std::unique_ptr<ObjetPhysique>);
 void ajouter_contrainte(std::shared_ptr<Contrainte>);
 void ajouter_champ(std::shared_ptr<ChampForces>);
 void dessine_sur(SupportADessin&) const;
-void evolue(double) const;
+void evolue(double);
 };
 
 std::ostream& operator<<(std::ostream&, Systeme const&);
