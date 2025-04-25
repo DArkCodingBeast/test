@@ -76,7 +76,7 @@ void Vecteur::affiche() const //afficher les elements
         }
         std::cout << std::endl;
 }
-bool Vecteur::compare(const Vecteur& autre){ //regard si on a les memes vecteurs
+bool Vecteur::compare(const Vecteur& autre) const { //regard si on a les memes vecteurs
 
     double eps(1e-10);
     
@@ -86,31 +86,55 @@ bool Vecteur::compare(const Vecteur& autre){ //regard si on a les memes vecteurs
         }     
     return true; //if all match
 }
-Vecteur Vecteur::addition(const Vecteur& autre){ //additionnes les elements d'un vecteur
-    Vecteur c;
-
-    if (autre.get_dim() == get_dim()){
-    for (std::size_t i(0); i < get_dim(); ++i){
-        c.vect.push_back(autre.vect[i] + vect[i]);
+Vecteur Vecteur::addition(Vecteur autre) const { //additionnes les elements d'un vecteur
+    if (autre.get_dim() != get_dim()){
+        if (get_dim() > autre.get_dim()){
+            for (std::size_t miaw(autre.get_dim()); miaw <= get_dim(); ++miaw){
+                autre.augmente(0);
+            }
+            for (std::size_t i(0); i < get_dim(); ++i){
+                autre.vect[i] += vect[i];
+        }
+        } else if (get_dim() < autre.get_dim()){
+            Vecteur wow(*this);
+            for (std::size_t miaw(get_dim()); miaw <= autre.get_dim(); ++miaw){
+                wow.augmente(0);
+            }
+            for (std::size_t i(0); i < get_dim(); ++i){
+                autre.vect[i] += wow.vect[i];
+            }
+        }
+    } else {
+        for (std::size_t i(0); i < get_dim(); ++i){
+        autre.vect[i] += vect[i];
+        } 
     }
-    return c;}
-
-    //si les dimensions ne sont pas les memes:
-    std::cerr << "les dimensions des vecteurs ne sont pas les memes, returning vecteur à additioner" << std::endl;
-    return autre; //choix random, mais il faut return qqch
+    return autre;
 }
-Vecteur Vecteur::soustraction(const Vecteur& autre){ //soustrait les elements d'un vecteur
-    Vecteur c;
-
-    if (autre.get_dim() == get_dim()){
-    for (std::size_t i(0); i < get_dim(); ++i){
-        c.vect.push_back(vect[i] - autre.vect[i]);
+Vecteur Vecteur::soustraction(Vecteur autre) const{ //soustrait les elements d'un vecteur
+    if (autre.get_dim() != get_dim()){
+        if (get_dim() > autre.get_dim()){
+            for (std::size_t miaw(autre.get_dim()); miaw <= get_dim(); ++miaw){
+                autre.augmente(0);
+            }
+            for (std::size_t i(0); i < get_dim(); ++i){
+                autre.vect[i] -= vect[i];
+        }
+        } else if (get_dim() < autre.get_dim()){
+            Vecteur wow(*this);
+            for (std::size_t miaw(get_dim()); miaw <= autre.get_dim(); ++miaw){
+                wow.augmente(0);
+            }
+            for (std::size_t i(0); i < get_dim(); ++i){
+                autre.vect[i] -= wow.vect[i];
+            }
+        }
+    } else {
+        for (std::size_t i(0); i < get_dim(); ++i){
+        autre.vect[i] -= vect[i];
+        } 
     }
-    return c;}
-
-    //si les dimensions ne sont pas les memes:
-    std::cerr << "les dimensions des vecteurs ne sont pas les memes, returning vecteur à soustraire" << std::endl;
-    return autre; //choix random, mais il faut return qqch
+    return autre;
 }
 Vecteur Vecteur::oppose(){ // change le signe de chaque coord
     Vecteur b;
@@ -126,7 +150,7 @@ Vecteur Vecteur::mult(double lamba){ //multiplie chaque coord par lambda
         }
     return b;
 }
-double Vecteur::prod_scal(const Vecteur& autre){ // produit scalaire
+double Vecteur::prod_scal(const Vecteur& autre) const{ // produit scalaire
     double scalaire(0);
 
     if (autre.dim == dim){
@@ -138,7 +162,7 @@ double Vecteur::prod_scal(const Vecteur& autre){ // produit scalaire
     std::cerr << "les dimensions des vecteurs ne sont pas les memes, returning 0" << std::endl;
     return scalaire; 
 }
-Vecteur Vecteur::prod_vect(const Vecteur& autre){
+Vecteur Vecteur::prod_vect(const Vecteur& autre) const{
     Vecteur c;
 
     if ((get_dim() == 3) and (get_dim() == autre.get_dim()))
@@ -152,26 +176,27 @@ Vecteur Vecteur::prod_vect(const Vecteur& autre){
     std::cerr << "Les dimensions des vecteurs sont different ou pas égale à 3" << std::endl;
     return autre;
 }
-double Vecteur::norme(){
+double Vecteur::norme() const{
     double norme(0);
     for(auto& elem : vect){
         norme += elem*elem;
     }
     return sqrt(norme);
 }
-double Vecteur::norme2(){
+double Vecteur::norme2() const{
     double norme(0);
     for(auto& elem : vect){
         norme += elem*elem;
     }
-    return norme; //je choisi de refaire la fonction au lieu de prendre la foction norme au carré en supposant que les doubles sont bizarre 
+    return norme; 
+//je choisi de refaire la fonction au lieu de prendre la foction norme au carré en supposant que les doubles sont bizarre :)
 }
-Vecteur Vecteur::unitaire(){
+Vecteur Vecteur::unitaire() const{
     Vecteur c;
     double norm = norme();
-
+    if (norm == 0) {return *this;} //on ne peux pas normaliser un vecteur nul
     for (auto& elem : vect){
-        c.vect.push_back(elem/norm);
+        c.augmente(elem/norm);
     }
     return c;
 }
