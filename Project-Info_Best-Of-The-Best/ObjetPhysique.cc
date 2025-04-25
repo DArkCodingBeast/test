@@ -13,7 +13,7 @@ Vecteur Libre:: vitesse(ObjetPhysique const& obj)  {return obj.getDerive();}
 ObjetPhysique::ObjetPhysique (ObjetPhysique const& autre):  ObjetMobile(autre.getParam()),cont(autre.get_cont()), champ(autre.get_champ()), 
     dim(autre.get_dim()), masse(autre.get_masse()), charge(autre.get_charge()){}
 ObjetPhysique::ObjetPhysique (Vecteur paramaters, Contrainte& cont, ChampForces& champ, unsigned int dim, double masse, double charge):     
-    ObjetMobile(paramaters),cont(cont), champ(champ), dim(dim),masse(masse), charge(charge) {}
+    ObjetMobile(paramaters), cont(cont), champ(champ), dim(dim), masse(masse), charge(charge) {}
 
 Contrainte& ObjetPhysique::get_cont() const    {return cont;}
 ChampForces& ObjetPhysique::get_champ() const  {return champ;}
@@ -27,8 +27,14 @@ Vecteur ObjetPhysique:: vitesse() const   {return cont.vitesse(*this);}
 
 std::ostream& operator<<(std::ostream& sortie, ChampForces const& autre)     { return sortie;}
 std::ostream& operator<<(std::ostream& sortie, Contrainte const& autre)     { return sortie;}
-std::ostream& operator<<(std::ostream& sortie, ObjetPhysique & autre)
-{sortie <<"Le vecteur d'etat est : " << autre.getParam() << std::endl << "Le vecteur vitesse est : " << autre.get_cont() << autre.get_champ() << std::endl << " La dimension est : " << autre.get_dim() << std::endl << " La charge electrique est : "<< autre.get_charge() << std::endl << "La masse est : "<< autre.get_masse() << std::endl;  return sortie;}
+std::ostream& operator<<(std::ostream& sortie, ObjetPhysique & autre){
+    sortie << "Le vecteur d'etat est : " << autre.getParam() << std::endl 
+           << "Le vecteur vitesse est : " << autre.get_cont() << autre.get_champ() << std::endl 
+           << "La dimension est : " << autre.get_dim() << std::endl 
+           << "La charge electrique est : "<< autre.get_charge() << std::endl 
+           << "La masse est : "<< autre.get_masse() << std::endl;  
+    return sortie;
+}
 
  
 
