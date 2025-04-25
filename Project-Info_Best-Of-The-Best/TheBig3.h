@@ -87,13 +87,13 @@ class Systeme {
     std::vector<std::unique_ptr<ObjetPhysique>> objets;
     std::vector<std::shared_ptr<Contrainte>> contraintes;
     std::vector<std::shared_ptr<ChampForces>> champs;
-    IntegrateurEulerCromer integrateur;
+    Integrateur& integrateur;
     double temps;
     
     public:
     Systeme();
     Systeme(std::vector<std::unique_ptr<ObjetPhysique>>&&, std::vector<std::shared_ptr<Contrainte>>&&, std::vector<std::shared_ptr<ChampForces>>&&, 
-        IntegrateurEulerCromer, double);
+        Integrateur&, double);
     
     const std::vector<std::unique_ptr<ObjetPhysique>>& getObjets() const;
     const std::vector<std::shared_ptr<Contrainte>>& getContraintes() const;
@@ -116,7 +116,7 @@ class SupportADessin {
     SupportADessin(SupportADessin const&)            = delete;
     SupportADessin& operator=(SupportADessin const&) = delete;
         
-    virtual void dessine(PointMateriel const&) = 0;
+    virtual void dessine(ObjetPhysique const&) = 0;
     virtual void dessine(Systeme const&) = 0;
 };
     
@@ -128,7 +128,7 @@ class TextViewer : public SupportADessin {
         TextViewer(TextViewer const&)            = delete;
         TextViewer& operator=(TextViewer const&) = delete;
          
-        virtual void dessine(PointMateriel const&) override;
+        virtual void dessine(ObjetPhysique const&) override;
         
         virtual void dessine(Systeme const&) override;
          

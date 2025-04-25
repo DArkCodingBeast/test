@@ -1,4 +1,4 @@
-#include "AllahuAkbar.h"
+#include "TheBig3.h"
 
 Vecteur Libre:: applique_force(ObjetPhysique const& obj,Vecteur force, double temps){
     if (obj.get_masse() == 0){
@@ -55,7 +55,7 @@ std::ostream& operator<<(std::ostream& sortie, Dessinable const& dess){
 
 Systeme::Systeme() : objets(), contraintes(), champs(), integrateur(0.01), temps(0.0) {}
 Systeme::Systeme(std::vector<std::unique_ptr<ObjetPhysique>>&& objets, std::vector<std::shared_ptr<Contrainte>>&& contraintes, std::vector<std::shared_ptr<ChampForces>>&& champs, 
-    IntegrateurEulerCromer integrateur, double temps = 0.0) : objets(std::move(objets)), contraintes(std::move(contraintes)), champs(std::move(champs)), integrateur(integrateur), temps(temps) {}
+    Integrateur& integrateur, double temps = 0.0) : objets(std::move(objets)), contraintes(std::move(contraintes)), champs(std::move(champs)), integrateur(integrateur), temps(temps) {}
 
 const std::vector<std::unique_ptr<ObjetPhysique>>& Systeme::getObjets() const {return objets;}
 const std::vector<std::shared_ptr<Contrainte>>& Systeme::getContraintes() const {return contraintes;}
@@ -103,7 +103,7 @@ TextViewer::TextViewer(std::ostream& sortie)
     : sortie(sortie)
     {}
      
-void TextViewer::dessine(PointMateriel const& point){
+void TextViewer::dessine(ObjetPhysique const& point){
     sortie << point << std::endl;
 }
     
