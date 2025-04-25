@@ -14,7 +14,7 @@ ChampForces& ObjetPhysique::get_champ() const  {return champ;}
 unsigned int ObjetPhysique::get_dim() const     {return dim;}
 double ObjetPhysique::get_masse() const     {return masse;}
 double ObjetPhysique::get_charge() const     {return charge;}
-Vecteur ObjetPhysique:: force(double t = 0) const   {return champ.force(*this,t);}             
+Vecteur ObjetPhysique:: force(double t) const   {return champ.force(*this,t);}             
 Vecteur ObjetPhysique:: position() const     {return cont.position(*this);}
 Vecteur ObjetPhysique:: vitesse()    {return cont.vitesse(*this);}
 

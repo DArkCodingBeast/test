@@ -49,7 +49,7 @@ std::vector<double> Vecteur::get_vect() const
 }
 size_t Vecteur::get_dim() const
     {
-        return dim;
+        return vect.size();
 }
 
 void Vecteur::augmente(double val) //increase dimension avec valeur
@@ -81,7 +81,7 @@ bool Vecteur::compare(const Vecteur& autre){ //regard si on a les memes vecteurs
     double eps(1e-10);
     
     if (autre.dim == dim)
-        {for( unsigned int i(0); i < dim; ++i)
+        {for(size_t i(0); i < dim; ++i)
             {if (abs(vect[i]-autre.vect[i]) <= eps) return true;}}
  
     return false; 
@@ -90,7 +90,7 @@ Vecteur Vecteur::addition(const Vecteur& autre){ //additionnes les elements d'un
     Vecteur c;
 
     if (autre.dim == dim){
-    for (size_t i(0); i <= dim; ++i){
+    for (size_t i(0); i < dim; ++i){
         c.vect.push_back(autre.vect[i] + vect[i]);
     }
     return c;}
@@ -130,7 +130,7 @@ double Vecteur::prod_scal(const Vecteur& autre){ // produit scalaire
     double scalaire(0);
 
     if (autre.dim == dim){
-        for (size_t i(0); i <= dim; ++i){
+        for (size_t i(0); i < dim; ++i){
             scalaire += vect[i]*autre.vect[i];
         }}
     
@@ -141,7 +141,7 @@ double Vecteur::prod_scal(const Vecteur& autre){ // produit scalaire
 Vecteur Vecteur::prod_vect(const Vecteur& autre){
     Vecteur c;
 
-    if ((dim == 3) and (dim = autre.dim))
+    if ((dim == 3) and (dim == autre.dim))
     {
         c.vect.push_back(vect[1]*autre.vect[2] - autre.vect[1]*vect[2]); //rappelle que indice commence à 0 donc coordoné 3 a un indice de 2
         c.vect.push_back(-vect[0]*autre.vect[2] + autre.vect[0]*vect[2]);
