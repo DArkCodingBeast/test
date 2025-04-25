@@ -7,7 +7,6 @@ class Vecteur {
 
     protected:
         std::vector<double> vect;
-        std::size_t dim = vect.size();
     
     public:
         Vecteur(std::vector<double> vect = {0});

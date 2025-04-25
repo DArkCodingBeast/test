@@ -9,8 +9,10 @@ Vecteur Libre:: applique_force(ObjetPhysique const& obj,Vecteur force, double te
 Vecteur Libre:: position(ObjetPhysique const& obj)     {return obj.getParam();}
 Vecteur Libre:: vitesse(ObjetPhysique const& obj)  {return obj.getDerive();}
   
-ObjetPhysique::ObjetPhysique (ObjetPhysique const& autre):  ObjetMobile(autre.getParam()),cont(autre.get_cont()), champ(autre.get_champ()), dim(autre.get_dim()), masse(autre.get_masse()), charge(autre.get_charge()){}
-ObjetPhysique::ObjetPhysique (Vecteur paramaters, Contrainte& cont, ChampForces& champ, unsigned int dim, double masse, double charge):     ObjetMobile(paramaters),cont(cont), champ(champ), dim(dim),masse(masse), charge(charge) {}
+ObjetPhysique::ObjetPhysique (ObjetPhysique const& autre):  ObjetMobile(autre.getParam()),cont(autre.get_cont()), champ(autre.get_champ()), 
+    dim(autre.get_dim()), masse(autre.get_masse()), charge(autre.get_charge()){}
+ObjetPhysique::ObjetPhysique (Vecteur paramaters, Contrainte& cont, ChampForces& champ, unsigned int dim, double masse, double charge):     
+    ObjetMobile(paramaters),cont(cont), champ(champ), dim(dim),masse(masse), charge(charge) {}
 
 Contrainte& ObjetPhysique::get_cont() const    {return cont;}
 ChampForces& ObjetPhysique::get_champ() const  {return champ;}
