@@ -1,6 +1,6 @@
-#include "Integrateur.h"
-#include <memory>
 #include <string>
+#include <memory>
+#include "Integrateur.h"
 #pragma once
 
 class ObjetPhysique;
@@ -11,14 +11,13 @@ class Dessinable {
         virtual ~Dessinable() = default;
         virtual void dessine_sur(SupportADessin&) = 0;
 };
-    
-std::ostream& operator<<(std::ostream&, Dessinable const&);
 
 class Contrainte
 {public:
     virtual Vecteur applique_force(ObjetPhysique const&, Vecteur , double ) = 0;
     virtual Vecteur position(ObjetPhysique const& ) = 0;
     virtual Vecteur vitesse(ObjetPhysique const& ) = 0;
+    virtual void affiche(std::ostream&) const = 0;
 };
 
 class Libre : public Contrainte{
@@ -27,11 +26,13 @@ class Libre : public Contrainte{
         Vecteur applique_force(ObjetPhysique const& ,Vecteur , double ) override;
         Vecteur position(ObjetPhysique const& ) override;
         Vecteur vitesse(ObjetPhysique const& ) override;
+        void affiche(std::ostream&) const override;
     };
 
 class ChampForces{
 public :
     virtual Vecteur force(ObjetPhysique const&, double) = 0;
+    virtual void affiche(std::ostream&) const = 0;
 };
 
 
@@ -44,7 +45,6 @@ private :
     double charge;
 
 public:
-    virtual void dessine_sur(SupportADessin&) override;
 
     ObjetPhysique (ObjetPhysique const&);
     ObjetPhysique (Vecteur, Contrainte& , ChampForces& , unsigned int, double, double);
@@ -56,6 +56,8 @@ public:
     Vecteur force(double t = 0) const ;            
     Vecteur position() const ;
     Vecteur vitesse() const ;
+    void affiche(std::ostream& sortie) const;
+    void affiche(std::ostream& sortie,double temps) const;
 };
 
 
@@ -71,29 +73,30 @@ private :
 public :
     GravitationConstante(Vecteur const&);
     Vecteur force(ObjetPhysique const&, double) override;
+    virtual void affiche(std::ostream& sortie) const override;
 };
-
 
 class PointMateriel : public ObjetPhysique{	
 public:
     PointMateriel(PointMateriel const&);
-    PointMateriel(Vecteur , double , double , unsigned int ,GravitationConstante & , Contrainte & );
+    PointMateriel(Vecteur, double, double, unsigned int ,GravitationConstante&, Contrainte&);
     Vecteur evolution(double);};
+    void affiche(std::ostream&) const override;
 
-    class SupportADessin;
+std::ostream& operator<<(std::ostream&, Dessinable const&);
     
 class Systeme {
     private:
     std::vector<std::unique_ptr<ObjetPhysique>> objets;
     std::vector<std::shared_ptr<Contrainte>> contraintes;
     std::vector<std::shared_ptr<ChampForces>> champs;
-    Integrateur& integrateur;
+    IntegrateurEulerCromer integrateur;
     double temps;
     
     public:
     Systeme();
     Systeme(std::vector<std::unique_ptr<ObjetPhysique>>&&, std::vector<std::shared_ptr<Contrainte>>&&, std::vector<std::shared_ptr<ChampForces>>&&, 
-        Integrateur&, double);
+        IntegrateurEulerCromer, double);
     
     const std::vector<std::unique_ptr<ObjetPhysique>>& getObjets() const;
     const std::vector<std::shared_ptr<Contrainte>>& getContraintes() const;
@@ -110,15 +113,15 @@ class Systeme {
     std::ostream& operator<<(std::ostream&, Systeme const&);
     
 class SupportADessin {
-    public:
-    SupportADessin() = default;
-    virtual ~SupportADessin() = default;
-    SupportADessin(SupportADessin const&)            = delete;
-    SupportADessin& operator=(SupportADessin const&) = delete;
+        public:
+        SupportADessin() = default;
+        virtual ~SupportADessin() = default;
+        SupportADessin(SupportADessin const&)            = delete;
+        SupportADessin& operator=(SupportADessin const&) = delete;
         
-    virtual void dessine(ObjetPhysique const&) = 0;
-    virtual void dessine(Systeme const&) = 0;
-};
+        virtual void dessine(PointMateriel const&) = 0;
+        virtual void dessine(Systeme const&) = 0;
+        };
     
 class TextViewer : public SupportADessin {
         public:
@@ -128,10 +131,10 @@ class TextViewer : public SupportADessin {
         TextViewer(TextViewer const&)            = delete;
         TextViewer& operator=(TextViewer const&) = delete;
          
-        virtual void dessine(ObjetPhysique const&) override;
+        virtual void dessine(PointMateriel const&) override;
         
         virtual void dessine(Systeme const&) override;
          
-        private:
+        protected:
         std::ostream& sortie;
         };

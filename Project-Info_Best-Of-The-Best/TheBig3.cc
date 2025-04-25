@@ -1,15 +1,15 @@
 #include "TheBig3.h"
 
 Vecteur Libre:: applique_force(ObjetPhysique const& obj,Vecteur force, double temps){
-    if (obj.get_masse() == 0){
-        return force;
-    }      
+    if (obj.get_masse() == 0) 
+        {return force;}      
     return force.mult(1 / obj.get_masse());
 }
 
-Vecteur Libre:: position(ObjetPhysique const& obj)     {return obj.getParam();}
-Vecteur Libre:: vitesse(ObjetPhysique const& obj)  {return obj.getDerive();}
-  
+Vecteur Libre::position(ObjetPhysique const& obj)     {return obj.getParam();}
+Vecteur Libre::vitesse(ObjetPhysique const& obj)  {return obj.getDerive();}
+void Libre::affiche(std::ostream& sortie) const {sortie << "Aucune contrainte n'est appliqué sur l'objet." << std::endl;}
+
 ObjetPhysique::ObjetPhysique (ObjetPhysique const& autre):  ObjetMobile(autre.getParam()),cont(autre.get_cont()), champ(autre.get_champ()), 
     dim(autre.get_dim()), masse(autre.get_masse()), charge(autre.get_charge()){}
 ObjetPhysique::ObjetPhysique (Vecteur paramaters, Contrainte& cont, ChampForces& champ, unsigned int dim, double masse, double charge):     
@@ -23,27 +23,36 @@ double ObjetPhysique::get_charge() const     {return charge;}
 Vecteur ObjetPhysique:: force(double t) const   {return champ.force(*this,t);}             
 Vecteur ObjetPhysique:: position() const     {return cont.position(*this);}
 Vecteur ObjetPhysique:: vitesse() const   {return cont.vitesse(*this);}
+void ObjetPhysique::affiche(std::ostream& sortie) const
+{sortie << "Le vecteur d'etat est : " << getParam() << std::endl
+<< "Le vecteur vitesse est : " << get_cont() << get_champ() << std::endl 
+<< "La masse est : "<< get_masse() << std::endl 
+<< "La dimension est : " << get_dim() << std::endl 
+<< "La charge electrique est : "<< get_charge() << std::endl; }
 
 
-std::ostream& operator<<(std::ostream& sortie, ChampForces const& autre)  { return sortie;}
-std::ostream& operator<<(std::ostream& sortie, Contrainte const& autre)   { return sortie;}
+
+
+std::ostream& operator<<(std::ostream& sortie, ChampForces const& autre) {
+    autre.affiche(sortie);
+    return sortie;}
+std::ostream& operator<<(std::ostream& sortie, Contrainte const& autre) {
+    autre.affiche(sortie);
+    return sortie;}
 std::ostream& operator<<(std::ostream& sortie, ObjetPhysique & autre){
-    sortie << "Le vecteur d'etat est : " << autre.getParam() << std::endl 
-           << "Le vecteur vitesse est : " << autre.get_cont() << autre.get_champ() << std::endl 
-           << "La dimension est : " << autre.get_dim() << std::endl 
-           << "La charge electrique est : "<< autre.get_charge() << std::endl 
-           << "La masse est : "<< autre.get_masse() << std::endl;  
-    return sortie;
-}
+autre.affiche(sortie);   
+return sortie;}
 
 GravitationConstante::GravitationConstante(Vecteur const& grav) : gravitation(grav) {}
+void GravitationConstante::affiche(std::ostream& sortie) const {sortie << "un champ de force : " << gravitation << std::endl; }
 Vecteur GravitationConstante::force(ObjetPhysique const& p1, double temps) {
     return gravitation.mult(p1.get_masse());
 }
 
-PointMateriel::PointMateriel(Vecteur parameters, double masse, double charge, unsigned int dim, GravitationConstante & champ, Contrainte & cont): ObjetPhysique(parameters, cont , champ, dim, masse, charge) {}
-PointMateriel::PointMateriel(PointMateriel const& autre): ObjetPhysique (autre){}	
-Vecteur PointMateriel::evolution(double temps) {return get_cont().applique_force(*this, get_champ().force(*this,temps),temps);}
+PointMateriel:: PointMateriel(Vecteur parameters, double masse, double charge, unsigned int dim, GravitationConstante & champ, Contrainte & cont): ObjetPhysique(parameters, cont , champ, dim, masse, charge) {}
+PointMateriel:: PointMateriel(PointMateriel const& autre): ObjetPhysique (autre){}	
+Vecteur PointMateriel:: evolution(double temps) {return cont.applique_force(*this,champ.force(*this,temps),temps);}
+void PointMateriel::affiche(std::ostream& sortie) const override {ObjetPhysique::affiche(sortie);}
 
 class SupportADessin;
 
@@ -55,7 +64,7 @@ std::ostream& operator<<(std::ostream& sortie, Dessinable const& dess){
 
 Systeme::Systeme() : objets(), contraintes(), champs(), integrateur(0.01), temps(0.0) {}
 Systeme::Systeme(std::vector<std::unique_ptr<ObjetPhysique>>&& objets, std::vector<std::shared_ptr<Contrainte>>&& contraintes, std::vector<std::shared_ptr<ChampForces>>&& champs, 
-    Integrateur& integrateur, double temps = 0.0) : objets(std::move(objets)), contraintes(std::move(contraintes)), champs(std::move(champs)), integrateur(integrateur), temps(temps) {}
+    IntegrateurEulerCromer integrateur, double temps = 0.0) : objets(std::move(objets)), contraintes(std::move(contraintes)), champs(std::move(champs)), integrateur(integrateur), temps(temps) {}
 
 const std::vector<std::unique_ptr<ObjetPhysique>>& Systeme::getObjets() const {return objets;}
 const std::vector<std::shared_ptr<Contrainte>>& Systeme::getContraintes() const {return contraintes;}
@@ -103,11 +112,10 @@ TextViewer::TextViewer(std::ostream& sortie)
     : sortie(sortie)
     {}
      
-void TextViewer::dessine(ObjetPhysique const& point){
+void TextViewer::dessine(PointMateriel const& point){
     sortie << point << std::endl;
 }
     
 void TextViewer::dessine(Systeme const& systeme) {
     sortie << systeme << std::endl;
 }
-
