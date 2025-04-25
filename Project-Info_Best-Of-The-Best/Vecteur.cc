@@ -153,8 +153,8 @@ Vecteur Vecteur::mult(double lamba){ //multiplie chaque coord par lambda
 double Vecteur::prod_scal(const Vecteur& autre) const{ // produit scalaire
     double scalaire(0);
 
-    if (autre.dim == dim){
-        for (std::size_t i(0); i < dim; ++i){
+    if (autre.get_dim() == get_dim()){
+        for (std::size_t i(0); i < get_dim(); ++i){
             scalaire += vect[i]*autre.vect[i];
         }}
     
