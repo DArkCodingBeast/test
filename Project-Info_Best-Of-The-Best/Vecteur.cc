@@ -55,7 +55,7 @@ std::size_t Vecteur::get_dim() const
 void Vecteur::augmente(double val) //increase dimension avec valeur
     { 
         vect.push_back(val);
-        dim = vect.size();  
+
 }
 void Vecteur::set_coord(unsigned int coord, double value) //change value
     {
@@ -80,17 +80,17 @@ bool Vecteur::compare(const Vecteur& autre){ //regard si on a les memes vecteurs
 
     double eps(1e-10);
     
-    if (autre.dim == dim)
-        {for(std::size_t i(0); i < dim; ++i)
-            {if (abs(vect[i]-autre.vect[i]) <= eps) return true;}}
- 
-    return false; 
+    if (autre.get_dim() != get_dim()) return false;
+    for(std::size_t i(0); i < get_dim(); ++i){
+            if (abs(vect[i]-autre.vect[i]) > eps) return false; //as soon as one thing no match
+        }     
+    return true; //if all match
 }
 Vecteur Vecteur::addition(const Vecteur& autre){ //additionnes les elements d'un vecteur
     Vecteur c;
 
-    if (autre.dim == dim){
-    for (std::size_t i(0); i < dim; ++i){
+    if (autre.get_dim() == get_dim()){
+    for (std::size_t i(0); i < get_dim(); ++i){
         c.vect.push_back(autre.vect[i] + vect[i]);
     }
     return c;}
@@ -102,8 +102,8 @@ Vecteur Vecteur::addition(const Vecteur& autre){ //additionnes les elements d'un
 Vecteur Vecteur::soustraction(const Vecteur& autre){ //soustrait les elements d'un vecteur
     Vecteur c;
 
-    if (autre.dim == dim){
-    for (std::size_t i(0); i < dim; ++i){
+    if (autre.get_dim() == get_dim()){
+    for (std::size_t i(0); i < get_dim(); ++i){
         c.vect.push_back(vect[i] - autre.vect[i]);
     }
     return c;}
@@ -141,7 +141,7 @@ double Vecteur::prod_scal(const Vecteur& autre){ // produit scalaire
 Vecteur Vecteur::prod_vect(const Vecteur& autre){
     Vecteur c;
 
-    if ((dim == 3) and (dim == autre.dim))
+    if ((get_dim() == 3) and (get_dim() == autre.get_dim()))
     {
         c.vect.push_back(vect[1]*autre.vect[2] - autre.vect[1]*vect[2]); //rappelle que indice commence à 0 donc coordoné 3 a un indice de 2
         c.vect.push_back(-vect[0]*autre.vect[2] + autre.vect[0]*vect[2]);

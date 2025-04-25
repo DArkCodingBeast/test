@@ -43,7 +43,7 @@ void Systeme::evolue(double dt) {
 }
 std::ostream& operator<<(std::ostream& sortie, Systeme const& systeme) {
     sortie << "Systeme : à t = " << systeme.getTemps() << std::endl;
-    for (size_t i = 0; i < systeme.getObjets().size(); ++i){
+    for (std::size_t i(0); i < systeme.getObjets().size(); ++i){
         sortie << "Objet no " << i + 1 << " :" << std::endl;
         if (systeme.getObjets()[i]) {
         sortie << *(systeme.getObjets()[i]) << std::endl << std::endl;
