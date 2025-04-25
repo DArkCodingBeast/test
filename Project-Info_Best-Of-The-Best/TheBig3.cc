@@ -43,6 +43,12 @@ std::ostream& operator<<(std::ostream& sortie, ObjetPhysique & autre){
 autre.affiche(sortie);   
 return sortie;}
 
+
+
+------------
+
+
+
 GravitationConstante::GravitationConstante(Vecteur const& grav) : gravitation(grav) {}
 void GravitationConstante::affiche(std::ostream& sortie) const {sortie << "un champ de force : " << gravitation << std::endl; }
 Vecteur GravitationConstante::force(ObjetPhysique const& p1, double temps) {
@@ -53,6 +59,13 @@ PointMateriel:: PointMateriel(Vecteur parameters, double masse, double charge, u
 PointMateriel:: PointMateriel(PointMateriel const& autre): ObjetPhysique (autre){}	
 Vecteur PointMateriel:: evolution(double temps) {return cont.applique_force(*this,champ.force(*this,temps),temps);}
 void PointMateriel::affiche(std::ostream& sortie) const override {ObjetPhysique::affiche(sortie);}
+
+
+
+
+--------------
+
+
 
 class SupportADessin;
 

@@ -12,6 +12,9 @@ Vecteur.o: Vecteur.cc Vecteur.h
 >$(CC) $(CXXFLAGS) -c Vecteur.cc -o Vecteur.o
 
 
+clean:
+>del /Q *.o testVecteur.exe
+
 
 
 
