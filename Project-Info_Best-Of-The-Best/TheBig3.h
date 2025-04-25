@@ -76,12 +76,13 @@ public :
     virtual void affiche(std::ostream& sortie) const override;
 };
 
-class PointMateriel : public ObjetPhysique{	
+class PointMateriel : public ObjetPhysique {	
 public:
     PointMateriel(PointMateriel const&);
     PointMateriel(Vecteur, double, double, unsigned int ,GravitationConstante&, Contrainte&);
-    Vecteur evolution(double);};
+    Vecteur evolution(double);
     void affiche(std::ostream&) const override;
+};
 
 std::ostream& operator<<(std::ostream&, Dessinable const&);
     
@@ -108,7 +109,7 @@ class Systeme {
     void ajouter_champ(std::shared_ptr<ChampForces>);
     void dessine_sur(SupportADessin&) const;
     void evolue(double);
-    };
+};
     
     std::ostream& operator<<(std::ostream&, Systeme const&);
     
