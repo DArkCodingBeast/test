@@ -1,4 +1,5 @@
 #include "ObjetMobile.h"
+#include "Systeme_Dessin.h"
 #include <string>
 #pragma once
 
@@ -26,7 +27,7 @@ public :
 };
 
 
-class ObjetPhysique : public ObjetMobile{
+class ObjetPhysique : public ObjetMobile, public Dessinable {
 private :
     Contrainte& cont;
     ChampForces& champ;

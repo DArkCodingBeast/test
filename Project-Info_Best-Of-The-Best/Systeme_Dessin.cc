@@ -9,15 +9,15 @@ std::ostream& operator<<(std::ostream& sortie, Dessinable const& dess){
 
 
 Systeme::Systeme() : objets(), contraintes(), champs(), integrateur(0.01), temps(0.0) {}
-Systeme::Systeme(std::vector<std::unique_ptr<Dessinable>>&& objets, std::vector<std::shared_ptr<Contrainte>>&& contraintes, std::vector<std::shared_ptr<ChampForces>>&& champs, 
+Systeme::Systeme(std::vector<std::unique_ptr<ObjetPhysique>>&& objets, std::vector<std::shared_ptr<Contrainte>>&& contraintes, std::vector<std::shared_ptr<ChampForces>>&& champs, 
     IntegrateurEulerCromer integrateur, double temps = 0.0) : objets(std::move(objets)), contraintes(std::move(contraintes)), champs(std::move(champs)), integrateur(integrateur), temps(temps) {}
 
-const std::vector<std::unique_ptr<Dessinable>>& Systeme::getObjets() const {return objets;}
+const std::vector<std::unique_ptr<ObjetPhysique>>& Systeme::getObjets() const {return objets;}
 const std::vector<std::shared_ptr<Contrainte>>& Systeme::getContraintes() const {return contraintes;}
 const std::vector<std::shared_ptr<ChampForces>>& Systeme::getChamp() const {return champs;}
 double Systeme::getTemps() const {return temps;}
 
-void Systeme::ajouter_objet(std::unique_ptr<Dessinable> objet) {
+void Systeme::ajouter_objet(std::unique_ptr<ObjetPhysique> objet) {
     objets.push_back(std::move(objet));
 }
 
