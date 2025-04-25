@@ -31,8 +31,9 @@ std::ostream& operator<<(std::ostream& sortie, const ObjetMobile& obj){
     sortie << std::endl;
     return sortie;}
 
-//contrusctor
+//contrusctor 
 Integrateur::Integrateur(double dt) : dt(dt) {}
+
 IntegrateurEulerCromer::IntegrateurEulerCromer() : Integrateur(0.01) {}
 IntegrateurEulerCromer::IntegrateurEulerCromer(double dt) : Integrateur(dt) {}
 //Integrateur
