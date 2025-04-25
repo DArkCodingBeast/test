@@ -11,6 +11,7 @@ class Contrainte
     virtual Vecteur applique_force(ObjetPhysique const&, Vecteur , double ) = 0;
     virtual Vecteur position(ObjetPhysique const& ) = 0;
     virtual Vecteur vitesse(ObjetPhysique const& ) = 0;
+    virtual void affiche(ostream&) const = 0;
 };
 
 class Libre : public Contrainte{
@@ -19,11 +20,13 @@ class Libre : public Contrainte{
         Vecteur applique_force(ObjetPhysique const& ,Vecteur , double ) override;
         Vecteur position(ObjetPhysique const& ) override;
         Vecteur vitesse(ObjetPhysique const& ) override;
+        void affiche(ostream&) const override;
     };
 
 class ChampForces{
 public :
     virtual Vecteur force(ObjetPhysique const&, double) = 0;
+    virtual void affiche(ostream&) const = 0;
 };
 
 
@@ -47,6 +50,8 @@ public:
     Vecteur force(double t = 0) const ;            
     Vecteur position() const ;
     Vecteur vitesse() const ;
+    void affiche(ostream& sortie) const;
+    void affiche(ostream& sortie,double temps) const;
 };
 
 

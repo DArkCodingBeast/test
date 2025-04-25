@@ -9,6 +9,7 @@ private :
 public :
     GravitationConstante(Vecteur const&);
     Vecteur force(ObjetPhysique const&, double) override;
+    virtual void affiche(ostream& sortie) const override;
 };
 
 
@@ -17,7 +18,5 @@ public:
     PointMateriel(PointMateriel const&);
     PointMateriel(Vecteur , double , double , unsigned int ,GravitationConstante & , Contrainte & );
     Vecteur evolution(double);};
-
-
-
+    void affiche(ostream&);
 
