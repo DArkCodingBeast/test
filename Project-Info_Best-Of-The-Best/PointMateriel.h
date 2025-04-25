@@ -8,7 +8,8 @@ private :
 
 public :
     GravitationConstante(Vecteur const&);
-    Vecteur force(ObjetPhysique const&, double) override;};
+    Vecteur force(ObjetPhysique const&, double) override;
+};
 
 
 class PointMateriel : public ObjetPhysique{	

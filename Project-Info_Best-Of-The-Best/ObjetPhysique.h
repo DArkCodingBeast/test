@@ -46,7 +46,7 @@ public:
     double get_charge() const;
     Vecteur force(double t = 0) const ;            
     Vecteur position() const ;
-    Vecteur vitesse() ;
+    Vecteur vitesse() const ;
 };
 
 
