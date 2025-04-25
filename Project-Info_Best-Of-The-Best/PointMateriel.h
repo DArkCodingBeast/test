@@ -15,7 +15,7 @@ public :
 class PointMateriel : public ObjetPhysique{	
 public:
     PointMateriel(PointMateriel const&);
-    PointMateriel(Vecteur , double , double , double ,GravitationConstante & , Contrainte & );
+    PointMateriel(Vecteur , double , double , unsigned int ,GravitationConstante & , Contrainte & );
     Vecteur evolution(double);};
 
 
