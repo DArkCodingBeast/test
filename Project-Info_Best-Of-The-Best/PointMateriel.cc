@@ -8,4 +8,4 @@ Vecteur GravitationConstante::force(ObjetPhysique const& p1, double temps) {
 
 PointMateriel:: PointMateriel(Vecteur parameters, double masse, double charge, double dim,GravitationConstante & champ, Contrainte & cont): ObjetPhysique(parameters, cont , champ, dim, masse, charge) {}
 PointMateriel:: PointMateriel(PointMateriel const& autre): ObjetPhysique (autre){}	
-Vecteur PointMateriel:: evolution(double temps) {return "valeur de l equation d evolution" ;}
+Vecteur PointMateriel:: evolution(double temps) {cont.applique_force(*this,champ.force(*this,temps),temps);}
