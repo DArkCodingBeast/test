@@ -4,7 +4,8 @@
 Vecteur Libre:: applique_force(ObjetPhysique const& obj,Vecteur force, double temps){
     if (obj.get_masse() == 0) 
         {return force;}      
-    return force.mult(1 / obj.get_masse());}
+    return force.mult(1 / obj.get_masse());
+}
 
 Vecteur Libre:: position(ObjetPhysique const& obj)     {return obj.getParam();}
 Vecteur Libre:: vitesse(ObjetPhysique const& obj)  {return obj.getDerive();}
