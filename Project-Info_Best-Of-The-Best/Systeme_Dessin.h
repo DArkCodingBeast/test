@@ -1,3 +1,4 @@
+#include "Integrateur.h"
 #include "PointMateriel.h"
 #include <memory>
 #pragma one

@@ -66,5 +66,23 @@ Semaine
 
 
 
-Semaine 
+- Semaine de Vacance de Paque:
+
+AAAAAAA Gros des gros gros gros gros problèmes. Déjà, on a decider de réelment gerer l'erreur dans Vecteur.h quand on veux additioner/soustraire duex vecteur de taille differentes.
+Le problème c'est que c'est maintenant très moche et il y a de la repetition de code. Aussi on fait un peux plus de copies qu'avant mais au moins mtn, quand il y a une erreures, on le gère.
+On a toujours des difficultés avec le makefile, c'est vraiment pas du tout claire comment faire fonctionner ce truc. En plus il faut le changer pour chaque teste qu'on fait, puisque
+on ne vois pas comment faire un makefile pour tout.
+On n'est toujours pas sur si un ObjetPhysique devrait avoir une contraine qui est un melange d'autres, ou juste un tableau de contrainte.
+On a realiser que c'etait con de mettre des unique_ptr pour les Contraintes et Champs dans Systeme puisque les ObjetPhysique on en ont besoins aussi.
+On avait aussi essayer de mettre des folders pour mettre des fichier similaire (PointMat, ObjetPhy, etc) ensemble mais cela demandait qu'on ecrivent des #include plus compliquer
+et moche et cela était un peu confusing. Les "paths".
+Le probleme principale:
+Les trois fichiers ObjetPhysique.h, PointMateriel.h et Systeme_Dessin.h s'incluait en boucle, puisque ObjetPhysique est un Dessinable, mais Point PointMateriel est un ObjetPhysique,
+et que la classe Systeme et SupportADessin (public Dessinable) utilisent des PointMateriel.
+On avait donc essayer de separer chaque classe dans leur propre .h pour que ça soit claire et qu'on puisse inclure le minimum dans chaque classe,
+sauf que cela avait empirer le problème et on avait beaucoup plus de boucle d'include (malgré le #pragma once??) 
+Ayant fait un peu de recherche on trouvais des solutions POTENTIELLE qui utilisait
+des #ifndef mais on arrivait pas a réelment comprendre comment ça fonctionnait, dans le sense comment correctement implementer ça dans notre code, et donc on a choisi de faire la 
+meilleure deuxieme option (surement pas pour vous) de mettre tout ça dans le même fichier, appropriately named "TheBig3". CERTES, c'est pas très attirant niveau projet, MAIS ça fonctionne. 
+Si tout est au même endroit, pas de boucle de inclusion. En plus, c'est plus simple de faire un makefile puisqu'il y a moins de fichier.
  
