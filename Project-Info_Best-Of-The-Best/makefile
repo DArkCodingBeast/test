@@ -1,17 +1,17 @@
-CXX = g++
+.RECIPEPREFIX = >
 CC = $(CXX)
-CXXFLAGS = -std=c++11 # C++11, ou autre suivant vos préférences
-# Partie commentée : choisissez les options que vous voulez avoir
-# en décommentant la/les lignes correspondantes
-#
-CXXFLAGS += -pedantic -Wall # pour les pur(e)s et dur(e)s
-# CXXFLAGS += -g # pour debugger
-CXXFLAGS += -O2 # pour optimiser la vitesse
+CXXFLAGS = -std=c++11 -pedantic -Wall
+
 all: testVecteur
+
+testVecteur: testVecteur.o Vecteur.o
+>$(CC) $(CXXFLAGS) testVecteur.o Vecteur.o -o testVecteur
+testVecteur.o: testVecteur.cc Vecteur.h
+>$(CC) $(CXXFLAGS) -c testVecteur.cc -o testVecteur.o
 Vecteur.o: Vecteur.cc Vecteur.h
-PointMateriel.o: PointMateriel.cc PointMateriel.h
-ObjetMobile.o: ObjetMobile.cc ObjetMobile.h
-testVecteur.o: testVecteur.cc Vecteur.h ObjetMobile.cc ObjetMobile.h PointMateriel.cc PointMateriel.h
-testVecteur: testVecteur.o
-	
-# to make, mingw32-make then .\testVecteur
+>$(CC) $(CXXFLAGS) -c Vecteur.cc -o Vecteur.o
+
+
+
+
+
