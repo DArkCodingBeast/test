@@ -13,31 +13,71 @@ class Dessinable {
 std::ostream& operator<<(std::ostream&, Dessinable const&);
 
 class Systeme {
-protected:
+private:
 std::vector<std::unique_ptr<Dessinable>> objets;
-std::vector<std::unique_ptr<Contrainte>> contraintes;
-std::vector<std::unique_ptr<ChampForces>> champs;
+std::vector<std::shared_ptr<Contrainte>> contraintes;
+std::vector<std::shared_ptr<ChampForces>> champs;
 IntegrateurEulerCromer integrateur;
 double temps;
 
 public:
 Systeme();
-Systeme(std::vector<std::unique_ptr<Dessinable>>&&, std::vector<std::unique_ptr<Contrainte>>&&, std::vector<std::unique_ptr<ChampForces>>&&, 
+Systeme(std::vector<std::unique_ptr<Dessinable>>&&, std::vector<std::shared_ptr<Contrainte>>&&, std::vector<std::shared_ptr<ChampForces>>&&, 
     IntegrateurEulerCromer, double);
 
 const std::vector<std::unique_ptr<Dessinable>>& getObjets() const;
-const std::vector<std::unique_ptr<Contrainte>>& getContraintes() const;
-const std::vector<std::unique_ptr<ChampForces>>& getChamp() const;
+const std::vector<std::shared_ptr<Contrainte>>& getContraintes() const;
+const std::vector<std::shared_ptr<ChampForces>>& getChamp() const;
 double getTemps() const;
 
 void ajouter_objet(std::unique_ptr<Dessinable>);
-void ajouter_contrainte(std::unique_ptr<Contrainte>);
-void ajouter_champ(std::unique_ptr<ChampForces>);
+void ajouter_contrainte(std::shared_ptr<Contrainte>);
+void ajouter_champ(std::shared_ptr<ChampForces>);
 void dessine_sur(SupportADessin&) const;
 void evolue(double) const;
 };
 
 std::ostream& operator<<(std::ostream&, Systeme const&);
+
+/*
+class Systeme{
+private:
+    std::vector<std::unique_ptr<Objet_physique>> objets;
+    std::vector<std::shared_ptr<Contrainte>> contraintes;
+    std::vector<std::shared_ptr<ChampForces>> champs;
+    IntegrateurEulerCromer integrateur;
+    double temps;
+
+public:
+    //constructeurs
+    Systeme();
+
+    Systeme(std::vector<std::unique_ptr<Objet_physique>> objets);
+
+    Systeme(std::vector<std::shared_ptr<Contrainte>> contraintes);
+
+    Systeme(std::vector<std::shared_ptr<ChampForces>> champs);
+
+
+    //méthode d'ajout
+    void ajouterObjet(Objet_physique& );
+
+    void ajouterContrainte(std::shared_ptr<Contrainte>);
+
+    void ajouterChamp(std::shared_ptr<ChampForces>);
+
+    //changement de contrainte j sur objet i
+
+    void ChangementContrainteSurObjet(size_t const&, size_t const&);
+
+    void ChangementChampSurObjet(size_t const&, size_t const&);
+    //affichage
+
+    void affiche(std::ostream&);
+
+    double gettemps()const {return temps;}
+};
+*/
 
 class SupportADessin {
     public:
