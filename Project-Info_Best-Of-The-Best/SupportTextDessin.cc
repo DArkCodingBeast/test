@@ -1,5 +1,4 @@
 #include "SupportTextDessin.h"
-#include "ObjetPhysique.h"
 #include "Systeme.h"
 
 TextViewer::TextViewer(std::ostream& sortie)

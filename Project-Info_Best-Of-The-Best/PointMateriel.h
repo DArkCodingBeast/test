@@ -1,6 +1,3 @@
-#include "Vecteur.h"
-#include "ChampForces.h"
-#include "Contrainte.h"
 #include "ObjetPhysique.h"
 #pragma once
 

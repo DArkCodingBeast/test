@@ -1,11 +1,8 @@
-#include "Vecteur.h"
-#include "Contrainte.h"
-#include "ChampForces.h"
 #include "Integrateur.h"
+#include "ObjetPhysique.h"
 #pragma once
 
 //Prototypes
-class ObjetPhysique;
 class SupportADessin;
 
 class Systeme {

@@ -80,3 +80,6 @@ on ne peut pas tester sans, mais on arrive pas a le faire fonctionner.
 Un problème avec mettre des prototypes dans les .h est que le compilateur ne semble pas aimer créer une sous-class d'un prototype. Specifiquement une double-sous class, comme ObjetPhysique
 qui est un ObjetMobile ET un Dessinable, donc il est possible que on mette juste la class Dessinable avec ObjetPhysique, puisque on a bel-et-bien mis Integrateur avec IntegrateurEulerCromer
 et SupportADessin avec TextViewer. A voir.
+..
+Ok on a un petit peu abusé, on ne peut pas mettre des prototypes partout et on peut inclure des .h quand même. On va dessiner un schema des includes pour assurer qu'on a pas de boucle,
+et pour voir quels include on peut mettre pour eviter des prototypes non necessaires.
