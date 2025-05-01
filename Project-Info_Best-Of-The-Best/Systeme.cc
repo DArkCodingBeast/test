@@ -1,5 +1,4 @@
 #include "Systeme.h"
-#include "SupportTextDessin.h"
 
 Systeme::Systeme() : objets(), contraintes(), champs(), integrateur(0.01), temps(0.0) {}
 Systeme::Systeme(std::vector<std::unique_ptr<ObjetPhysique>>&& objets, std::vector<std::shared_ptr<Contrainte>>&& contraintes, std::vector<std::shared_ptr<ChampForces>>&& champs, 

@@ -1,9 +1,7 @@
 #include "Integrateur.h"
 #include "ObjetPhysique.h"
+#include "SupportTextDessin.h"
 #pragma once
-
-//Prototypes
-class SupportADessin;
 
 class Systeme {
     private:
