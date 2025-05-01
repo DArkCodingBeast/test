@@ -4,24 +4,27 @@ Semaine 1:
 -Finir la class vecteur
 -création fichiers JOURNAL, REPONSES, CONCEPTION, 
 
+Semaine 2:
+On a commencer a coder le vecteur.cc pour après le separer en Vecteur.h et .cc, on n'est toujours pas entierement convaincu du fait qu'il faut 
+separer les .h et .cc, on ne voit pas l'interet.
+Pour l'instant on ne gère pas trop les erreurs professionellement, un petit cout avec une description de l'erreur fera l'affaire...
+On avait déjà fait un petit peu de python au gymnase et quand on voulais inclure un autre fichier, c'etait déjà avec tout le code dejà fait, mais bon.
+You guys are the professionals.
+On a créer le point materiel et la constante gravitationel. On les a mis dans les mêmes fichier, a quoi bon tout separer?? So far so good
 
+Semaine 3:
+Oops, we forgot to code.
 
-Semaine 
+Semaine 4:
+On a separer le point materiel dans son .h et .cc, all good for now.
+On a créer ObjetMobile (edit from the future: on mis des vectors de double dans le protected, ayant completement oublié qu'on avait créer une classe vecteur juste pour ça),
+on a fix quelques erreurs dans Vecteur, principalement les operateurs avait quelques faute. En même temps la syntaxe de ses operateurs sont bizarre.
+A chaque fois on oublie comment faire l'operateur <<. C'est pas intuitif.
 
-
-
-
-Semaine 
-
-
-
-
-Semaine 
-
-
-
-
-Semaine 
+Semaine 5:
+On recode l'operateur << du ObjetMobile parce qu'il etait faux. Choquant. 
+WAAA MAIS. Ok on a completement oublié qu'on avait créer une classe Vecteur pour representer des vecteurs. Trop des genie. En plus ça rend les methodes qui utilise des additions
+et multiplications mille fois plus simple. On s'était compliquer la vie. C'est plus beau mtn.
 
 
 
@@ -84,3 +87,4 @@ et SupportADessin avec TextViewer. A voir.
 Ok on a un petit peu abusé, on ne peut pas mettre des prototypes partout et on peut inclure des .h quand même. On va dessiner un schema des includes pour assurer qu'on a pas de boucle,
 et pour voir quels include on peut mettre pour eviter des prototypes non necessaires.
 Bon, pour finir, après du nettoyage, seulement SupportADessin et Dessinable ont un prototype chacun. C'est assez.
+Ah, pour dieu sait pourquoi, on avait mis "protected" au lieu de "private". Pas entierement sûr pourquoi mais bon. C'est changée.
