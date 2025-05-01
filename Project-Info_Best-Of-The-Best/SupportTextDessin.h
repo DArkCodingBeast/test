@@ -2,9 +2,8 @@
 #include "ObjetPhysique.h"
 #pragma once
 
-//prototypes
+//prototype
 class Systeme;
-
 
 class SupportADessin {
     public:

@@ -83,3 +83,4 @@ et SupportADessin avec TextViewer. A voir.
 ..
 Ok on a un petit peu abusé, on ne peut pas mettre des prototypes partout et on peut inclure des .h quand même. On va dessiner un schema des includes pour assurer qu'on a pas de boucle,
 et pour voir quels include on peut mettre pour eviter des prototypes non necessaires.
+Bon, pour finir, après du nettoyage, seulement SupportADessin et Dessinable ont un prototype chacun. C'est assez.

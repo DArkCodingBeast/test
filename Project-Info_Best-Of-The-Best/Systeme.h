@@ -1,5 +1,4 @@
 #include "Integrateur.h"
-#include "ObjetPhysique.h"
 #include "SupportTextDessin.h"
 #pragma once
 
