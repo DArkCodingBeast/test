@@ -91,4 +91,7 @@ Bon, on y a reflechit, et on a conclu de ce gros fichier avec tout n'etait pas u
 dans les .h puis inclure les class necessaires dans les .cc, afin d'eviter cette boucle en chaine. Donc c'est fait. Maintenant que nous avons mil et un fichiers, on veut les organiser dans
 des folders mais on n'arrive toujours pas a comprendre comment correctement include avec les nouveau path names :(. Hélas. Il est aussi temps qu'on commence a faire des tests.... On en
 n'avais pas encore fait hahahhaha... sauf pour la class vecteur au debut mais. Je met la faute sur le makefile (et donc sur nous pour ne pas avoir compris le makefile), puisque
-on ne peut pas tester sans, mais on arrive pas a le faire fonctionner. 
+on ne peut pas tester sans, mais on arrive pas a le faire fonctionner.
+Un problème avec mettre des prototypes dans les .h est que le compilateur ne semble pas aimer créer une sous-class d'un prototype. Specifiquement une double-sous class, comme ObjetPhysique
+qui est un ObjetMobile ET un Dessinable, donc il est possible que on mette juste la class Dessinable avec ObjetPhysique, puisque on a bel-et-bien mis Integrateur avec IntegrateurEulerCromer
+et SupportADessin avec TextViewer. A voir.
