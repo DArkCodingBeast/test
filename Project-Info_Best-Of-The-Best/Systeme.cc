@@ -1,8 +1,5 @@
 #include "Systeme.h"
-#include "Integrateur.h"
-#include "Contrainte.h"
 #include "ObjetPhysique.h"
-#include "ChampForces.h"
 #include "SupportTextDessin.h"
 
 Systeme::Systeme() : objets(), contraintes(), champs(), integrateur(0.01), temps(0.0) {}

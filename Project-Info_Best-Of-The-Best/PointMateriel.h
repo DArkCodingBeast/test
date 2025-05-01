@@ -1,9 +1,9 @@
 #include "Vecteur.h"
+#include "ChampForces.h"
+#include "Contrainte.h"
 #pragma once
 
 //prototypes
-class GravitationConstante;
-class Contrainte;
 class ObjetPhysique;
 
 class PointMateriel : public ObjetPhysique {	

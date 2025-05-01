@@ -1,11 +1,11 @@
 #include "Vecteur.h"
+#include "Contrainte.h"
+#include "ChampForces.h"
+#include "Integrateur.h"
 #pragma once
 
 //Prototypes
-class IntegrateurEulerCromer;
 class ObjetPhysique;
-class Contrainte;
-class ChampForces;
 class SupportADessin;
 
 class Systeme {

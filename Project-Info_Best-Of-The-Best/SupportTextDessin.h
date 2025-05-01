@@ -1,3 +1,4 @@
+#include <ostream>
 #pragma once
 
 //prototypes
