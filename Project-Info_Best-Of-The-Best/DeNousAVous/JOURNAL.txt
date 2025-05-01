@@ -25,7 +25,8 @@ Semaine 5:
 On recode l'operateur << du ObjetMobile parce qu'il etait faux. Choquant. 
 WAAA MAIS. Ok on a completement oublié qu'on avait créer une classe Vecteur pour representer des vecteurs. Trop des genie. En plus ça rend les methodes qui utilise des additions
 et multiplications mille fois plus simple. On s'était compliquer la vie. C'est plus beau mtn.
-
+Creation d'ObjetPhysique, ayant dedans L'Objet Physique, les contraintes, et les contraintes libres. Oui on met dans les même fichiers les differentes classes par exercises.
+Tant qu'on voit pas l'interêt de les separer, ça va rester comme ça.
 
 
 
