@@ -85,4 +85,10 @@ Ayant fait un peu de recherche on trouvais des solutions POTENTIELLE qui utilisa
 des #ifndef mais on arrivait pas a réelment comprendre comment ça fonctionnait, dans le sense comment correctement implementer ça dans notre code, et donc on a choisi de faire la 
 meilleure deuxieme option (surement pas pour vous) de mettre tout ça dans le même fichier, appropriately named "TheBig3". CERTES, c'est pas très attirant niveau projet, MAIS ça fonctionne. 
 Si tout est au même endroit, pas de boucle de inclusion. En plus, c'est plus simple de faire un makefile puisqu'il y a moins de fichier.
- 
+
+Semaine 10:
+Bon, on y a reflechit, et on a conclu de ce gros fichier avec tout n'etait pas une si bonne idée après tout. Après un peu de discussion, on a réaliser qu'on pouvait mettre les prototypes
+dans les .h puis inclure les class necessaires dans les .cc, afin d'eviter cette boucle en chaine. Donc c'est fait. Maintenant que nous avons mil et un fichiers, on veut les organiser dans
+des folders mais on n'arrive toujours pas a comprendre comment correctement include avec les nouveau path names :(. Hélas. Il est aussi temps qu'on commence a faire des tests.... On en
+n'avais pas encore fait hahahhaha... sauf pour la class vecteur au debut mais. Je met la faute sur le makefile (et donc sur nous pour ne pas avoir compris le makefile), puisque
+on ne peut pas tester sans, mais on arrive pas a le faire fonctionner. 
