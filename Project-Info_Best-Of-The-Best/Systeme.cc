@@ -1,12 +1,9 @@
-#include "Systeme_Dessin.h"
-
-class SupportADessin;
-
-std::ostream& operator<<(std::ostream& sortie, Dessinable const& dess){
-    sortie << "Dessinable object";
-    return sortie;
-}
-
+#include "Systeme.h"
+#include "Integrateur.h"
+#include "Contrainte.h"
+#include "ObjetPhysique.h"
+#include "ChampForces.h"
+#include "SupportTextDessin.h"
 
 Systeme::Systeme() : objets(), contraintes(), champs(), integrateur(0.01), temps(0.0) {}
 Systeme::Systeme(std::vector<std::unique_ptr<ObjetPhysique>>&& objets, std::vector<std::shared_ptr<Contrainte>>&& contraintes, std::vector<std::shared_ptr<ChampForces>>&& champs, 
@@ -53,17 +50,3 @@ std::ostream& operator<<(std::ostream& sortie, Systeme const& systeme) {
     }
     return sortie;
 }
-
-
-TextViewer::TextViewer(std::ostream& sortie)
-    : sortie(sortie)
-    {}
-     
-void TextViewer::dessine(PointMateriel const& point){
-    sortie << point << std::endl;
-}
-    
-void TextViewer::dessine(Systeme const& systeme) {
-    sortie << systeme << std::endl;
-}
-

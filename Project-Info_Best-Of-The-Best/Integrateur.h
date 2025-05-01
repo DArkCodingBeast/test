@@ -10,7 +10,7 @@ class Integrateur {
         double dt;
     };
     
-    class IntegrateurEulerCromer : public Integrateur {
+class IntegrateurEulerCromer : public Integrateur {
     public:
         IntegrateurEulerCromer();
         IntegrateurEulerCromer(double);
