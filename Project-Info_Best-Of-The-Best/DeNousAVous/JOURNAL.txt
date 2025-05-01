@@ -1,20 +1,5 @@
 Journal:
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 Semaine 1:
 -Finir la class vecteur
 -création fichiers JOURNAL, REPONSES, CONCEPTION, 
