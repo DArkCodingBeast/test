@@ -1,11 +1,10 @@
-#include "Vecteur.h"
+#include "Dessinable.h"
+#include "ObjetMobile.h"
 #pragma once
 
 //prototypes
 class Contrainte;
 class ChampForces;
-class Dessinable;
-class ObjetMobile;
 
 class ObjetPhysique : public ObjetMobile, public Dessinable {
     protected :

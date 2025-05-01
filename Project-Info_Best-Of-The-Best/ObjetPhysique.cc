@@ -1,8 +1,6 @@
 #include "ObjetPhysique.h"
 #include "Contrainte.h"
 #include "ChampForces.h"
-#include "Dessinable.h"
-#include "ObjetMobile.h"
 
 ObjetPhysique::ObjetPhysique (ObjetPhysique const& autre):  ObjetMobile(autre.getParam()),cont(autre.get_cont()), champ(autre.get_champ()), 
     dim(autre.get_dim()), masse(autre.get_masse()), charge(autre.get_charge()){}

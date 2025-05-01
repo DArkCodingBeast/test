@@ -1,10 +1,9 @@
 #include "Vecteur.h"
 #include "ChampForces.h"
 #include "Contrainte.h"
+#include "ObjetPhysique.h"
 #pragma once
 
-//prototypes
-class ObjetPhysique;
 
 class PointMateriel : public ObjetPhysique {	
     public:
