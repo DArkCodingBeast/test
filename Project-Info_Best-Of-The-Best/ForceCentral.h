@@ -1,7 +1,5 @@
 #include "ObjetPhysique.h"
-#include "Vecteur.h"
 #include "constantes.h"
-#include "ObjetPhysique.h"
 #pragma once
 
 
