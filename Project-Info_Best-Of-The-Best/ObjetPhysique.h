@@ -7,7 +7,7 @@
 #include <memory> // Pour std::shared_ptr
 
 
-class ObjetPhysique : public ObjetMobile {
+class ObjetPhysique : public ObjetMobile, public Dessinable{
 public:
     ObjetPhysique(ObjetPhysique const&);
     ObjetPhysique(Vecteur, Vecteur, std::shared_ptr<Contrainte>, std::shared_ptr<ChampForces>, double, double, unsigned int);
