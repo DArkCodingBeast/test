@@ -8,6 +8,7 @@ public:
 
     //contstruct
     ObjetMobile(Vecteur para = {0,0,0});
+    ObjetMobile(Vecteur para, Vecteur derive);
     //Methode
     virtual Vecteur evolution(double) = 0;
     void affiche(std::ostream&) const;
@@ -27,6 +28,6 @@ protected:
 
 };
 
-std::ostream& operator<<(std::ostream&, const ObjetMobile&);
+std::ostream& operator<<(std::ostream&,  ObjetMobile const&);
 
 

@@ -1,32 +1,34 @@
+#pragma once
 #include "Dessinable.h"
 #include "ObjetMobile.h"
+#include "Vecteur.h"
 #include "Contrainte.h"
 #include "ChampForces.h"
-#pragma once
+#include <memory> // Pour std::shared_ptr
 
-class ObjetPhysique : public ObjetMobile, public Dessinable {
-    protected :
-        Contrainte& cont;
-        ChampForces& champ;
-        unsigned int dim;
-        double masse;
-        double charge;
-    
-    public:
-    
-        ObjetPhysique (ObjetPhysique const&);
-        ObjetPhysique (Vecteur, Contrainte& , ChampForces& , unsigned int, double, double);
-        Contrainte & get_cont() const;
-        ChampForces & get_champ() const;
-        unsigned int get_dim() const ;
-        double get_masse() const ;
-        double get_charge() const;
-        Vecteur force(double t = 0) const ;            
-        Vecteur position() const ;
-        Vecteur vitesse() const ;
-        void affiche(std::ostream& sortie) const;
-        void affiche(std::ostream& sortie,double temps) const;
-    };
 
-    std::ostream& operator<<(std::ostream&, ObjetPhysique const& );
+class ObjetPhysique : public ObjetMobile {
+public:
+    ObjetPhysique(ObjetPhysique const&);
+    ObjetPhysique(Vecteur, Vecteur, std::shared_ptr<Contrainte>, std::shared_ptr<ChampForces>, double, double, unsigned int);
+    ObjetPhysique(Vecteur, std::shared_ptr<Contrainte>, std::shared_ptr<ChampForces>, double, double, unsigned int);
+    ObjetPhysique(Vecteur, Vecteur, double, double, unsigned int);
+
+    std::shared_ptr<Contrainte> get_cont() const;
+    std::shared_ptr<ChampForces> get_champ() const;
+    unsigned int get_dim() const;
+    double get_masse() const;
+    double get_charge() const;
+    Vecteur force(double t) const;
+    Vecteur position() const;
+    Vecteur vitesse() const;
+    void affiche(std::ostream&) const;
+
+protected:
+    std::shared_ptr<Contrainte> cont;
+    std::shared_ptr<ChampForces> champ;
+    unsigned int dim;
+    double masse;
+    double charge;
+};
     

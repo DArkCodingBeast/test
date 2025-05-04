@@ -1,5 +1,10 @@
 #include "ObjetPhysique.h"
+#include "Vecteur.h"
 #include "constantes.h"
+#include "ObjetPhysique.h"
+#include "PointMateriel.h"
+#include "ChampForces.h"
+#include <iostream>
 #pragma once
 
 
@@ -12,7 +17,7 @@ protected:
    // This is the object that will be used to calculate the force
 
 public:
-   ForceCentral(ObjetPhysique const& );
+   ForceCentral(PointMateriel& );
 };
 
 
@@ -20,7 +25,9 @@ public:
 class ChampNewtonien : public ForceCentral
 {
 public :
-   virtual Vecteur force(ObjetPhysique const&, double);
-   virtual void affiche(ObjetPhysique const&, double);
+
+   ChampNewtonien(PointMateriel &);
+   virtual Vecteur force(ObjetPhysique const&, double) ;
+   virtual void affiche(std::ostream&) const ;
 
 };

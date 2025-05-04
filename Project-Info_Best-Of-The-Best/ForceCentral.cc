@@ -2,6 +2,7 @@
 
 
 
+ForceCentral::ForceCentral(PointMateriel & objet): obj(objet) {}  
 
 Vecteur ForceCentral::quadratique_inverse(ObjetPhysique const& autre) 
 	{Vecteur diff(obj.getParam()-autre.getParam());
@@ -10,11 +11,10 @@ Vecteur ForceCentral::quadratique_inverse(ObjetPhysique const& autre)
      else 
 		return diff.mult(1/(diff.norme()*diff.norme2())); }
 
-ForceCentral::ForceCentral(ObjetPhysique const& objet): obj(objet) {}  
 
 
+
+ChampNewtonien::ChampNewtonien(PointMateriel & point) : ForceCentral(point) {}
 
 Vecteur ChampNewtonien::force(ObjetPhysique const& autre, double t) {return quadratique_inverse(autre)*autre.get_masse()*obj.get_masse()*constantes::G;}
-
-
-void ChampNewtonien::affiche(ObjetPhysique const& autre, double t) {};
+void ChampNewtonien::affiche(std::ostream& sortie) const {sortie << "le champ newtonien associé aux point mat.";};

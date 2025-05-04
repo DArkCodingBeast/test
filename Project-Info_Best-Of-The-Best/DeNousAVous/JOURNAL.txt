@@ -94,4 +94,12 @@ et SupportADessin avec TextViewer. A voir.
 Ok on a un petit peu abusé, on ne peut pas mettre des prototypes partout et on peut inclure des .h quand même. On va dessiner un schema des includes pour assurer qu'on a pas de boucle,
 et pour voir quels include on peut mettre pour eviter des prototypes non necessaires.
 Bon, pour finir, après du nettoyage, seulement SupportADessin et Dessinable ont un prototype chacun. C'est assez.
-Ah, pour dieu sait pourquoi, on avait mis "protected" au lieu de "private". Pas entierement sûr pourquoi mais bon. C'est changée.
+Ah, dieu seul sait pourquoi, on avait mis "protected" au lieu de "private". Pas entierement sûr pourquoi mais bon. C'est changée.
+..
+--On a decidé de change toutes les references aux ChampForces et Contraintes dans les ObjetPhysique pour les remplacer avec des shared_ptr, on a également rajouté plusieurs constructeurs 
+a la classe PointMateriel, ObjetPhysique et ObjerMobile pour avoir un peu plus de liberté et de plus on a corrigé les constructeurs de ObjetMobiles car on a avait oublié d'initialiser 
+le vecteur vitesse d'un objet, (a chaque fois il etait initialiser a {0,0,0} ).
+
+--On peut enfin commencer a tester notre code avec le test ChuteDePommes. Pour cela on a modifier le makefile et comme le fichier Dessinable a encore des petits soucis, on a retirer 
+temporairement le lien d'heritage de ObjetPhysique et Dessinable (ObjetPhysique n'est plus sous-classes de Dessinable). Tout les fichier arrive a bien compile mais appararamment il manque 
+certaines definitons de methodes dans les fichier PointMateriel, ObjetPhysique et ObjerMobile ainsi que les operateurs <<, et donc on ne peut pas encore tester ChuteDePommes.

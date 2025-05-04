@@ -5,7 +5,7 @@
     
 class Vecteur {
 
-    private:
+    protected:
         std::vector<double> vect;
     
     public:

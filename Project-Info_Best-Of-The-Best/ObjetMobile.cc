@@ -3,6 +3,9 @@
 //contstruct
 ObjetMobile::ObjetMobile(Vecteur para) 
         : parameters(para), derivee_temporelle(para.get_dim()) {}
+        
+ObjetMobile::ObjetMobile(Vecteur para , Vecteur derive)
+		: parameters(para), derivee_temporelle(derive) {}
 
 
 void ObjetMobile::affiche(std::ostream& sortie) const {
@@ -26,7 +29,7 @@ Vecteur& ObjetMobile::getDerive() {return derivee_temporelle;}
 Vecteur ObjetMobile::getParam() const {return parameters;}
 Vecteur ObjetMobile::getDerive() const {return derivee_temporelle;}
 
-std::ostream& operator<<(std::ostream& sortie, const ObjetMobile& obj){
+std::ostream& operator<<(std::ostream& sortie,  ObjetMobile const& obj){
     obj.affiche(sortie);
     sortie << std::endl;
     return sortie;}
