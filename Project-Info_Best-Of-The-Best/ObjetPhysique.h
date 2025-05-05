@@ -6,6 +6,8 @@
 #include "ChampForces.h"
 #include <memory> // Pour std::shared_ptr
 
+//prototype
+class SupportADessin;
 
 class ObjetPhysique : public ObjetMobile, public Dessinable{
 public:
@@ -24,6 +26,7 @@ public:
     Vecteur position() const;
     Vecteur vitesse() const;
     void affiche(std::ostream&) const;
+    virtual Vecteur evolution(double) = 0;
 
 protected:
     std::shared_ptr<Contrainte> cont;
