@@ -21,12 +21,10 @@ int main(){
 	double dt(1e-3);
 	//cout << p.evolution(t);
 	cout<< "temps:" << t << endl << p << endl;
-	for(size_t i(0); i< 2; i++){
+	for(size_t i(0); i< 5; ++i){
 		integ.integre(p,t,dt);
 		t += dt;
-		if((i%100)==99){
 		cout<< "temps:" << t << endl << p << endl;
-	}
 }
 	
 	
