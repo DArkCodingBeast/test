@@ -4,15 +4,15 @@ CXXFLAGS = -std=c++11 -pedantic -Wall
 
 
 #fichier a executable lors du /make:
-all: testVecteur testintegrateur	
+all: testVecteur testChutePommes	
 
 
 # compilation des executable/cibles:
 testVecteur: testVecteur.o Vecteur.o
 >$(CC) $(CXXFLAGS) testVecteur.o Vecteur.o -o testVecteur
 
-testintegrateur: testintegrateur.o Vecteur.o PointMateriel.o ForceCentral.o Contrainte.o Integrateur.o ObjetPhysique.o ObjetMobile.o
->$(CC) $(CXXFLAGS) testintegrateur.o Vecteur.o PointMateriel.o ForceCentral.o Contrainte.o Integrateur.o -o testIntegrateur
+testintegrateur: ChutePommes.o Vecteur.o PointMateriel.o ForceCentral.o Contrainte.o Integrateur.o ObjetPhysique.o ObjetMobile.o
+>$(CC) $(CXXFLAGS) ChutePommes.o Vecteur.o PointMateriel.o ForceCentral.o Contrainte.o Integrateur.o -o testChutePommes
 
 
 
@@ -45,13 +45,13 @@ Integrateur.o: Integrateur.cc Integrateur.h
 testVecteur.o: testVecteur.cc Vecteur.h
 >$(CC) $(CXXFLAGS) -c testVecteur.cc -o testVecteur.o
 
-testintegrateur.o: testintegrateur.cc PointMateriel.h ForceCentral.h Contrainte.h Integrateur.h Vecteur.h
->$(CC) $(CXXFLAGS) -c testintegrateur.cc -o testintegrateur.o
+testChutePommes.o: testChutePommes.cc PointMateriel.h ForceCentral.h Contrainte.h Integrateur.h Vecteur.h
+>$(CC) $(CXXFLAGS) -c testChutePommes.cc -o testChutePommes.o
 
 
 
 clean:
->rm -f *.o testIntegrateur testVecteur
+>rm -f *.o testChutePommes testVecteur
 
 
 
