@@ -16,7 +16,7 @@ class Vecteur {
         std::vector<double> get_vect() const;
         std::size_t get_dim() const;
         void augmente(double); //increase dimension
-        void set_coord(unsigned int, double); //change value
+        void set_coord(std::size_t, double); //change value
         void affiche(std::ostream&) const; //afficher les elements
         bool compare(const Vecteur&) const; //regard si on a les memes vecteurs
         Vecteur addition(Vecteur) const; //additionnes les elements d'un vecteur

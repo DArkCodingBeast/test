@@ -29,12 +29,12 @@ double ObjetPhysique::get_charge() const     {return charge;}
 Vecteur ObjetPhysique:: force(double t) const   {return champ->force(*this,t);}             
 Vecteur ObjetPhysique:: position() const     {return cont->position(*this);}
 Vecteur ObjetPhysique:: vitesse() const   {return cont->vitesse(*this);}
-void ObjetPhysique::affiche(std::ostream& sortie) const
-{sortie << "Le vecteur d'etat est : " << getParam() << std::endl
-<< "Le vecteur vitesse est : " << getDerive() << std::endl 
-<< "La masse est : "<< get_masse() << std::endl 
-<< "La dimension est : " << get_dim() << std::endl 
-<< "La charge electrique est : "<< get_charge() << std::endl; }
+void ObjetPhysique::affiche(std::ostream& sortie) const{
+    sortie << "Le vecteur d'etat est : " << getParam() << std::endl
+           << "Le vecteur vitesse est : " << getDerive() << std::endl 
+           << "La masse est : "<< get_masse() << std::endl 
+           << "La dimension est : " << get_dim() << std::endl 
+           << "La charge electrique est : "<< get_charge() << std::endl; }
 
 std::ostream& operator<<(std::ostream& sortie, ObjetPhysique const& autre){
     autre.affiche(sortie);   

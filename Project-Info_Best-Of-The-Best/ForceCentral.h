@@ -26,7 +26,7 @@ class ChampNewtonien : public ForceCentral
 {
 public :
 
-   ChampNewtonien(PointMateriel &);
+   ChampNewtonien(PointMateriel&);
    virtual Vecteur force(ObjetPhysique const&, double) ;
    virtual void affiche(std::ostream&) const ;
 

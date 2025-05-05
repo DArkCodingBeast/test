@@ -11,7 +11,7 @@ int main(){
 	Libre contrainte;
 	Vecteur position_p(0,0,10);
 	Vecteur vitesse_p(0,0,0);
-	Vecteur position_t(0,0,-6371000);
+	Vecteur position_t(0,0,-6748345);
 	Vecteur vitesse_t(0,0,0);
 	PointMateriel terre(position_t, vitesse_t, 5.972e24);
 	ChampNewtonien grav(terre);

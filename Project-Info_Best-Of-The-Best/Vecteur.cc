@@ -57,7 +57,7 @@ void Vecteur::augmente(double val) //increase dimension avec valeur
         vect.push_back(val);
 
 }
-void Vecteur::set_coord(unsigned int coord, double value) //change value
+void Vecteur::set_coord(std::size_t coord, double value) //change value
     {
         if (coord > vect.size()) // If the vector has less dimensions than the coordinate 
         {

@@ -16,7 +16,6 @@ testChutePommes: testChutePommes.o Vecteur.o PointMateriel.o ForceCentral.o Cont
 
 
 
-
 # Compilation de tout les fichier:
 Vecteur.o: Vecteur.cc Vecteur.h
 >$(CC) $(CXXFLAGS) -c Vecteur.cc -o Vecteur.o
