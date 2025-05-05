@@ -11,8 +11,8 @@ all: testVecteur testChutePommes
 testVecteur: testVecteur.o Vecteur.o
 >$(CC) $(CXXFLAGS) testVecteur.o Vecteur.o -o testVecteur
 
-testintegrateur: ChutePommes.o Vecteur.o PointMateriel.o ForceCentral.o Contrainte.o Integrateur.o ObjetPhysique.o ObjetMobile.o
->$(CC) $(CXXFLAGS) ChutePommes.o Vecteur.o PointMateriel.o ForceCentral.o Contrainte.o Integrateur.o -o testChutePommes
+testChutePommes: testChutePommes.o Vecteur.o PointMateriel.o ForceCentral.o Contrainte.o Integrateur.o ObjetPhysique.o ObjetMobile.o ChampForces.o
+>$(CC) $(CXXFLAGS) testChutePommes.o Vecteur.o PointMateriel.o ForceCentral.o Contrainte.o Integrateur.o ObjetPhysique.o ObjetMobile.o ChampForces.o -o testChutePommes
 
 
 
@@ -44,9 +44,6 @@ Integrateur.o: Integrateur.cc Integrateur.h
 
 testVecteur.o: testVecteur.cc Vecteur.h
 >$(CC) $(CXXFLAGS) -c testVecteur.cc -o testVecteur.o
-
-testChutePommes: testChutePommes.o Vecteur.o PointMateriel.o ForceCentral.o Contrainte.o Integrateur.o ObjetPhysique.o ObjetMobile.o ChampForces.o
->$(CC) $(CXXFLAGS) testChutePommes.o Vecteur.o PointMateriel.o ForceCentral.o Contrainte.o Integrateur.o ObjetPhysique.o ObjetMobile.o ChampForces.o -o testChutePommes
 
 
 
