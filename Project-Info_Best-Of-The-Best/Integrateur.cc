@@ -17,7 +17,7 @@ void IntegrateurEulerCromer::integre_1objet(ObjetMobile& obj, double t, double d
 
     }
 
-    void IntegrateurEulerCromer::integre_2objet(ObjetMobile& obj, ObjetMobile& autre, double t, double dt) {
+void IntegrateurEulerCromer::integre_2objet(ObjetMobile& obj, ObjetMobile& autre, double t, double dt) {
 		Vecteur acceleration_1 = obj.evolution(t);
 		Vecteur acceleration_2 = autre.evolution(t);
 		
