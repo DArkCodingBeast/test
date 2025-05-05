@@ -15,7 +15,7 @@ ObjetPhysique::ObjetPhysique (Vecteur paramaters, std::shared_ptr<Contrainte> co
     ObjetMobile(paramaters), cont(cont), champ(champ), dim(dim), masse(masse), charge(charge) {}
     
 ObjetPhysique::ObjetPhysique (Vecteur paramaters, Vecteur derive, double masse, double charge, unsigned int dim):     
-    ObjetMobile(paramaters,derive), cont(std::make_shared<Libre>()), champ(std::make_shared<GravitationConstante>(constantes::g)), dim(dim), masse(masse), charge(charge) {}
+    ObjetMobile(paramaters,derive), cont(std::make_shared<Libre>()), champ(std::make_shared<GravitationConstante>(Vecteur(0,0,0))), dim(dim), masse(masse), charge(charge) {}
 
 
 
