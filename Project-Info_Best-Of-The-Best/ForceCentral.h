@@ -14,7 +14,7 @@ class ForceCentral : public ChampForces
 protected:
    ObjetPhysique const& obj;
    Vecteur quadratique_inverse(ObjetPhysique const&);
-   // This is the object that will be used to calculate the force
+
 
 public:
    ForceCentral(PointMateriel& );
