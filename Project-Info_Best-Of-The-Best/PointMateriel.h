@@ -16,6 +16,7 @@ class PointMateriel : public ObjetPhysique {
         virtual void dessine_sur(SupportADessin&) override;
         virtual Vecteur evolution(double) override;
         void affiche(std::ostream&) const;
+        void set_champ(std::shared_ptr<ChampForces>);
     };
 
 std::ostream& operator<<(std::ostream&, const PointMateriel&);
