@@ -13,7 +13,8 @@ public:
     ObjetPhysique(Vecteur, Vecteur, std::shared_ptr<Contrainte>, std::shared_ptr<ChampForces>, double, double, unsigned int);
     ObjetPhysique(Vecteur, std::shared_ptr<Contrainte>, std::shared_ptr<ChampForces>, double, double, unsigned int);
     ObjetPhysique(Vecteur, Vecteur, double, double, unsigned int);
-
+    
+    void dessine_sur(&SupportADessin) override {}
     std::shared_ptr<Contrainte> get_cont() const;
     std::shared_ptr<ChampForces> get_champ() const;
     unsigned int get_dim() const;
