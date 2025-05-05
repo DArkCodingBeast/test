@@ -17,3 +17,5 @@ class PointMateriel : public ObjetPhysique {
         virtual Vecteur evolution(double) override;
         void affiche(std::ostream&) const;
     };
+
+std::ostream& operator<<(std::ostream&, const PointMateriel&);

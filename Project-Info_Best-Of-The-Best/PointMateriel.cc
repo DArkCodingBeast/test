@@ -20,3 +20,7 @@ PointMateriel::PointMateriel(PointMateriel const& autre): ObjetPhysique (autre){
 void PointMateriel::dessine_sur(SupportADessin&) {}
 Vecteur PointMateriel::evolution(double temps) {return cont->applique_force(*this,champ->force(*this,temps),temps);}
 void PointMateriel::affiche(std::ostream& sortie) const {ObjetPhysique::affiche(sortie);}
+std::ostream& operator<<(std::ostream& sortie, const PointMateriel& p){
+	p.affiche(sortie);
+	return sortie;	
+}
