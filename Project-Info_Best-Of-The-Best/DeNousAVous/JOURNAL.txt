@@ -103,3 +103,5 @@ le vecteur vitesse d'un objet, (a chaque fois il etait initialiser a {0,0,0} ).
 --On peut enfin commencer a tester notre code avec le test ChuteDePommes. Pour cela on a modifier le makefile et comme le fichier Dessinable a encore des petits soucis, on a retirer 
 temporairement le lien d'heritage de ObjetPhysique et Dessinable (ObjetPhysique n'est plus sous-classes de Dessinable). Tout les fichier arrive a bien compile mais appararamment il manque 
 certaines definitons de methodes dans les fichier PointMateriel, ObjetPhysique et ObjerMobile ainsi que les operateurs <<, et donc on ne peut pas encore tester ChuteDePommes.
+
+Semaine 11:
