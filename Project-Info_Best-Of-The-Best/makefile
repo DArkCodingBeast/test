@@ -45,7 +45,7 @@ Integrateur.o: Integrateur.cc Integrateur.h
 testVecteur.o: testVecteur.cc Vecteur.h
 >$(CC) $(CXXFLAGS) -c testVecteur.cc -o testVecteur.o
 
-testChutePommes.o: testChutePommes.cc PointMateriel.h ForceCentral.h Contrainte.h Integrateur.h Vecteur.h
+testChutePommes.o: testChutePommes.cc PointMateriel.o ForceCentral.o Contrainte.o Integrateur.o Vecteur.o ObjetPhysique.o ObjetMobile.o ChampForces.o
 >$(CC) $(CXXFLAGS) -c testChutePommes.cc -o testChutePommes.o
 
 

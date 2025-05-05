@@ -4,7 +4,7 @@
 #include "ObjetPhysique.h"
 
 PointMateriel::PointMateriel(Vecteur parameters, Vecteur derive, std::shared_ptr<ChampForces> champ, std::shared_ptr<Contrainte> cont, double masse, double charge, unsigned int dim): 
-	ObjetPhysique(parameters, derive, cont, champ, dim, masse, charge) {}
+	ObjetPhysique(parameters, derive, cont, champ, masse, charge, dim) {}
 PointMateriel::PointMateriel(Vecteur parameters, std::shared_ptr<ChampForces> champ, std::shared_ptr<Contrainte> cont, double masse, double charge , unsigned int dim): 
 	ObjetPhysique(parameters, cont , champ, masse, charge, dim) {}
 PointMateriel::PointMateriel(Vecteur parameters, Vecteur derive, double masse, double charge, unsigned int dim): 

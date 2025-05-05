@@ -9,8 +9,8 @@
 class PointMateriel : public ObjetPhysique {	
     public:
         PointMateriel(PointMateriel const&);
-        PointMateriel (Vecteur, Vecteur, std::shared_ptr<ChampForces> champ, std::shared_ptr<Contrainte> cont, double, double = 0, unsigned int = 3);
-        PointMateriel(Vecteur, std::shared_ptr<ChampForces> champ, std::shared_ptr<Contrainte> cont, double, double = 0, unsigned int = 3);
+        PointMateriel (Vecteur, Vecteur, std::shared_ptr<ChampForces> /*champ*/, std::shared_ptr<Contrainte> /*cont*/, double, double = 0, unsigned int = 3);
+        PointMateriel(Vecteur, std::shared_ptr<ChampForces> /*champ*/, std::shared_ptr<Contrainte> /*cont*/, double, double = 0, unsigned int = 3);
         PointMateriel(Vecteur, Vecteur, double, double = 0, unsigned int = 3);
         
         virtual void dessine_sur(SupportADessin&) override;
