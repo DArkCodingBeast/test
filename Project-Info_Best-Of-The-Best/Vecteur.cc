@@ -2,8 +2,8 @@
 
 // constructeurs
 Vecteur::Vecteur(std::vector<double> vect) : vect(vect) {}
-Vecteur::Vecteur(std::size_t dim) : vect(dim, 0.0) {}
-Vecteur::Vecteur(double x, double y, double z) : vect({x, y, z}) {}
+Vecteur::Vecteur(std::size_t dim) : vect(std::vector<double>(dim, 0.0)) {}
+Vecteur::Vecteur(double x, double y, double z) : vect(std::vector<double>{x, y, z}) {}
 
 //operateurs
 std::ostream& operator<<(std::ostream& sortie, const Vecteur& vecteur)

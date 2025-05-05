@@ -2,7 +2,7 @@
 #include <iostream>
 #include <cmath>
 #pragma once
-    
+
 class Vecteur {
 
     protected:
