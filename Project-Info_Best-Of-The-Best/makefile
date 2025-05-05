@@ -4,7 +4,7 @@ CXXFLAGS = -std=c++11 -pedantic -Wall
 
 
 #fichier a executable lors du /make:
-all: testVecteur testChutePommes	
+all: testVecteur testChutePommes # test2astres	
 
 
 # compilation des executable/cibles:
@@ -13,6 +13,11 @@ testVecteur: testVecteur.o Vecteur.o
 
 testChutePommes: testChutePommes.o Vecteur.o PointMateriel.o ForceCentral.o Contrainte.o Integrateur.o ObjetPhysique.o ObjetMobile.o ChampForces.o
 >$(CC) $(CXXFLAGS) testChutePommes.o Vecteur.o PointMateriel.o ForceCentral.o Contrainte.o Integrateur.o ObjetPhysique.o ObjetMobile.o ChampForces.o -o testChutePommes
+
+# test2astres: test2astres.o Vecteur.o PointMateriel.o ForceCentral.o Contrainte.o Integrateur.o ObjetPhysique.o ObjetMobile.o ChampForces.o
+# >$(CC) $(CXXFLAGS) test2astres.o Vecteur.o PointMateriel.o ForceCentral.o Contrainte.o Integrateur.o ObjetPhysique.o ObjetMobile.o ChampForces.o -o test2astres
+
+
 
 
 
@@ -43,7 +48,6 @@ Integrateur.o: Integrateur.cc Integrateur.h
 
 testVecteur.o: testVecteur.cc Vecteur.h
 >$(CC) $(CXXFLAGS) -c testVecteur.cc -o testVecteur.o
-
 
 
 clean:
