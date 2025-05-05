@@ -17,6 +17,6 @@ Vecteur ForceCentral::quadratique_inverse(ObjetPhysique const& autre)
 ChampNewtonien::ChampNewtonien(PointMateriel& point) : ForceCentral(point) {}
 
 Vecteur ChampNewtonien::force(ObjetPhysique const& autre, double t){
-	return quadratique_inverse(autre).mult(autre.get_masse()*obj.get_masse()*constantes::G);
+	return quadratique_inverse(autre).mult(-1*autre.get_masse()*obj.get_masse()*constantes::G);
 }
 void ChampNewtonien::affiche(std::ostream& sortie) const {sortie << "le champ newtonien associé aux point mat.";};

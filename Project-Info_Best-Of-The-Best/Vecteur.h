@@ -9,7 +9,7 @@ class Vecteur {
         std::vector<double> vect;
     
     public:
-        Vecteur(std::vector<double> vect = {0});
+        Vecteur(std::vector<double> vect = {});
         Vecteur(std::size_t);
         Vecteur(double, double, double);
 
