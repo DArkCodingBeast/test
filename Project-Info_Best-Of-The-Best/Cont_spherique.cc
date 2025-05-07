@@ -34,7 +34,7 @@ Vecteur Cont_spherique::vitesse(ObjetPhysique const& obj)
       double vphi = obj.getDerive().get_vect()[1]; 
 
 	  Vecteur uteta (cos(teta) * cos(phi), cos(teta) * sin(phi), sin(teta)); // <--- a verif le signe du sin(teta))
-      Vecteur uphi (-1*sin(phi), cos(phi), 0);
+      Vecteur uphi (-1*sin(phi), cos(phi), 0.0);
       
 	  return Vecteur(uteta.mult(rayon * vteta ) + uphi.mult(rayon * sin(teta) * vphi)); }
       
@@ -48,7 +48,7 @@ Vecteur Cont_spherique::applique_force(ObjetPhysique const& obj, Vecteur force ,
   double vphi = vitesse(obj).get_vect()[1];
   
   Vecteur uteta (cos(teta) * cos(phi), cos(teta) * sin(phi), sin(teta)); // <-- verif signe sin(teta)
-  Vecteur uphi (-1*sin(phi), cos(phi), 0);																			
+  Vecteur uphi (-1*sin(phi), cos(phi), 0.0);																			
   
   double acc_teta = (force * uteta) / (obj.get_masse() * rayon) + sin(teta) * cos(teta) * vphi * vphi;			
   double acc_phi = (force * uphi) / (obj.get_masse() * rayon * sin(teta)) - ( 2 * vteta * vphi ) / tan(teta);
