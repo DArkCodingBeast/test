@@ -156,10 +156,9 @@ double Vecteur::prod_scal(const Vecteur& autre) const{ // produit scalaire
     if (autre.get_dim() == get_dim()){
         for (std::size_t i(0); i < get_dim(); ++i){
             scalaire += vect[i]*autre.vect[i];
-        }}
-    
-    //si les dimensions ne sont pas les memes:
-    std::cerr << "les dimensions des vecteurs ne sont pas les memes, returning 0" << std::endl;
+        }} else { 
+            //si les dimensions ne sont pas les memes:
+            std::cerr << "les dimensions des vecteurs ne sont pas les memes, returning 0" << std::endl;}
     return scalaire; 
 }
 Vecteur Vecteur::prod_vect(const Vecteur& autre) const{
