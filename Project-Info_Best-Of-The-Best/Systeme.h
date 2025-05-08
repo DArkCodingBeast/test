@@ -7,13 +7,13 @@ class Systeme {
     std::vector<std::unique_ptr<ObjetPhysique>> objets;
     std::vector<std::shared_ptr<Contrainte>> contraintes;
     std::vector<std::shared_ptr<ChampForces>> champs;
-    IntegrateurEulerCromer integrateur;
+    std::unique_ptr<Integrateur> integrateur;
     double temps;
     
     public:
     Systeme();
     Systeme(std::vector<std::unique_ptr<ObjetPhysique>>&&, std::vector<std::shared_ptr<Contrainte>>&&, std::vector<std::shared_ptr<ChampForces>>&&, 
-        IntegrateurEulerCromer, double);
+        std::unique_ptr<Integrateur>&&, double);
     
     const std::vector<std::unique_ptr<ObjetPhysique>>& getObjets() const;
     const std::vector<std::shared_ptr<Contrainte>>& getContraintes() const;
@@ -26,6 +26,7 @@ class Systeme {
     void ajouter_champ(std::shared_ptr<ChampForces>); // come ajouter_objet
     void donner_champ(std::size_t, std::size_t); // comme donner_contrainte
     void dessine_sur(SupportADessin&) const;
+    void change_int(std::unique_ptr<Integrateur>&&);
     void evolue(double);
 };
     

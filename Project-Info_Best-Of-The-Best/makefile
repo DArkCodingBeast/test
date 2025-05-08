@@ -11,15 +11,11 @@ all: testVecteur testChutePommes # test2astres
 testVecteur: testVecteur.o Vecteur.o
 >$(CC) $(CXXFLAGS) testVecteur.o Vecteur.o -o testVecteur
 
-testChutePommes: testChutePommes.o Vecteur.o PointMateriel.o ForceCentral.o Contrainte.o Integrateur.o ObjetPhysique.o ObjetMobile.o ChampForces.o
->$(CC) $(CXXFLAGS) testChutePommes.o Vecteur.o PointMateriel.o ForceCentral.o Contrainte.o Integrateur.o ObjetPhysique.o ObjetMobile.o ChampForces.o -o testChutePommes
+testChutePommes: testChutePommes.o Vecteur.o PointMateriel.o ForceCentral.o Contrainte.o Integrateur.o ObjetPhysique.o ObjetMobile.o ChampForces.o Systeme.o
+>$(CC) $(CXXFLAGS) testChutePommes.o Vecteur.o PointMateriel.o ForceCentral.o Contrainte.o Integrateur.o ObjetPhysique.o ObjetMobile.o ChampForces.o Systeme.o -o testChutePommes
 
 # test2astres: test2astres.o Vecteur.o PointMateriel.o ForceCentral.o Contrainte.o Integrateur.o ObjetPhysique.o ObjetMobile.o ChampForces.o
 # >$(CC) $(CXXFLAGS) test2astres.o Vecteur.o PointMateriel.o ForceCentral.o Contrainte.o Integrateur.o ObjetPhysique.o ObjetMobile.o ChampForces.o -o test2astres
-
-
-
-
 
 # Compilation de tout les fichier:
 Vecteur.o: Vecteur.cc Vecteur.h
@@ -49,6 +45,14 @@ Integrateur.o: Integrateur.cc Integrateur.h
 testVecteur.o: testVecteur.cc Vecteur.h
 >$(CC) $(CXXFLAGS) -c testVecteur.cc -o testVecteur.o
 
+Systeme.o: Systeme.cc Systeme.h
+>$(CC) $(CXXFLAGS) -c Systeme.cc -o Systeme.o
+
+Dessinable.o: Dessinable.cc Dessinable.h
+>$(CC) $(CXXFLAGS) -c Dessinable.cc -o Dessinable.o
+
+Cont_spherique.o: Cont_spherique.cc Cont_spherique.h
+>$(CC) $(CXXFLAGS) -c Cont_spherique.cc -o Cont_spherique.o
 
 clean:
 >rm -f *.o testChutePommes testVecteur
