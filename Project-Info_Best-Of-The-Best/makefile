@@ -1,6 +1,6 @@
 .RECIPEPREFIX = >
 CC = $(CXX)
-CXXFLAGS = -std=c++11 -pedantic -Wall
+CXXFLAGS = -std=c++14 -pedantic -Wall
 
 
 #fichier a executable lors du /make:
