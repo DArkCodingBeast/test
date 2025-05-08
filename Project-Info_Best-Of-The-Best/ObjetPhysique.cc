@@ -39,6 +39,6 @@ void ObjetPhysique::affiche(std::ostream& sortie) const{
 void ObjetPhysique::set_champ(std::shared_ptr<ChampForces> n_champ) {champ = n_champ;}
 void ObjetPhysique::set_cont(std::shared_ptr<Contrainte> n_cont) {cont = n_cont;}
 
-std::ostream& operator<<(std::ostream& sortie, ObjetPhysique const& autre){
-    autre.affiche(sortie);   
+std::ostream& operator<<(std::ostream& sortie, const ObjetPhysique& obj){
+    obj.affiche(sortie);   
     return sortie;}

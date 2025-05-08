@@ -16,7 +16,7 @@ public:
     ObjetPhysique(Vecteur, std::shared_ptr<Contrainte>, std::shared_ptr<ChampForces>, double, double, unsigned int);
     ObjetPhysique(Vecteur, Vecteur, double, double, unsigned int);
     
-    void dessine_sur(SupportADessin& miaw) override { /*I don't know yet*/}
+    void dessine_sur(SupportADessin& miaw ) override { /*not sure what to do with this*/}
     std::shared_ptr<Contrainte> get_cont() const;
     std::shared_ptr<ChampForces> get_champ() const;
     unsigned int get_dim() const;
@@ -26,7 +26,7 @@ public:
     Vecteur position() const;
     Vecteur vitesse() const;
     void affiche(std::ostream&) const;
-    virtual Vecteur evolution(double) = 0;
+    virtual Vecteur evolution(double) override {/*not sure what to do with this*/ return Vecteur(0,0,0);};
     void set_cont(std::shared_ptr<Contrainte>);
     void set_champ(std::shared_ptr<ChampForces>);
 
@@ -37,4 +37,4 @@ protected:
     double masse;
     double charge;
 };
-    
+std::ostream& operator<<(std::ostream&, const ObjetPhysique&);
