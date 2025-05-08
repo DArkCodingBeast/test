@@ -3,6 +3,7 @@
 #include "ForceCentral.h"
 #include "Contrainte.h"
 #include "SupportTextDessin.h"
+#include "Cont_spherique.h"
 #include <iostream>
 #include <memory>
 
@@ -38,7 +39,11 @@ int main() {
     // Add constraints and force fields to the system
     systeme.ajouter_contrainte(contrainteLibre);
     systeme.ajouter_champ(champGravitation);
-    systeme.donner_champ(0, 0);
+    cout << systeme << endl;
+    //tesitng switching stuff
+    auto contrainte_s = make_shared<Cont_spherique>(3.0);
+    systeme.ajouter_contrainte(contrainte_s);
+    systeme.donner_contrainte(0,1);
     cout << systeme << endl;
     // Simulate the system
     double dt = 0.01;

@@ -14,8 +14,8 @@ testVecteur: testVecteur.o Vecteur.o
 testChutePommes: testChutePommes.o Vecteur.o PointMateriel.o ForceCentral.o Contrainte.o Integrateur.o ObjetPhysique.o ObjetMobile.o ChampForces.o Systeme.o
 >$(CC) $(CXXFLAGS) testChutePommes.o Vecteur.o PointMateriel.o ForceCentral.o Contrainte.o Integrateur.o ObjetPhysique.o ObjetMobile.o ChampForces.o Systeme.o -o testChutePommes
 
-testSysteme: testSysteme.o Systeme.o PointMateriel.o ForceCentral.o Contrainte.o Integrateur.o ObjetPhysique.o ObjetMobile.o ChampForces.o SupportTextDessin.o Vecteur.o
->$(CC) $(CXXFLAGS) testSysteme.o Systeme.o PointMateriel.o ForceCentral.o Contrainte.o Integrateur.o ObjetPhysique.o ObjetMobile.o ChampForces.o SupportTextDessin.o Vecteur.o -o testSysteme
+testSysteme: testSysteme.o Systeme.o PointMateriel.o ForceCentral.o Contrainte.o Integrateur.o ObjetPhysique.o ObjetMobile.o ChampForces.o SupportTextDessin.o Vecteur.o Cont_spherique.o
+>$(CC) $(CXXFLAGS) testSysteme.o Systeme.o PointMateriel.o ForceCentral.o Contrainte.o Integrateur.o ObjetPhysique.o ObjetMobile.o ChampForces.o SupportTextDessin.o Vecteur.o Cont_spherique.o -o testSysteme
 
 # test2astres: test2astres.o Vecteur.o PointMateriel.o ForceCentral.o Contrainte.o Integrateur.o ObjetPhysique.o ObjetMobile.o ChampForces.o
 # >$(CC) $(CXXFLAGS) test2astres.o Vecteur.o PointMateriel.o ForceCentral.o Contrainte.o Integrateur.o ObjetPhysique.o ObjetMobile.o ChampForces.o -o test2astres

@@ -9,7 +9,7 @@
 
 Cont_spherique::Cont_spherique(double rayon) : rayon(rayon) {}
 void Cont_spherique::affiche(std::ostream& sortie) const{
-    sortie << "L'objet est contraint a se deplacer sur une sphere de rayon : " << rayon << std::endl;}
+    sortie << "Contrainte sphérique de rayon " << rayon << std::endl;}
     
     
     
@@ -56,7 +56,7 @@ Vecteur Cont_spherique::applique_force(ObjetPhysique const& obj, Vecteur force ,
   return Vecteur({acc_teta,acc_phi});}
 
 
-std::ostream& operator<<(std::ostream& sortie, Contrainte const& autre){
+std::ostream& operator<<(std::ostream& sortie, Cont_spherique const& autre){
     autre.affiche(sortie);
     return sortie;}
 	
