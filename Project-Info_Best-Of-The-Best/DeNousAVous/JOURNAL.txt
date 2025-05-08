@@ -105,3 +105,6 @@ temporairement le lien d'heritage de ObjetPhysique et Dessinable (ObjetPhysique 
 certaines definitons de methodes dans les fichier PointMateriel, ObjetPhysique et ObjerMobile ainsi que les operateurs <<, et donc on ne peut pas encore tester ChuteDePommes.
 
 Semaine 11:
+
+Originalement on compilait le makefile avec C++11 puisque c'etait "la version", soit disant, qu'on apprenait a l'EPFL, mais appararamment std::make_unique à été rajouter à C++
+en 2014 donc on a changer ça et DIEU MERCI tout fonctionne toujours. Je croyait que "This Little Maneuver's Gonna Cost Us 51 Years" - Interstellar.

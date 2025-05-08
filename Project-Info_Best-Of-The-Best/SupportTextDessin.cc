@@ -5,7 +5,7 @@ TextViewer::TextViewer(std::ostream& sortie)
     : sortie(sortie)
     {}
      
-void TextViewer::dessine(ObjetPhysique const& point){
+void TextViewer::dessine(const ObjetPhysique& point){
     sortie << point << std::endl;
 }
     

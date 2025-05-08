@@ -12,7 +12,7 @@ PointMateriel::PointMateriel(Vecteur parameters, Vecteur derive, double masse, d
 	
 PointMateriel::PointMateriel(PointMateriel const& autre): ObjetPhysique (autre){}	
 
-void PointMateriel::set_champ(std::shared_ptr<ChampForces> nouveau_champ) {champ = nouveau_champ;}
+
 
 
 
