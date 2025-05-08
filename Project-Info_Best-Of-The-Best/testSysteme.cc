@@ -47,7 +47,7 @@ int main() {
     cout << systeme << endl;
     // Simulate the system
     double dt = 0.01;
-    for (int i = 0; i < 100; ++i) {
+    for (int i = 0; i < 5; ++i) {
         systeme.evolue(dt);
         systeme.dessine_sur(viewer);
     }
