@@ -34,7 +34,10 @@ void ObjetPhysique::affiche(std::ostream& sortie) const{
            << "Le vecteur vitesse est : " << getDerive() << std::endl 
            << "La masse est : "<< get_masse() << std::endl 
            << "La dimension est : " << get_dim() << std::endl 
-           << "La charge electrique est : "<< get_charge() << std::endl; }
+           << "La charge electrique est : "<< get_charge() << std::endl; 
+}
+void ObjetPhysique::set_champ(std::shared_ptr<ChampForces> n_champ) {champ = n_champ;}
+void ObjetPhysique::set_cont(std::shared_ptr<Contrainte> n_cont) {cont = n_cont;}
 
 std::ostream& operator<<(std::ostream& sortie, ObjetPhysique const& autre){
     autre.affiche(sortie);   

@@ -16,11 +16,17 @@ void Systeme::ajouter_objet(std::unique_ptr<ObjetPhysique> objet) {
 void Systeme::ajouter_contrainte(std::shared_ptr<Contrainte> contrainte) {
     contraintes.push_back(std::move(contrainte));
 }
+void donner_contrainte(std::size_t i_obj, std::size_t j_con) {
+    // gotta do this one
 
+}
 void Systeme::ajouter_champ(std::shared_ptr<ChampForces> champ) {
     champs.push_back(std::move(champ));
 }
+void donner_champ(std::size_t i_obj, std::size_t j_cha) {
+    // gotta do this one
 
+}
 void Systeme::dessine_sur(SupportADessin& support) const {
     for (const auto& objet : objets) {
         objet->dessine_sur(support);
@@ -29,9 +35,9 @@ void Systeme::dessine_sur(SupportADessin& support) const {
 
 void Systeme::evolue(double dt) {
     for (const auto& objet : objets) {
-    integrateur.integre(*objet, temps, dt); // probleme here
+    integrateur.integre_1objet(*objet, temps, dt); 
     }
-    temps += dt; // problem here
+    temps += dt;
 }
 std::ostream& operator<<(std::ostream& sortie, Systeme const& systeme) {
     sortie << "Systeme : à t = " << systeme.getTemps() << std::endl;

@@ -27,6 +27,8 @@ public:
     Vecteur vitesse() const;
     void affiche(std::ostream&) const;
     virtual Vecteur evolution(double) = 0;
+    void set_cont(std::shared_ptr<Contrainte>);
+    void set_champ(std::shared_ptr<ChampForces>);
 
 protected:
     std::shared_ptr<Contrainte> cont;
