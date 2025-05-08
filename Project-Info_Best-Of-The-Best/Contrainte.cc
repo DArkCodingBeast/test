@@ -15,7 +15,7 @@ Vecteur Libre::vitesse(ObjetPhysique const& obj){
     return obj.getDerive();
 }
 void Libre::affiche(std::ostream& sortie) const{
-    sortie << "Aucune contrainte n'est appliqué sur l'objet." << std::endl;
+    sortie << "Contrainte nulle (Libre)." << std::endl;
 }
 std::ostream& operator<<(std::ostream& sortie, Contrainte const& autre){
     autre.affiche(sortie);

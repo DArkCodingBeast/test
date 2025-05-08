@@ -21,11 +21,13 @@ Vecteur ObjetPhysique:: force(double t) const   {return champ->force(*this,t);}
 Vecteur ObjetPhysique:: position() const     {return cont->position(*this);}
 Vecteur ObjetPhysique:: vitesse() const   {return cont->vitesse(*this);}
 void ObjetPhysique::affiche(std::ostream& sortie) const{
-    sortie << "Le vecteur d'etat est : " << getParam() << std::endl
-           << "Le vecteur vitesse est : " << getDerive() << std::endl 
-           << "La masse est : "<< get_masse() << std::endl 
-           << "La dimension est : " << get_dim() << std::endl 
-           << "La charge electrique est : "<< get_charge() << std::endl; 
+    sortie << "Le vecteur d'etat est : " << parameters << std::endl
+           << "Le vecteur vitesse est : " << derivee_temporelle << std::endl 
+           << "La masse est : "<< masse << std::endl 
+           << "La dimension est : " << dim << std::endl;
+if (cont != nullptr) {sortie << "Avec contrainte : " << cont << std::endl;}
+if (champ != nullptr) {sortie << "Son champ est : " << champ << std::endl;}
+    sortie << "La charge electrique est : "<< charge << std::endl; 
 }
 void ObjetPhysique::set_champ(std::shared_ptr<ChampForces> n_champ) {champ = n_champ;}
 void ObjetPhysique::set_cont(std::shared_ptr<Contrainte> n_cont) {cont = n_cont;}

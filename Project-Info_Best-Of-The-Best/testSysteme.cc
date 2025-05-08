@@ -38,7 +38,7 @@ int main() {
     // Add constraints and force fields to the system
     systeme.ajouter_contrainte(contrainteLibre);
     systeme.ajouter_champ(champGravitation);
-
+    systeme.donner_champ(0, 0);
     cout << systeme << endl;
     // Simulate the system
     double dt = 0.01;
@@ -46,7 +46,7 @@ int main() {
         systeme.evolue(dt);
         systeme.dessine_sur(viewer);
     }
-
+    cout << systeme << endl;
     cout << "Simulation complete." << endl;
 
     return 0;

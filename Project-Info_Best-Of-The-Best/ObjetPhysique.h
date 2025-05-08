@@ -1,7 +1,6 @@
 #pragma once
 #include "Dessinable.h"
 #include "ObjetMobile.h"
-#include "Vecteur.h"
 #include "Contrainte.h"
 #include "ChampForces.h"
 #include <memory> // Pour std::shared_ptr
