@@ -25,8 +25,8 @@ void ObjetPhysique::affiche(std::ostream& sortie) const{
            << "Le vecteur vitesse est : " << derivee_temporelle << std::endl 
            << "La masse est : "<< masse << std::endl 
            << "La dimension est : " << dim << std::endl;
-if (cont != nullptr) {sortie << "Avec contrainte : " << cont << std::endl;}
-if (champ != nullptr) {sortie << "Son champ est : " << champ << std::endl;}
+if (cont) {sortie << "Avec contrainte : " << *cont << std::endl;}
+if (champ){sortie << "Son champ est : " << *champ << std::endl;}
     sortie << "La charge electrique est : "<< charge << std::endl; 
 }
 void ObjetPhysique::set_champ(std::shared_ptr<ChampForces> n_champ) {champ = n_champ;}
