@@ -1,9 +1,4 @@
 #include "ObjetPhysique.h"
-#include "Contrainte.h"
-#include "ChampForces.h"
-#include "Dessinable.h"
-#include "ObjetMobile.h"
-#include "constantes.h"
 
 ObjetPhysique::ObjetPhysique (ObjetPhysique const& autre):  ObjetMobile(autre.getParam(),autre.getDerive()),cont(autre.get_cont()), champ(autre.get_champ()), 
     dim(autre.get_dim()), masse(autre.get_masse()), charge(autre.get_charge()){}
@@ -16,10 +11,6 @@ ObjetPhysique::ObjetPhysique (Vecteur paramaters, std::shared_ptr<Contrainte> co
     
 ObjetPhysique::ObjetPhysique (Vecteur paramaters, Vecteur derive, double masse, double charge, unsigned int dim):     
     ObjetMobile(paramaters,derive), cont(std::make_shared<Libre>()), champ(std::make_shared<GravitationConstante>(Vecteur(0,0,0))), dim(dim), masse(masse), charge(charge) {}
-
-
-
-
 
 std::shared_ptr<Contrainte> ObjetPhysique::get_cont() const    {return cont;}
 std::shared_ptr<ChampForces> ObjetPhysique::get_champ() const  {return champ;}

@@ -39,6 +39,7 @@ int main() {
     systeme.ajouter_contrainte(contrainteLibre);
     systeme.ajouter_champ(champGravitation);
 
+    cout << systeme << endl;
     // Simulate the system
     double dt = 0.01;
     for (int i = 0; i < 100; ++i) {
