@@ -46,14 +46,10 @@ Vecteur Cont_spherique::applique_force(ObjetPhysique const& obj, Vecteur force ,
   double phi = position(obj).get_vect()[1];
   double vteta = vitesse(obj).get_vect()[0];
   double vphi = vitesse(obj).get_vect()[1];
-  std::cout << "hehe" << std::endl;
   Vecteur uteta (cos(teta) * cos(phi), cos(teta) * sin(phi), sin(teta)); // <-- verif signe sin(teta)
   Vecteur uphi (-1*sin(phi), cos(phi), 0.0);																			
-  std::cout << "hoho" << std::endl;
   double acc_teta = (force * uteta) / (obj.get_masse() * rayon) + sin(teta) * cos(teta) * vphi * vphi;
-  std::cout << "haha" << std::endl;		 //le produit scalaire par dessu et en dessous pas content
   double acc_phi = (force * uphi) / (obj.get_masse() * rayon * sin(teta)) - ( 2 * vteta * vphi ) / tan(teta);
-  std::cout << "hihi" << std::endl;
   return Vecteur({acc_teta,acc_phi});}
 
 
