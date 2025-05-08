@@ -53,7 +53,7 @@ Vecteur Cont_spherique::applique_force(ObjetPhysique const& obj, Vecteur force ,
   double acc_teta = (force * uteta) / (obj.get_masse() * rayon) + sin(teta) * cos(teta) * vphi * vphi;			
   double acc_phi = (force * uphi) / (obj.get_masse() * rayon * sin(teta)) - ( 2 * vteta * vphi ) / tan(teta);
 	
-  return Vecteur(acc_teta,acc_phi);}
+  return Vecteur({acc_teta,acc_phi});}
 
 
 std::ostream& operator<<(std::ostream& sortie, Contrainte const& autre){
