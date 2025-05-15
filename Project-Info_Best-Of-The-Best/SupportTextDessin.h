@@ -1,4 +1,4 @@
-#include <ostream>
+#include <fstream>
 #include "ObjetPhysique.h"
 #pragma once
 
@@ -29,5 +29,5 @@ class TextViewer : public SupportADessin {
     virtual void dessine(Systeme const&) override;
      
     protected:
-    std::ostream& sortie;
+    std::fstream& sortie;
     };
