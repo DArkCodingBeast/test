@@ -24,8 +24,8 @@ int main() {
     auto champGravitation = make_shared<GravitationConstante>(gravitation);
 
     // Create objects
-    Vecteur position1(0.0, 0.0, 10.0);
-    Vecteur vitesse1(0.0, 0.0, 0.0);
+    Vecteur position1({M_PI_4, M_PI_4});
+    Vecteur vitesse1({0.0, 0.0});
     auto objet1 = make_unique<PointMateriel>(position1, vitesse1, champGravitation, contrainteLibre, 1.0);
 
     Vecteur position2(5.0, 0.0, 15.0);
@@ -46,12 +46,12 @@ int main() {
     systeme.donner_contrainte(0,1);
     cout << systeme << endl;
     // Simulate the system
-    double dt = 0.01;
+    double dt = 0.5;
     for (int i = 0; i < 5; ++i) {
         systeme.evolue(dt);
         systeme.dessine_sur(viewer);
+        cout << "temps = " << (i+1)*0.5 << endl << *systeme.getObjets()[0] << endl;
     }
-    cout << systeme << endl;
     cout << "Simulation complete." << endl;
 
     return 0;
