@@ -1,4 +1,7 @@
-#include "Contraintes.h"
+#include "Aller_De_lavant.h"
+
+
+class ObjetPhysique;
 	
     
     
