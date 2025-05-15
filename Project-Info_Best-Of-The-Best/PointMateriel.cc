@@ -1,31 +1,19 @@
-#include "PointMateriel.h"
+#include "SupportTextDessin.h"
+#pragma once
 
-PointMateriel::PointMateriel(Vecteur parameters, Vecteur derive, std::shared_ptr<ChampForces> champ, std::shared_ptr<Contrainte> cont, double masse, double charge, unsigned int dim): 
-	ObjetPhysique(parameters, derive, cont, champ, masse, charge, dim) {}
-PointMateriel::PointMateriel(Vecteur parameters, std::shared_ptr<ChampForces> champ, std::shared_ptr<Contrainte> cont, double masse, double charge , unsigned int dim): 
-	ObjetPhysique(parameters, cont , champ, masse, charge, dim) {}
-PointMateriel::PointMateriel(Vecteur parameters, Vecteur derive, double masse, double charge, unsigned int dim): 
-	ObjetPhysique(parameters, derive, masse, charge, dim) {}
-	
-PointMateriel::PointMateriel(PointMateriel const& autre): ObjetPhysique (autre){}	
+class PointMateriel : public ObjetPhysique {	
+    public:
+        PointMateriel(PointMateriel const&);
+        PointMateriel (Vecteur, Vecteur, std::shared_ptr<ChampForces> /*champ*/, std::shared_ptr<Contrainte> /*cont*/, double, double = 0, unsigned int = 3);
+        PointMateriel(Vecteur, std::shared_ptr<ChampForces> /*champ*/, std::shared_ptr<Contrainte> /*cont*/, double, double = 0, unsigned int = 3);
+        PointMateriel(Vecteur, Vecteur, double, double = 0, unsigned int = 3);
+        
+        virtual void dessine_sur(SupportADessin&) override;
+        virtual Vecteur evolution(double) override;
+        void affiche(std::ostream&) const;
+        
+    };
+
+std::ostream& operator<<(std::ostream&, const PointMateriel&);
 
 
-void PointMateriel::dessine_sur(SupportADessin&) {}
-Vecteur PointMateriel::evolution(double temps){
-	return cont->applique_force(*this, champ->force(*this,temps), temps);
-}
-void PointMateriel::affiche(std::ostream& sortie) const {
-	ObjetPhysique::affiche(sortie);
-}
-std::ostream& operator<<(std::ostream& sortie, const PointMateriel& p){
-	p.affiche(sortie);
-	return sortie;	
-}
-
-PointMat_Sphere::PointMat_Sphere(Vecteur parameters, Vecteur derive, std::shared_ptr<ChampForces> champ, std::shared_ptr<Contrainte> cont, double masse, double charge, unsigned int dim): 
-	ObjetPhysique(parameters, derive, cont, champ, masse, charge, dim) {}
-PointMat_Sphere::PointMat_Sphere(Vecteur parameters, std::shared_ptr<ChampForces> champ, std::shared_ptr<Contrainte> cont, double masse, double charge , unsigned int dim): 
-	ObjetPhysique(parameters, cont , champ, masse, charge, dim) {}
-PointMat_Sphere::PointMat_Sphere(Vecteur parameters, Vecteur derive, double masse, double charge, unsigned int dim): 
-	ObjetPhysique(parameters, derive, masse, charge, dim) {}
-PointMat_Sphere::PointMat_Sphere(PointMateriel const& autre): ObjetPhysique (autre){}
