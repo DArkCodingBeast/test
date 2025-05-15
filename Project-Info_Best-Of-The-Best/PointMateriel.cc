@@ -21,3 +21,11 @@ std::ostream& operator<<(std::ostream& sortie, const PointMateriel& p){
 	p.affiche(sortie);
 	return sortie;	
 }
+
+PointMat_Sphere::PointMat_Sphere(Vecteur parameters, Vecteur derive, std::shared_ptr<ChampForces> champ, std::shared_ptr<Contrainte> cont, double masse, double charge, unsigned int dim): 
+	ObjetPhysique(parameters, derive, cont, champ, masse, charge, dim) {}
+PointMat_Sphere::PointMat_Sphere(Vecteur parameters, std::shared_ptr<ChampForces> champ, std::shared_ptr<Contrainte> cont, double masse, double charge , unsigned int dim): 
+	ObjetPhysique(parameters, cont , champ, masse, charge, dim) {}
+PointMat_Sphere::PointMat_Sphere(Vecteur parameters, Vecteur derive, double masse, double charge, unsigned int dim): 
+	ObjetPhysique(parameters, derive, masse, charge, dim) {}
+PointMat_Sphere::PointMat_Sphere(PointMateriel const& autre): ObjetPhysique (autre){}
