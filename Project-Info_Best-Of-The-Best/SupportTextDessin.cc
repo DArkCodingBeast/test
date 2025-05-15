@@ -1,7 +1,7 @@
 #include "SupportTextDessin.h"
 #include "Systeme.h"
 
-TextViewer::TextViewer(std::ostream& sortie)
+TextViewer::TextViewer(std::fstream& sortie)
     : sortie(sortie)
     {}
      
