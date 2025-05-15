@@ -18,7 +18,7 @@ class SupportADessin {
 
 class TextViewer : public SupportADessin {
     public:
-    TextViewer(std::ostream&);
+    TextViewer(std::fstream&);
     virtual ~TextViewer() = default;
     
     TextViewer(TextViewer const&)            = delete;
